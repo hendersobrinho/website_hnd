@@ -1,0 +1,37 @@
+# Robots.txt para HND LAB
+# Permitir todos os bots de busca
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://hndlab.com/sitemap.xml
+
+# Bloquear arquivos e pastas específicas (opcional)
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /.claude/
+
+# Específico para Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Específico para Bing
+User-agent: Bingbot
+Allow: /
+
+# Específico para outros bots comuns
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /

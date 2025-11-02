@@ -1,0 +1,42 @@
+# Configuração do GitHub Pages (Jekyll)
+
+# Informações do site
+title: HND LAB
+description: Laboratório de inovação e tecnologia com artigos sobre ciência da computação
+author: HND LAB
+url: https://hndlab.com
+baseurl: ""
+
+# Configurações de build
+exclude:
+  - GOOGLE-SETUP.md
+  - README.md
+  - .gitignore
+  - .htaccess
+  - _headers
+  - node_modules/
+  - package.json
+  - package-lock.json
+
+# Plugins (GitHub Pages suporta nativamente)
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Configurações de markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Timezone
+timezone: America/Sao_Paulo
+
+# Encoding
+encoding: utf-8
+
+# Permalink style
+permalink: pretty
+
+# Configurações de segurança
+safe: true

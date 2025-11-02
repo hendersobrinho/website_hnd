@@ -143,7 +143,7 @@ Este é um projeto pessoal, mas sugestões são bem-vindas através de issues.
 
 ## 📧 Contato
 
-Para mais informações, visite: [hndlab.com](https://hndlab.com)
+Para mais informações, visite: [hndlab.com]([https://hndlab.com](https://hndlab.dev.br/))
 
 ---
 

@@ -1,0 +1,183 @@
+/* Tooltips Interativos */
+
+.term-tooltip,
+.bio-tooltip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--text-light);
+    text-decoration: none;
+    transition: border-color 0.3s ease;
+}
+
+.term-tooltip:hover,
+.bio-tooltip:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* Tooltip container */
+.term-tooltip::before,
+.bio-tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: normal;
+    width: max-content;
+    max-width: 320px;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Seta do tooltip */
+.term-tooltip::after,
+.bio-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.95);
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Mostrar tooltip no hover */
+.term-tooltip:hover::before,
+.bio-tooltip:hover::before,
+.term-tooltip:hover::after,
+.bio-tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Estilo para links dentro de tooltips biográficos */
+.bio-tooltip a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.bio-tooltip a:hover {
+    color: var(--primary-color);
+}
+
+/* Tooltip rico (com HTML) */
+.tooltip-rich {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-rich .tooltip-content {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    width: 300px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-rich:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-rich .tooltip-content a {
+    color: #4a90e2;
+    text-decoration: underline;
+}
+
+.tooltip-rich .tooltip-content a:hover {
+    color: #6aa9f5;
+}
+
+/* Adaptação para mobile */
+@media (max-width: 768px) {
+    .term-tooltip::before,
+    .bio-tooltip::before {
+        max-width: 250px;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    /* Em mobile, mostrar tooltip no tap */
+    .term-tooltip.active::before,
+    .bio-tooltip.active::before,
+    .term-tooltip.active::after,
+    .bio-tooltip.active::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .tooltip-rich .tooltip-content {
+        width: 250px;
+    }
+}
+
+/* Tooltips que podem ultrapassar os limites da tela */
+.term-tooltip.tooltip-left::before,
+.bio-tooltip.tooltip-left::before {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(-5px);
+}
+
+.term-tooltip.tooltip-left::after,
+.bio-tooltip.tooltip-left::after {
+    left: auto;
+    right: 20px;
+    transform: translateX(0) translateY(-5px);
+}
+
+.term-tooltip.tooltip-left:hover::before,
+.bio-tooltip.tooltip-left:hover::before,
+.term-tooltip.tooltip-left:hover::after,
+.bio-tooltip.tooltip-left:hover::after {
+    transform: translateX(0) translateY(0);
+}
+
+/* Estilo especial para termos técnicos */
+abbr.term-tooltip {
+    text-decoration: none;
+    border-bottom: 2px dotted var(--primary-color);
+    cursor: help;
+}
+
+/* Link externo em tooltip biográfico */
+.bio-tooltip .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #4a90e2;
+}
+
+.bio-tooltip .external-link svg {
+    width: 12px;
+    height: 12px;
+}

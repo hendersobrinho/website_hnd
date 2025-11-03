@@ -216,7 +216,54 @@ body {
 .hero::before {
     content: '';
     display: block;
-    padding-top: 35%; /* Aumentada a altura para mostrar a logo completa */
+    padding-top: 35%;
+}
+
+/* Hero com blur (página artigos) */
+.hero-artigos {
+    height: 0;
+    padding-top: 35%;
+}
+
+.hero-artigos::before {
+    display: none;
+}
+
+.hero-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-align: center;
+}
+
+.hero-text p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .hero-wrapper {
@@ -618,13 +665,25 @@ body {
     }
 
     .hero::before {
-        padding-top: 60%;
+        padding-top: 50%;
+    }
+
+    .hero-artigos {
+        padding-top: 50%;
     }
 
     .hero {
         margin-top: 0;
-        background-position: center center;
+        background-position: center 30%;
         background-size: cover;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
     }
 
     .hero-content h1 {
@@ -677,11 +736,24 @@ body {
 
 @media (max-width: 480px) {
     .hero::before {
-        padding-top: 80%;
+        padding-top: 70%;
+    }
+
+    .hero-artigos {
+        padding-top: 70%;
     }
 
     .hero {
-        background-position: center center;
+        background-position: center 25%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+        padding: 0 1rem;
     }
 
     .article-image {

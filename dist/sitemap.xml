@@ -4,7 +4,7 @@
 
     <!-- Home Page -->
     <url>
-        <loc>https://hendersobrinho.github.io/website_hnd/</loc>
+        <loc>/</loc>
         <lastmod>2025-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -12,7 +12,7 @@
 
     <!-- Página de Artigos -->
     <url>
-        <loc>https://hendersobrinho.github.io/website_hnd/artigos.html</loc>
+        <loc>/artigos.html</loc>
         <lastmod>2025-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -20,7 +20,7 @@
 
     <!-- Sobre -->
     <url>
-        <loc>https://hendersobrinho.github.io/website_hnd/sobre.html</loc>
+        <loc>/sobre.html</loc>
         <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -28,7 +28,7 @@
 
     <!-- Categoria Tecnologia -->
     <url>
-        <loc>https://hendersobrinho.github.io/website_hnd/tecnologia.html</loc>
+        <loc>/tecnologia.html</loc>
         <lastmod>2025-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -36,22 +36,22 @@
 
     <!-- Artigo: 44.100 Fotos Por Segundo -->
     <url>
-        <loc>https://hendersobrinho.github.io/website_hnd/artigos/audio-digital.html</loc>
+        <loc>/artigos/audio-digital.html</loc>
         <lastmod>2025-11-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://hendersobrinho.github.io/website_hnd/assets/audio-digital/tumb1.png</image:loc>
+            <image:loc>/assets/audio-digital/tumb1.png</image:loc>
             <image:title>44.100 Fotos Por Segundo: A Loucura Por Trás do Play</image:title>
             <image:caption>Thumbnail do artigo sobre conversão analógico-digital</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://hendersobrinho.github.io/website_hnd/assets/audio-digital/quantizacao.png</image:loc>
+            <image:loc>/assets/audio-digital/quantizacao.png</image:loc>
             <image:title>Processo de Quantização - Sinal Analógico vs Digital</image:title>
             <image:caption>Diagrama explicativo do processo de quantização</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://hendersobrinho.github.io/website_hnd/assets/audio-digital/msb_lsb.png</image:loc>
+            <image:loc>/assets/audio-digital/msb_lsb.png</image:loc>
             <image:title>MSB e LSB - Bits Mais e Menos Significativos</image:title>
             <image:caption>Explicação visual de MSB e LSB em áudio digital</image:caption>
         </image:image>

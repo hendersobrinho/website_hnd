@@ -39,21 +39,6 @@ if (newsletterForm) {
     });
 }
 
-// Add scroll effect to navbar
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-        navbar.style.padding = '0.5rem 0';
-    } else {
-        navbar.style.padding = '1rem 0';
-    }
-
-    lastScroll = currentScroll;
-});
-
 // Animate articles on scroll
 const observerOptions = {
     threshold: 0.1,

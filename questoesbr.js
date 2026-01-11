@@ -30,37 +30,8 @@ const appendMessage = (content, role = 'assistant') => {
     return message;
 };
 
-const renderQuestions = (data) => {
-    const nivelValue = data.nivel || selectedNivel || 'automatico';
-    const tema = data.tema || 'o tema informado';
-    const intro = `
-        <p>Perfeito! Aqui estao as questoes de ${escapeHtml(tema)} (${escapeHtml(nivelValue)}).</p>
-    `;
-
-    const questions = (data.questoes || [])
-        .map((q) => {
-            const alternativas = Object.entries(q.alternativas || {})
-                .map(([key, value]) => `<li><strong>${escapeHtml(key)}.</strong> ${escapeHtml(value)}</li>`)
-                .join('');
-            return `
-                <div class="question-item">
-                    <p class="question-title">Questao ${escapeHtml(String(q.numero))}.</p>
-                    <p>${escapeHtml(q.enunciado || '')}</p>
-                    <ul class="alternatives">${alternativas}</ul>
-                    <p class="comment"><strong>Comentario:</strong> ${escapeHtml(q.comentario || '')}</p>
-                </div>
-            `;
-        })
-        .join('');
-
-    const gabaritoItems = (data.questoes || [])
-        .map((q) => `<li><strong>${escapeHtml(String(q.numero))}.</strong> ${escapeHtml(q.gabarito || '')}</li>`)
-        .join('');
-    const gabarito = gabaritoItems
-        ? `<div class="answer-block"><p class="answer-title">Gabarito</p><ul class="answer-list">${gabaritoItems}</ul></div>`
-        : '';
-
-    return `<div class="ai-answer">${intro}<div class="question-list">${questions}</div>${gabarito}</div>`;
+const renderAnswer = (text) => {
+    return `<div class="ai-answer"><p>${escapeHtml(text).replace(/\n/g, '<br>')}</p></div>`;
 };
 
 const setLoading = (isLoading) => {
@@ -125,7 +96,7 @@ questoesForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    chatHint.textContent = 'A resposta aparece no chat.';
+    chatHint.textContent = '';
     chatHint.classList.remove('error');
 
     const nivelLabel = selectedNivel ? nivelLabels[selectedNivel] : 'automatico';
@@ -135,14 +106,13 @@ questoesForm.addEventListener('submit', async (event) => {
     setLoading(true);
 
     try {
-        const response = await fetch('/api/questoes', {
+        const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                tema,
-                nivel: selectedNivel
+                message: `Tema: ${tema}. Nivel: ${nivelLabel}. Gere 10 questoes com gabarito.`
             })
         });
 
@@ -152,7 +122,7 @@ questoesForm.addEventListener('submit', async (event) => {
             throw new Error(data.message || 'Nao foi possivel gerar as questoes agora.');
         }
 
-        loadingMessage.innerHTML = renderQuestions(data);
+        loadingMessage.innerHTML = renderAnswer(data.text || '');
     } catch (error) {
         loadingMessage.innerHTML = `<p class="error">${escapeHtml(error.message)}</p>`;
     } finally {

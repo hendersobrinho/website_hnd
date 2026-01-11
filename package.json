@@ -1,0 +1,8 @@
+{
+  "name": "website_hnd",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "openai": "^4.56.0"
+  }
+}

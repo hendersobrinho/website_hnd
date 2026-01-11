@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestoesBR - HND LAB</title>
+    <meta name="description" content="QuestoesBR: gere questoes educacionais com IA para estudar de graca.">
+    <meta name="keywords" content="questoes, IA, estudo, educacao, vestibular, HND LAB">
+    <meta name="author" content="HND LAB">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hndlab.com/questoesbr.html">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="questoes-page">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">HND LAB</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="artigos.html">Artigos</a></li>
+                <li><a href="questoesbr.html">QuestoesBR</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container questoes-container">
+        <section class="questoes-header">
+            <div class="questoes-title">
+                <img src="assets/hnd_black.png" alt="HND" class="questoes-logo">
+                <h1>QuestoesBR</h1>
+            </div>
+        </section>
+
+        <section class="chat-panel chat-panel--compact">
+            <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+
+            <form class="chat-form chat-form--inline" id="questoesForm">
+                <div class="chat-composer">
+                    <button type="button" class="composer-level" id="nivelToggle" aria-expanded="false" aria-controls="nivelMenu">Nivel</button>
+                    <div class="composer-field">
+                        <input type="text" id="tema" name="tema" placeholder="Peca as questoes. Ex: 10 questoes de fracoes com gabarito" required maxlength="200">
+                        <div class="nivel-menu" id="nivelMenu" hidden>
+                            <p class="nivel-title">Nivel</p>
+                            <div class="nivel-options">
+                                <button type="button" class="nivel-option" data-nivel="fundamental">Fundamental</button>
+                                <button type="button" class="nivel-option" data-nivel="medio">Medio</button>
+                                <button type="button" class="nivel-option" data-nivel="vestibular">Vestibular</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-send" id="gerarBtn">Enviar</button>
+                </div>
+                <div class="chat-meta">
+                    <span class="nivel-selected" id="nivelSelected">Nivel: automatico</span>
+                </div>
+                <p class="chat-hint" id="chatHint"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="questoesbr.js"></script>
+</body>
+</html>

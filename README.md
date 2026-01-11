@@ -97,6 +97,35 @@ Este site está configurado para ser hospedado no GitHub Pages usando a pasta **
    Value: seu-usuario.github.io
    ```
 
+
+## 🤖 QuestõesBR (MVP)
+
+Página de geração de questões com IA disponível em `questoesbr.html`.
+
+### Configuração da API
+
+Defina a variável de ambiente `OPENAI_API_KEY` antes de iniciar o backend.
+
+```bash
+export OPENAI_API_KEY="sua-chave"
+```
+
+### Rodar localmente (frontend + API)
+
+O backend simples está no arquivo `server.js` e serve a API `/api/questoes`.
+
+```bash
+node server.js
+```
+
+Acesse: `http://localhost:3000/questoesbr.html`
+
+### Checklist rápido (manual)
+
+- Tema: `frações` (nível fundamental, dificuldade fácil)
+- Tema: `revolução industrial` (nível médio, dificuldade médio)
+- Tema: `funções quadráticas` (vestibular, dificuldade difícil)
+
 ## 🔍 SEO
 
 O site está otimizado para SEO com:

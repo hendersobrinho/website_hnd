@@ -779,3 +779,253 @@ body {
     }
 }
 .hero-questoes::before{background:linear-gradient(120deg,rgba(0,0,0,.9),rgba(60,60,60,.7))}.questoes-container{padding-top:2rem;padding-bottom:4rem}.questoes-intro{text-align:center;margin-bottom:2rem}.questoes-intro h2{font-size:2rem;margin-bottom:.5rem}.chat-panel{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 16px 40px rgba(0,0,0,.08)}.chat-messages{background:#f5f5f5;border-radius:12px;padding:1.5rem;max-height:420px;overflow-y:auto;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:1rem}.message{padding:1rem 1.2rem;border-radius:12px;background:#fff;border:1px solid #e0e0e0;line-height:1.6}.message.user{align-self:flex-end;background:#111;color:#fff;border:none}.message.assistant{align-self:flex-start}.message-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}.badge{background:#111;color:#fff;padding:.2rem .6rem;border-radius:999px;font-size:.75rem}.question-list{list-style:none;display:grid;gap:1.2rem}.question-card{background:#f5f5f5;border-radius:12px;padding:1rem}.question-card h4{margin-bottom:.5rem}.alternatives{list-style:none;padding-left:0;display:grid;gap:.4rem;margin:.6rem 0}.comment{color:#666}.difficulty{font-size:.85rem;color:#808080}.chat-form{display:flex;flex-direction:column;gap:1.5rem}.chat-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.input-group{display:flex;flex-direction:column;gap:.5rem}.input-group input,.input-group select{border-radius:8px;border:1px solid #e0e0e0;padding:.6rem .8rem;font-size:.95rem}.chat-actions{display:flex;flex-wrap:wrap;gap:1rem}.btn-secondary{border:1px solid #000;background:0 0;color:#000;padding:.6rem 1.6rem;border-radius:8px;cursor:pointer;font-weight:600;transition:all .3s ease}.btn-secondary:disabled{cursor:not-allowed;opacity:.6}.btn-secondary:hover:not(:disabled){background:#000;color:#fff}.chat-hint{font-size:.9rem;color:#666}.chat-hint.error,.message .error{color:#b00020}@media (max-width:768px){.chat-panel{padding:1.5rem}.chat-messages{max-height:520px}}
+
+/* QuestoesBR - chat moderno (dist override) */
+.questoes-page {
+    background: linear-gradient(180deg, #f3f3f3 0%, #ffffff 45%, #f0f0f0 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.questoes-container {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.questoes-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.questoes-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.questoes-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.questoes-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.chat-panel--compact {
+    padding: 1.5rem;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    max-width: 920px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    min-height: 320px;
+    max-height: 520px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.message {
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.message.user {
+    background: #111111;
+}
+
+.message.assistant {
+    background: #ffffff;
+}
+
+.chat-form--inline {
+    gap: 1rem;
+}
+
+.chat-composer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #e0e0e0;
+}
+
+.composer-level {
+    min-width: 74px;
+    height: 38px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #111111;
+    color: #ffffff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.composer-field {
+    flex: 1;
+    position: relative;
+}
+
+.composer-field input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    padding: 0.4rem 0;
+    outline: none;
+}
+
+.nivel-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 0.8rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    min-width: 220px;
+}
+
+.nivel-title {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nivel-options {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.nivel-option {
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.nivel-option.active {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+.btn-send {
+    border: none;
+    background: #111111;
+    color: #ffffff;
+    padding: 0.6rem 1.3rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-send:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chat-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nivel-selected {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.question-list {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.question-item {
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.question-title {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.answer-block {
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.answer-title {
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.answer-list {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    padding-left: 0;
+}
+
+@media (max-width: 768px) {
+    .questoes-container {
+        padding-top: 5rem;
+    }
+
+    .chat-panel--compact {
+        padding: 1.2rem;
+    }
+
+    .chat-composer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .composer-level {
+        align-self: flex-start;
+    }
+
+    .btn-send {
+        width: 100%;
+    }
+
+    .chat-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

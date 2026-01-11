@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuestõesBR - HND LAB</title>
-    <meta name="description" content="QuestõesBR: gere 10 questões educacionais com IA para estudar de graça.">
-    <meta name="keywords" content="questões, IA, estudo, educação, vestibular, HND LAB">
+    <title>QuestoesBR - HND LAB</title>
+    <meta name="description" content="QuestoesBR: gere questoes educacionais com IA para estudar de graca.">
+    <meta name="keywords" content="questoes, IA, estudo, educacao, vestibular, HND LAB">
     <meta name="author" content="HND LAB">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hndlab.com/questoesbr.html">
@@ -15,14 +15,14 @@
 
     <link rel="stylesheet" href="style.min.css">
 </head>
-<body>
+<body class="questoes-page">
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="logo">HND LAB</a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="artigos.html">Artigos</a></li>
-                <li><a href="questoesbr.html">QuestõesBR</a></li>
+                <li><a href="questoesbr.html">QuestoesBR</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -33,90 +33,40 @@
         </div>
     </nav>
 
-    <section class="hero hero-questoes">
-        <div class="hero-blur"></div>
-        <div class="hero-text">
-            <h1>QuestõesBR</h1>
-            <p>Gere 10 questões com IA para estudar mais rápido.</p>
-        </div>
-    </section>
-
     <main class="container questoes-container">
-        <section class="questoes-intro">
-            <h2>Monte seu pedido</h2>
-            <p>Informe o tema e, se quiser, complemente com nível, matéria e dificuldade. O resultado sai em JSON e já aparece no chat.</p>
+        <section class="questoes-header">
+            <div class="questoes-title">
+                <img src="assets/hnd_black.png" alt="HND" class="questoes-logo">
+                <h1>QuestoesBR</h1>
+            </div>
         </section>
 
-        <section class="chat-panel">
+        <section class="chat-panel chat-panel--compact">
             <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
 
-            <form class="chat-form" id="questoesForm">
-                <div class="chat-inputs">
-                    <div class="input-group">
-                        <label for="tema">Tema (obrigatório)</label>
-                        <input type="text" id="tema" name="tema" placeholder="Ex: Frações, Revolução Industrial" required maxlength="200">
+            <form class="chat-form chat-form--inline" id="questoesForm">
+                <div class="chat-composer">
+                    <button type="button" class="composer-level" id="nivelToggle" aria-expanded="false" aria-controls="nivelMenu">Nivel</button>
+                    <div class="composer-field">
+                        <input type="text" id="tema" name="tema" placeholder="Peca as questoes. Ex: 10 questoes de fracoes com gabarito" required maxlength="200">
+                        <div class="nivel-menu" id="nivelMenu" hidden>
+                            <p class="nivel-title">Nivel</p>
+                            <div class="nivel-options">
+                                <button type="button" class="nivel-option" data-nivel="fundamental">Fundamental</button>
+                                <button type="button" class="nivel-option" data-nivel="medio">Medio</button>
+                                <button type="button" class="nivel-option" data-nivel="vestibular">Vestibular</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="nivel">Nível</label>
-                        <select id="nivel" name="nivel">
-                            <option value="">Selecione</option>
-                            <option value="fundamental">Fundamental</option>
-                            <option value="medio">Médio</option>
-                            <option value="vestibular">Vestibular</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="materia">Matéria</label>
-                        <select id="materia" name="materia">
-                            <option value="">Selecione</option>
-                            <option value="matematica">Matemática</option>
-                            <option value="portugues">Português</option>
-                            <option value="historia">História</option>
-                            <option value="geografia">Geografia</option>
-                            <option value="ciencias">Ciências</option>
-                            <option value="fisica">Física</option>
-                            <option value="quimica">Química</option>
-                            <option value="biologia">Biologia</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="dificuldade">Dificuldade</label>
-                        <select id="dificuldade" name="dificuldade">
-                            <option value="">Selecione</option>
-                            <option value="facil">Fácil</option>
-                            <option value="medio">Médio</option>
-                            <option value="dificil">Difícil</option>
-                        </select>
-                    </div>
+                    <button type="submit" class="btn-send" id="gerarBtn">Enviar</button>
                 </div>
-                <div class="chat-actions">
-                    <button type="submit" class="btn-primary" id="gerarBtn">Gerar 10 questões</button>
-                    <button type="button" class="btn-secondary" id="copiarJsonBtn" disabled>Copiar JSON</button>
+                <div class="chat-meta">
+                    <span class="nivel-selected" id="nivelSelected">Nivel: automatico</span>
                 </div>
-                <p class="chat-hint" id="chatHint">A resposta aparecerá no chat abaixo.</p>
+                <p class="chat-hint" id="chatHint"></p>
             </form>
         </section>
     </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>QuestõesBR</h4>
-                <p style="color: var(--text-light); line-height: 1.8;">
-                    Ferramenta gratuita para gerar questões educacionais com IA.
-                </p>
-            </div>
-            <div class="footer-section">
-                <h4>Links Úteis</h4>
-                <ul class="footer-links">
-                    <li><a href="artigos.html">Artigos</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 HND LAB. Todos os direitos reservados.</p>
-        </div>
-    </footer>
 
     <script src="script.min.js"></script>
     <script src="questoesbr.js"></script>

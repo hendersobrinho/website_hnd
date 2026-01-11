@@ -8,6 +8,7 @@ const nivelSelected = document.getElementById('nivelSelected');
 const nivelOptions = Array.from(document.querySelectorAll('.nivel-option'));
 
 let selectedNivel = '';
+let lastGabaritoText = '';
 
 const nivelLabels = {
     fundamental: 'Fundamental',
@@ -30,8 +31,25 @@ const appendMessage = (content, role = 'assistant') => {
     return message;
 };
 
+const splitGabarito = (text) => {
+    const match = text.match(/(?:^|\n)gabarito\s*:\s*[\s\S]+/i);
+    if (!match) {
+        return { questionsText: text.trim(), gabaritoText: '' };
+    }
+    const gabaritoText = match[0].trim();
+    const questionsText = text.replace(match[0], '').trim();
+    return { questionsText, gabaritoText };
+};
+
 const renderAnswer = (text) => {
     return `<div class="ai-answer"><p>${escapeHtml(text).replace(/\n/g, '<br>')}</p></div>`;
+};
+
+const removeGabaritoButton = () => {
+    const buttonMessage = chatMessages.querySelector('.message .btn-gabarito')?.closest('.message');
+    if (buttonMessage) {
+        buttonMessage.remove();
+    }
 };
 
 const setLoading = (isLoading) => {
@@ -86,6 +104,14 @@ appendMessage(
     'assistant'
 );
 
+chatMessages.addEventListener('click', (event) => {
+    const button = event.target.closest('.btn-gabarito');
+    if (!button || !lastGabaritoText) return;
+    appendMessage(renderAnswer(lastGabaritoText), 'assistant');
+    lastGabaritoText = '';
+    button.closest('.message')?.remove();
+});
+
 questoesForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const tema = document.getElementById('tema').value.trim();
@@ -104,6 +130,8 @@ questoesForm.addEventListener('submit', async (event) => {
     const loadingMessage = appendMessage('<p>Gerando questoes...</p>', 'assistant');
 
     setLoading(true);
+    lastGabaritoText = '';
+    removeGabaritoButton();
 
     try {
         const response = await fetch('/api/chat', {
@@ -112,7 +140,7 @@ questoesForm.addEventListener('submit', async (event) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: `Tema: ${tema}. Nivel: ${nivelLabel}. Gere 10 questoes com gabarito.`
+                message: `Tema: ${tema}. Nivel: ${nivelLabel}. Gere 10 questoes. Ao final, inclua a secao "Gabarito:" com as respostas. Nao mostre o gabarito junto das questoes.`
             })
         });
 
@@ -122,7 +150,12 @@ questoesForm.addEventListener('submit', async (event) => {
             throw new Error(data.message || 'Nao foi possivel gerar as questoes agora.');
         }
 
-        loadingMessage.innerHTML = renderAnswer(data.text || '');
+        const { questionsText, gabaritoText } = splitGabarito(data.text || '');
+        loadingMessage.innerHTML = renderAnswer(questionsText || data.text || '');
+        if (gabaritoText) {
+            lastGabaritoText = gabaritoText;
+            appendMessage('<div class="gabarito-action"><button type="button" class="btn-gabarito">Ver gabarito</button></div>', 'assistant');
+        }
     } catch (error) {
         loadingMessage.innerHTML = `<p class="error">${escapeHtml(error.message)}</p>`;
     } finally {

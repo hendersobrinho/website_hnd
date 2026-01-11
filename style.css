@@ -1024,8 +1024,8 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 1.5rem;
-    min-height: 320px;
-    max-height: 520px;
+    min-height: 440px;
+    max-height: 720px;
     overflow-y: auto;
     flex: 1;
 }
@@ -1186,6 +1186,27 @@ body {
     display: grid;
     gap: 0.4rem;
     padding-left: 0;
+}
+
+.gabarito-action {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-gabarito {
+    border: 1px solid #111111;
+    background: #ffffff;
+    color: #111111;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-gabarito:hover {
+    background: #111111;
+    color: #ffffff;
 }
 
 @media (max-width: 768px) {

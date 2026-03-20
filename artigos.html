@@ -3,79 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artigos - HND LAB</title>
-    <meta name="description" content="Todos os artigos do HND LAB sobre tecnologia, programação e ciência da computação.">
-    <meta name="keywords" content="artigos de tecnologia, tutoriais, programação, ciência da computação">
-    <meta name="author" content="HND LAB">
+    <title>Artigos | HND LAB</title>
+    <meta name="description" content="Artigos do HND LAB sobre desenvolvimento, ciencia da computacao e tecnologia.">
+    <meta name="keywords" content="artigos, tecnologia, desenvolvimento, computacao, HND LAB">
+    <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://hndlab.com/artigos.html">
-
-    <!-- Favicon -->
+    <link rel="canonical" href="https://hndlab.dev.br/artigos.html">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="logo">HND LAB</a>
+            <a href="index.html" class="brand" aria-label="HND LAB">
+                <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                <span class="brand-text">HND LAB</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="artigos.html">Artigos</a></li>
-                <li><a href="questoesbr.html">QuestõesBR</a></li>
+                <li><a href="index.html">In&iacute;cio</a></li>
+                <li><a href="artigos.html" class="is-active">Artigos</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <section class="hero hero-artigos">
-        <div class="hero-blur"></div>
-        <div class="hero-text">
-            <h1>Todos os Artigos</h1>
-            <p>Explore nosso conteúdo sobre tecnologia e inovação</p>
-        </div>
-    </section>
-
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
-        <main class="articles-section">
-            <div class="articles-grid">
-                <article class="article-card" onclick="window.location.href='artigos/audio-digital.html'">
-                    <div class="article-image" style="background-image: url('assets/audio-digital/tumb1.png'); background-size: cover; background-position: center;">
-                        <span class="article-category">Tecnologia</span>
-                    </div>
-                    <div class="article-content">
-                        <h3 class="article-title">44.100 Fotos Por Segundo</h3>
-                        <p class="article-excerpt">Descubra como funciona a conversão de áudio analógico para digital.</p>
-                    </div>
-                </article>
+    <main class="page-main">
+        <section class="page-hero">
+            <div class="section-shell page-hero-shell">
+                <span class="eyebrow">Arquivo</span>
+                <h1>Artigos publicados no HND LAB</h1>
+                <p>Uma cole&ccedil;&atilde;o de textos sobre tecnologia, desenvolvimento e fundamentos de computa&ccedil;&atilde;o.</p>
             </div>
-        </main>
-    </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="section-heading">
+                <span class="eyebrow">Publica&ccedil;&otilde;es</span>
+                <h2>Conte&uacute;do dispon&iacute;vel</h2>
+            </div>
+
+            <div class="articles-grid" data-articles-list>
+                <p class="hero-recent-empty">Carregando artigos...</p>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Sobre o HND LAB</h4>
-                <p style="color: var(--text-light); line-height: 1.8;">
-                    Laboratório de inovação e tecnologia.
-                </p>
+            <div>
+                <a href="index.html" class="brand brand-footer">
+                    <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                    <span class="brand-text">HND LAB</span>
+                </a>
+                <p class="footer-copy">Artigos para documentar estudos e organizar ideias sobre computacao e tecnologia.</p>
             </div>
-            <div class="footer-section">
-                <h4>Categorias</h4>
+            <div>
+                <h4>Navegacao</h4>
                 <ul class="footer-links">
-                    <li><a href="tecnologia.html">Tecnologia</a></li>
+                    <li><a href="index.html">In&iacute;cio</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Publicacoes</h4>
+                <ul class="footer-links">
+                    <li><a href="artigos/primeiro-crud.html">Primeiro CRUD?</a></li>
+                    <li><a href="artigos/audio-digital.html">&Aacute;udio digital</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HND LAB.</p>
+            <p>&copy; 2026 HND LAB. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <script src="articles-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

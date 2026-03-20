@@ -46,7 +46,7 @@ Responderemos em até 48 horas.
 
 - [ ] Remover console.log() de produção
 - [ ] Verificar .gitignore (sem arquivos sensíveis)
-- [ ] Trocar para script.min.js
+- [ ] Revisar referÃªncias antigas a arquivos minificados que nÃ£o fazem mais parte do projeto
 - [ ] Configurar HTTPS no domínio
 - [ ] Testar headers de segurança
 - [ ] Validar CSP (Content Security Policy)

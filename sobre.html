@@ -3,78 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - HND LAB</title>
-    <meta name="description" content="Conheça o HND LAB, laboratório de inovação e tecnologia dedicado a compartilhar conhecimento sobre o mundo tech.">
-    <meta name="keywords" content="sobre, HND LAB, missão, tecnologia">
-    <meta name="author" content="HND LAB">
+    <title>Sobre | HND LAB</title>
+    <meta name="description" content="Conheca Henderson e a proposta do HND LAB.">
+    <meta name="keywords" content="sobre Henderson, HND LAB, blog de tecnologia">
+    <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://hndlab.com/sobre.html">
-
-    <!-- Favicon -->
+    <link rel="canonical" href="https://hndlab.dev.br/sobre.html">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="logo">HND LAB</a>
+            <a href="index.html" class="brand" aria-label="HND LAB">
+                <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                <span class="brand-text">HND LAB</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">In&iacute;cio</a></li>
                 <li><a href="artigos.html">Artigos</a></li>
-                <li><a href="questoesbr.html">QuestõesBR</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="sobre.html" class="is-active">Sobre</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>HND LAB</h1>
-            <p>Inovação, Tecnologia e Conhecimento</p>
-        </div>
-    </section>
+    <main class="page-main">
+        <section class="page-hero">
+            <div class="section-shell page-hero-shell">
+                <span class="eyebrow">Sobre o autor</span>
+                <h1>Henderson</h1>
+                <p>Estudante de ciencia da computacao e responsavel pelo HND LAB.</p>
+            </div>
+        </section>
 
-    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 3rem 2rem;">
-        <main style="font-size: 1.1rem; line-height: 1.8; color: #2c2c2c;">
-            <p style="margin-bottom: 1.5rem;">O HND LAB é um laboratório de inovação e tecnologia dedicado a compartilhar conhecimento sobre o mundo tech através de artigos, tutoriais e análises aprofundadas.</p>
+        <section class="section-shell">
+            <div class="about-grid">
+                <article class="about-card">
+                    <span class="panel-label">Apresentacao</span>
+                    <p>
+                        Criei este site para documentar o que estou aprendendo em tecnologia, com foco principal em
+                        desenvolvimento, fundamentos e nas ferramentas que aparecem no caminho.
+                    </p>
+                </article>
 
-            <p style="margin-bottom: 1.5rem;">Nosso objetivo é desmistificar conceitos complexos de tecnologia, tornando-os acessíveis e interessantes para todos, desde iniciantes até profissionais experientes.</p>
+                <article class="about-card">
+                    <span class="panel-label">Objetivo</span>
+                    <p>Transformar estudo em material publico claro, util e facil de revisar depois.</p>
+                </article>
 
-            <h2 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem;">Nossa Missão</h2>
-            <p style="margin-bottom: 1.5rem;">Tornar a tecnologia mais acessível e compreensível, compartilhando conhecimento de forma clara, direta e com uma pitada de humor.</p>
-
-            <h2 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem;">O Que Você Encontra Aqui</h2>
-            <ul style="margin-bottom: 1.5rem; margin-left: 2rem;">
-                <li style="margin-bottom: 0.5rem;">Artigos técnicos sobre ciência da computação</li>
-                <li style="margin-bottom: 0.5rem;">Explicações descomplicadas de conceitos complexos</li>
-                <li style="margin-bottom: 0.5rem;">Análises de tecnologias e tendências</li>
-                <li style="margin-bottom: 0.5rem;">Tutoriais práticos e aplicáveis</li>
-            </ul>
-        </main>
-    </div>
+                <article class="about-card">
+                    <span class="panel-label">Foco atual</span>
+                    <p>Artigos tecnicos, fundamentos de computacao e registros praticos da minha evolucao estudando.</p>
+                </article>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Sobre o HND LAB</h4>
-                <p style="color: var(--text-light); line-height: 1.8;">
-                    Laboratório de inovação e tecnologia.
-                </p>
+            <div>
+                <a href="index.html" class="brand brand-footer">
+                    <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                    <span class="brand-text">HND LAB</span>
+                </a>
+                <p class="footer-copy">Um blog para documentar aprendizados e construir repertorio tecnico com consistencia.</p>
             </div>
-            <div class="footer-section">
-                <h4>Categorias</h4>
+            <div>
+                <h4>Navegacao</h4>
                 <ul class="footer-links">
-                    <li><a href="tecnologia.html">Tecnologia</a></li>
+                    <li><a href="index.html">In&iacute;cio</a></li>
+                    <li><a href="artigos.html">Artigos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Publicacoes</h4>
+                <ul class="footer-links">
+                    <li><a href="artigos/primeiro-crud.html">Primeiro CRUD?</a></li>
+                    <li><a href="artigos/audio-digital.html">&Aacute;udio digital</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HND LAB.</p>
+            <p>&copy; 2026 HND LAB. Todos os direitos reservados.</p>
         </div>
     </footer>
 

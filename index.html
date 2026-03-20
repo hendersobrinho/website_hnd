@@ -3,95 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HND</title>
-    <meta name="description" content="HND LAB - Laboratório de inovação e tecnologia com artigos sobre ciência da computação, programação e análises técnicas.">
-    <meta name="keywords" content="tecnologia, programação, ciência da computação, artigos técnicos, tutoriais">
-    <meta name="author" content="HND LAB">
+    <title>HND LAB | Artigos sobre tecnologia e desenvolvimento</title>
+    <meta name="description" content="Blog pessoal de Henderson com artigos sobre desenvolvimento, computacao e aprendizado em tecnologia.">
+    <meta name="keywords" content="HND LAB, Henderson, artigos, tecnologia, desenvolvimento, ciencia da computacao">
+    <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://hndlab.com/">
-
-    <!-- Favicon -->
+    <link rel="canonical" href="https://hndlab.dev.br/">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="logo">HND LAB</a>
+            <a href="index.html" class="brand" aria-label="HND LAB">
+                <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                <span class="brand-text">HND LAB</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="is-active">In&iacute;cio</a></li>
                 <li><a href="artigos.html">Artigos</a></li>
-                <li><a href="questoesbr.html">QuestõesBR</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>HND LAB</h1>
-            <p>Inovação, Tecnologia e Conhecimento</p>
-            <a href="#artigos" class="btn-primary">Explorar Artigos</a>
-        </div>
-    </section>
+    <main>
+        <section class="hero-home">
+            <div class="hero-shell">
+                <div class="hero-copy">
+                    <span class="eyebrow">Espaco pessoal para estudar em publico</span>
+                    <h1>Registro de aprendizado em tecnologia.</h1>
+                    <p class="hero-lead">
+                        Este site existe para transformar estudo em texto claro. Aqui eu organizo o que estou aprendendo,
+                        documento erros, ideias e processos, e deixo tudo facil de revisitar depois.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="artigos.html" class="btn-primary">Ler artigos</a>
+                        <a href="sobre.html" class="btn-secondary">Sobre mim</a>
+                    </div>
+                </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Articles Section -->
-        <main class="articles-section" id="artigos">
-            <h2>Artigos em Destaque</h2>
-            <div class="articles-grid">
-                <!-- Article 1 -->
-                <article class="article-card" onclick="window.location.href='artigos/audio-digital.html'">
-                    <div class="article-image" style="background-image: url('assets/audio-digital/tumb1.png'); background-size: cover; background-position: center;">
-                        <span class="article-category">Tecnologia</span>
+                <aside class="hero-panel">
+                    <div class="hero-panel-card">
+                        <span class="panel-label">Agora no site</span>
+                        <h2>Artigos mais recentes</h2>
+                        <div class="hero-recent-list" data-recent-articles>
+                            <p class="hero-recent-empty">Carregando artigos...</p>
+                        </div>
                     </div>
-                    <div class="article-content">
-                        <h3 class="article-title">44.100 Fotos Por Segundo</h3>
-                        <p class="article-excerpt">Descubra como funciona a conversão de áudio analógico para digital.</p>
+                    <div class="hero-panel-grid">
+                        <div class="mini-stat">
+                            <strong data-article-count>01</strong>
+                            <span data-article-count-label>artigo publicado</span>
+                        </div>
                     </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section-shell intro-section">
+            <div class="section-heading">
+                <span class="eyebrow">Resumo</span>
+                <h2>O que voce encontra aqui</h2>
+            </div>
+            <div class="intro-grid">
+                <article class="info-card">
+                    <h3>Por que o site existe</h3>
+                    <p>Para registrar aprendizado de forma simples e acompanhar a evolucao com menos ruido e mais clareza.</p>
+                </article>
+                <article class="info-card">
+                    <h3>O tipo de conteudo</h3>
+                    <p>Artigos sobre desenvolvimento, fundamentos de computacao e outras coisas que fizerem sentido no processo.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Como os textos sao escritos</h3>
+                    <p>Com foco em entendimento pratico, linguagem direta e anotacoes que tambem me ajudem a revisar depois.</p>
                 </article>
             </div>
-        </main>
+        </section>
+    </main>
 
-    </div>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Sobre o HND LAB</h4>
-                <p style="color: var(--text-light); line-height: 1.8;">
-                    Laboratório de inovação e tecnologia com artigos, tutoriais e análises aprofundadas sobre o mundo tech.
-                </p>
+            <div>
+                <a href="index.html" class="brand brand-footer">
+                    <img src="logo.png" alt="Logo do HND LAB" class="brand-mark">
+                    <span class="brand-text">HND LAB</span>
+                </a>
+                <p class="footer-copy">Blog pessoal de Henderson para documentar aprendizados em tecnologia, desenvolvimento e computacao.</p>
             </div>
-            <div class="footer-section">
-                <h4>Links Úteis</h4>
+            <div>
+                <h4>Navegacao</h4>
                 <ul class="footer-links">
-                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="index.html">In&iacute;cio</a></li>
+                    <li><a href="artigos.html">Artigos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Categorias</h4>
+            <div>
+                <h4>Publicacoes</h4>
                 <ul class="footer-links">
-                    <li><a href="tecnologia.html">Tecnologia</a></li>
+                    <li><a href="artigos/primeiro-crud.html">Primeiro CRUD?</a></li>
+                    <li><a href="artigos/audio-digital.html">&Aacute;udio digital</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HND LAB. Todos os direitos reservados.</p>
+            <p>&copy; 2026 HND LAB. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <script src="articles-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

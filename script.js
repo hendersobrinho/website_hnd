@@ -1,59 +1,129 @@
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
+const navbar = document.querySelector(".navbar");
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+const siteArticles = Array.isArray(window.siteArticles) ? [...window.siteArticles] : [];
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+        const expanded = hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        hamburger.setAttribute("aria-expanded", String(expanded));
     });
-});
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Newsletter form submission (se existir)
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Obrigado por se inscrever! Você receberá nossas novidades em breve.');
-        e.target.reset();
+    document.querySelectorAll(".nav-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+        });
     });
 }
 
-// Animate articles on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeIn 0.6s ease forwards';
-        }
+function sortArticlesByDate(articles) {
+    return [...articles].sort((current, next) => {
+        const currentTimestamp = Date.parse(current.date || "");
+        const nextTimestamp = Date.parse(next.date || "");
+        return nextTimestamp - currentTimestamp;
     });
-}, observerOptions);
+}
 
-document.querySelectorAll('.article-card').forEach(card => {
-    card.style.opacity = '0';
-    observer.observe(card);
+function formatArticleDate(date) {
+    const parsedDate = Date.parse(date || "");
+
+    if (Number.isNaN(parsedDate)) {
+        return "";
+    }
+
+    return new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    }).format(new Date(parsedDate));
+}
+
+function renderRecentArticles() {
+    const recentArticlesContainer = document.querySelector("[data-recent-articles]");
+
+    if (!recentArticlesContainer) {
+        return;
+    }
+
+    const latestArticles = sortArticlesByDate(siteArticles).slice(0, 3);
+
+    if (!latestArticles.length) {
+        recentArticlesContainer.innerHTML = '<p class="hero-recent-empty">Nenhum artigo publicado ainda.</p>';
+        return;
+    }
+
+    recentArticlesContainer.innerHTML = latestArticles
+        .map((article) => {
+            const publishedDate = formatArticleDate(article.date);
+
+            return `
+                <article class="hero-recent-item">
+                    <a class="hero-recent-link" href="${article.url}">${article.title}</a>
+                    <p class="hero-recent-meta">${publishedDate}</p>
+                </article>
+            `;
+        })
+        .join("");
+}
+
+function renderArticlesList() {
+    const articlesListContainer = document.querySelector("[data-articles-list]");
+
+    if (!articlesListContainer) {
+        return;
+    }
+
+    const orderedArticles = sortArticlesByDate(siteArticles);
+
+    if (!orderedArticles.length) {
+        articlesListContainer.innerHTML = '<p class="hero-recent-empty">Nenhum artigo publicado ainda.</p>';
+        return;
+    }
+
+    articlesListContainer.innerHTML = orderedArticles
+        .map((article) => {
+            const publishedDate = formatArticleDate(article.date);
+            const coverImage = article.coverImage || "logo.png";
+            const excerpt = article.excerpt || "Sem resumo cadastrado.";
+
+            return `
+                <a class="article-card article-card-link" href="${article.url}">
+                    <div class="article-image" style="background-image: url('${coverImage}');"></div>
+                    <div class="article-content">
+                        <p class="article-date">${publishedDate}</p>
+                        <h3 class="article-title">${article.title}</h3>
+                        <p class="article-excerpt">${excerpt}</p>
+                        <span class="read-more">Ler artigo</span>
+                    </div>
+                </a>
+            `;
+        })
+        .join("");
+}
+
+function updateArticleCount() {
+    const articleCount = siteArticles.length;
+    const countElement = document.querySelector("[data-article-count]");
+    const countLabelElement = document.querySelector("[data-article-count-label]");
+
+    if (countElement) {
+        countElement.textContent = String(articleCount).padStart(2, "0");
+    }
+
+    if (countLabelElement) {
+        countLabelElement.textContent = articleCount === 1 ? "artigo publicado" : "artigos publicados";
+    }
+}
+
+renderRecentArticles();
+renderArticlesList();
+updateArticleCount();
+
+window.addEventListener("scroll", () => {
+    if (navbar) {
+        navbar.classList.toggle("is-scrolled", window.scrollY > 24);
+    }
 });

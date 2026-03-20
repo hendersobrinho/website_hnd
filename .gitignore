@@ -50,7 +50,7 @@ GOOGLE-SETUP.md
 notas-dev.txt
 
 # Build tools
-# NOTA: dist/ NÃO está ignorado pois é a pasta de produção que vai ao ar
+# NOTA: o deploy agora usa a raiz do projeto
 build/
 *.min.js.map
 *.min.css.map

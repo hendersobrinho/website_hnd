@@ -343,8 +343,29 @@ button {
 }
 
 .hero-panel-card {
+    position: relative;
     padding: 2rem;
     flex: 1;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-panel-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-panel-card::after {
+    content: "";
+    position: absolute;
+    right: -2.4rem;
+    bottom: -3.2rem;
+    width: min(72%, 22rem);
+    aspect-ratio: 648 / 609;
+    background: url("assets/branding/face-watermark.svg") center / contain no-repeat;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Titulo do bloco escuro da direita na home. */
@@ -832,6 +853,13 @@ button {
     .hero-shell {
         min-height: auto;
         padding-top: 1rem;
+    }
+
+    .hero-panel-card::after {
+        right: -2rem;
+        bottom: -2.6rem;
+        width: min(68%, 18rem);
+        opacity: 0.08;
     }
 
     body {

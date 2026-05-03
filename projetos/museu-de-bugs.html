@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu de Bugs | Projetos | HenderLab</title>
+    <meta name="description" content="Resumo do projeto Museu de Bugs, criado para registrar bugs curiosos, aprendizados e solucoes encontradas em desenvolvimento de software.">
+    <meta name="keywords" content="Museu de Bugs, HenderLab, projetos, Angular, .NET, C#, API, MySQL">
+    <meta name="author" content="Henderson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hndlab.dev.br/projetos/museu-de-bugs">
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="brand" aria-label="HenderLab">
+                <span class="brand-text">HenderLab</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">In&iacute;cio</a></li>
+                <li><a href="../artigos.html">Artigos</a></li>
+                <li><a href="../projetos.html" class="is-active">Projetos</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-main project-detail-main">
+        <section class="project-detail-hero">
+            <div class="section-shell">
+                <a href="../projetos.html" class="back-link">Voltar para projetos</a>
+
+                <article class="project-detail-card">
+                    <div class="project-detail-logo-panel">
+                        <div class="project-detail-logo-frame">
+                            <img src="../museu-de-bugs-logo.png" alt="Logo do Museu de Bugs" class="project-detail-logo">
+                        </div>
+                        
+                    </div>
+
+                    <div class="project-detail-copy">
+                        <div class="project-card-meta">
+                            <span class="project-status">Em produção</span>
+                            <span>Angular</span>
+                            <span>.NET</span>
+                            <span>C#</span>
+                            <span>MySQL</span>
+                        </div>
+
+                        <h1>Museu de Bugs</h1>
+                        <p class="project-detail-lead">
+                            Uma coleção de Bugs e erros que vou encontrando durante os processos de aprendizado.
+                        </p>
+
+                        <div class="project-actions">
+                            <a href="https://bugs.henderlab.com.br" class="btn-primary" target="_blank" rel="noopener">Ver projeto</a>
+                            <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="btn-secondary" target="_blank" rel="noopener">Ver repositório</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-shell project-detail-content" aria-labelledby="project-summary-title">
+            <div class="project-summary">
+                <span class="eyebrow">Resumo</span>
+                <h2 id="project-summary-title">Por que esse projeto foi criado</h2>
+                <section class="project-description">
+  <p>
+    O <strong>Museu de Bugs</strong> nasceu da ideia de transformar erros reais em material de estudo.
+    Em vez de deixar cada problema perdido em prints, anotações soltas ou mensagens antigas, o projeto
+    organiza esses casos em uma vitrine pública para consulta, aprendizado e memória técnica.
+  </p>
+  <br>
+  <p>
+    Esse projeto também reuniu tudo que eu precisava praticar naquele momento: entender o fluxo completo
+    de uma aplicação, desde a confecção das classes, persistência no banco de dados, services, controllers,
+    APIs REST e comunicação HTTP.
+  </p>
+  <br>
+  <p>
+    O frontend foi algo que fiz de forma mais leve. procurei saber o necessário para consumir a API e dar
+    forma ao projeto, mas sem tentar me aprofundar tanto nessa parte naquele momento.
+  </p>
+  <br>
+  <p>
+    A imersão no projeto durou 13 dias. Nesse período, consumi uma quantidade absurda de conteúdo,
+    provavelmente suficiente para meses de estudo. Como nem tudo
+    dava para absorver com o mesmo zelo, afinal só o ecossistema .NET é gigantesco, principalmente na parte sobre frontend, anotei algumas peças chaves no Obsidian para que eu possa continuar
+    dando continuidade nos estudos reforçando a teoria para voltar mais forte no próximo projeto.
+  </p>
+  <br>
+  <p>
+    Agora, a ideia é revisitar esses pontos com mais calma e me debruçar nos conceitos teóricos por trás
+    do que foi feito. Não apenas sintaxe, mas principalmente fluxo, arquitetura, organização de projeto e
+    comunicação entre as partes da aplicação.
+  </p>
+  <br>
+  <p>
+    O projeto é simples e conta com uma estrutura inicial bem enxuta, mas me proporcionou aprendizados
+    extremamente importantes: organização de camadas, persistência, API, frontend consumindo backend e até
+    deploy, que acabou exigindo subir partes do projeto em plataformas diferentes.
+  </p>
+  <br>
+  <p>
+    No fim, a proposta foi concluída: criei um app para registrar erros, organizar aprendizados e formar
+    um banco de casos reais para consultar, estudar e tratar depois.
+  </p>
+</section>
+            </div>
+
+            <div class="project-detail-grid">
+                <article class="project-detail-info">
+                    <h3>Intenção</h3>
+                    <p>
+                        Registrar bugs de forma clara, com contexto, causa provável, solução e aprendizados. A ideia é mostrar que erro também documenta evolução, principalmente quando o processo fica visível.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>O que resolve</h3>
+                    <p>
+                        Ajuda a centralizar problemas recorrentes, guardar soluções encontradas e criar um acervo que pode servir tanto para revisão pessoal quanto para outras pessoas que passem por desafios parecidos.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>Como contribui</h3>
+                    <p>
+                        Funciona como um laboratório público: cada bug documentado vira um pequeno estudo de caso sobre desenvolvimento, arquitetura, deploy, API, banco de dados ou integração entre ferramentas.
+                    </p>
+                </article>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>O problema que ele ataca</h2>
+                <p>
+                    Durante o desenvolvimento, muita coisa importante se perde depois que o erro é corrigido. O Museu de Bugs tenta preservar esse caminho: o que aconteceu, onde estava a falha, qual foi a hipótese testada e qual decisão resolveu o problema.
+                </p>
+                <ul class="project-detail-list">
+                    <li><strong>Memória técnica:</strong> evita que soluções úteis desapareçam depois do deploy.</li>
+                    <li><strong>Aprendizado prático:</strong> transforma bugs em exemplos reais, sem depender só de teoria.</li>
+                    <li><strong>Compartilhamento:</strong> permite que outras pessoas entendam o problema e aproveitem a solução.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <a href="index.html" class="brand brand-footer">
+                    <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                    <span class="brand-text">HenderLab</span>
+                </a>
+                <p class="footer-copy">Mais que um projeto, HenderLab é a extensão de uma mente inquieta, criativa e em constante evolução.</p>
+            </div>
+            <div>
+                <h4>Navegacao</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">In&iacute;cio</a></li>
+                    <li><a href="artigos.html">Artigos</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Publicacoes</h4>
+                <ul class="footer-links">
+                    <li><a href="artigos/primeiro-crud.html">Primeiro CRUD?</a></li>
+                    <li><a href="artigos/audio-digital.html">&Aacute;udio digital</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025-2026 HenderLab. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

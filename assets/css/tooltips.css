@@ -4,14 +4,14 @@
 .bio-tooltip {
     position: relative;
     cursor: help;
-    border-bottom: 1px dotted var(--text-light);
+    border-bottom: var(--border-width, 1px) dotted var(--text-secondary);
     text-decoration: none;
     transition: border-color 0.3s ease;
 }
 
 .term-tooltip:hover,
 .bio-tooltip:hover {
-    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--accent);
 }
 
 /* Tooltip container */
@@ -22,10 +22,10 @@
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%) translateY(-5px);
-    background-color: rgba(0, 0, 0, 0.95);
-    color: #ffffff;
+    background-color: var(--surface-contrast);
+    color: var(--text-on-contrast);
     padding: 0.75rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md, 8px);
     font-size: 0.9rem;
     line-height: 1.5;
     white-space: normal;
@@ -35,7 +35,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Seta do tooltip */
@@ -47,7 +47,7 @@
     left: 50%;
     transform: translateX(-50%) translateY(-5px);
     border: 6px solid transparent;
-    border-top-color: rgba(0, 0, 0, 0.95);
+    border-top-color: var(--surface-contrast);
     z-index: 1001;
     opacity: 0;
     pointer-events: none;
@@ -65,14 +65,14 @@
 
 /* Estilo para links dentro de tooltips biográficos */
 .bio-tooltip a {
-    color: var(--text-dark);
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .bio-tooltip a:hover {
-    color: var(--primary-color);
+    color: var(--accent);
 }
 
 /* Tooltip rico (com HTML) */
@@ -87,17 +87,17 @@
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%) translateY(-5px);
-    background-color: rgba(0, 0, 0, 0.95);
-    color: #ffffff;
+    background-color: var(--surface-contrast);
+    color: var(--text-on-contrast);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md, 8px);
     font-size: 0.9rem;
     line-height: 1.6;
     width: 300px;
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
 }
 
 .tooltip-rich:hover .tooltip-content {
@@ -107,12 +107,12 @@
 }
 
 .tooltip-rich .tooltip-content a {
-    color: #4a90e2;
+    color: var(--accent);
     text-decoration: underline;
 }
 
 .tooltip-rich .tooltip-content a:hover {
-    color: #6aa9f5;
+    color: var(--accent-hover);
 }
 
 /* Adaptação para mobile */
@@ -163,7 +163,7 @@
 /* Estilo especial para termos técnicos */
 abbr.term-tooltip {
     text-decoration: none;
-    border-bottom: 2px dotted var(--primary-color);
+    border-bottom: 2px dotted var(--accent);
     cursor: help;
 }
 
@@ -174,7 +174,7 @@ abbr.term-tooltip {
     gap: 0.3rem;
     margin-top: 0.5rem;
     font-size: 0.85rem;
-    color: #4a90e2;
+    color: var(--accent);
 }
 
 .bio-tooltip .external-link svg {

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artigos | HenderLab</title>
-    <meta name="description" content="Artigos do HenderLab sobre desenvolvimento, ciencia da computacao e tecnologia.">
-    <meta name="keywords" content="artigos, tecnologia, desenvolvimento, computacao, HenderLab">
+    <title>Projetos | HenderLab</title>
+    <meta name="description" content="Projetos em desenvolvimento e em produção do HenderLab.">
+    <meta name="keywords" content="HenderLab, projetos, Museu de Bugs, Angular, .NET, C#, API, MySQL">
     <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://hndlab.dev.br/artigos.html">
+    <link rel="canonical" href="https://hndlab.dev.br/projetos">
     <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +24,8 @@
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">In&iacute;cio</a></li>
-                <li><a href="artigos.html" class="is-active">Artigos</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="artigos.html">Artigos</a></li>
+                <li><a href="projetos.html" class="is-active">Projetos</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
             </ul>
         </div>
@@ -34,38 +34,44 @@
     <main class="page-main">
         <section class="page-hero">
             <div class="section-shell page-hero-shell">
-                <span class="eyebrow">Arquivo</span>
-                <h1>Artigos</h1>
-                <p>Textos sobre desenvolvimento, fundamentos de computa&ccedil;&atilde;o, ferramentas e aprendizados do caminho.</p>
+                <span class="eyebrow">Projetos</span>
+                <h1>Construindo em público</h1>
+                <p>Uma vitrine dos projetos que estou desenvolvendo, publicando e usando para aprender tecnologia na prática.</p>
             </div>
         </section>
 
         <section class="section-shell">
             <div class="section-heading">
-                <span class="eyebrow">Publica&ccedil;&otilde;es</span>
-                <h2>Leituras recentes</h2>
+                <span class="eyebrow">Em destaque</span>
+                <h2>Projetos ativos</h2>
             </div>
 
-            <div class="articles-list" aria-label="Lista de artigos">
-                <a class="article-list-item" href="artigos/primeiro-crud.html">
-                    <div class="article-list-meta">
-                        <time datetime="2026-03-19">19 mar 2026</time>
-                        <span>Java</span>
-                        <span>8 min de leitura</span>
+            <div class="projects-grid" aria-label="Lista de projetos">
+                <article class="project-card">
+                    <div class="project-card-header">
+                        <div>
+                            <span class="project-status">Em produção</span>
+                            <h3><a href="projetos/museu-de-bugs.html" class="project-title-link">Museu de Bugs</a></h3>
+                        </div>
                     </div>
-                    <h3>Primeiro CRUD?</h3>
-                    <p>Um relato sobre criar um CRUD em Java, passar por Maven, MySQL, JPA, Hibernate, valida&ccedil;&otilde;es e aprender com os erros do projeto.</p>
-                </a>
 
-                <a class="article-list-item" href="artigos/audio-digital.html">
-                    <div class="article-list-meta">
-                        <time datetime="2025-11-02">02 nov 2025</time>
-                        <span>Fundamentos</span>
-                        <span>7 min de leitura</span>
+                    <p>Uma coleção pública dos bugs mais curiosos, interessantes e desafiadores que encontrei enquanto estudo, desenvolvo e coloco projetos em produção.</p>
+
+                    <ul class="project-tags" aria-label="Tecnologias do projeto">
+                        <li>Angular</li>
+                        <li>.NET</li>
+                        <li>C#</li>
+                        <li>API</li>
+                        <li>MySQL</li>
+                        <li>Produção</li>
+                    </ul>
+
+                    <div class="project-actions">
+                        <a href="projetos/museu-de-bugs.html" class="btn-primary">Ver detalhes</a>
+                        <a href="https://bugs.henderlab.com.br" class="btn-secondary" target="_blank" rel="noopener">Ver projeto</a>
+                        <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="btn-secondary" target="_blank" rel="noopener">Ver repositório</a>
                     </div>
-                        <h3>44.100 Fotos Por Segundo</h3>
-                        <p>Uma introdu&ccedil;&atilde;o ao &aacute;udio digital, amostragem, quantiza&ccedil;&atilde;o e ao caminho entre sinais anal&oacute;gicos e representa&ccedil;&otilde;es digitais.</p>
-                    </a>
+                </article>
             </div>
         </section>
     </main>
@@ -101,7 +107,6 @@
         </div>
     </footer>
 
-    <script src="articles-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

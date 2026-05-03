@@ -419,3 +419,33 @@ window.addEventListener("scroll", () => {
         navbar.classList.toggle("is-scrolled", window.scrollY > 24);
     }
 });
+const stackCarousel = document.querySelector("#stackCarousel");
+const stackPrevButton = document.querySelector(".stack-nav-prev");
+const stackNextButton = document.querySelector(".stack-nav-next");
+
+if (stackCarousel && stackPrevButton && stackNextButton) {
+    const getScrollAmount = () => {
+        const firstCard = stackCarousel.querySelector(".stack-card");
+        const gap = 16;
+
+        if (!firstCard) {
+            return 320;
+        }
+
+        return firstCard.offsetWidth + gap;
+    };
+
+    stackPrevButton.addEventListener("click", () => {
+        stackCarousel.scrollBy({
+            left: -getScrollAmount(),
+            behavior: "smooth"
+        });
+    });
+
+    stackNextButton.addEventListener("click", () => {
+        stackCarousel.scrollBy({
+            left: getScrollAmount(),
+            behavior: "smooth"
+        });
+    });
+}

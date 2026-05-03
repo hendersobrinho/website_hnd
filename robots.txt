@@ -5,12 +5,8 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.henderlab.com.br/sitemap.xml
+Sitemap: https://henderlab.com.br/sitemap.xml
 
-# Bloquear arquivos e pastas específicas (opcional)
-Disallow: /assets/css/
-Disallow: /assets/js/
-Disallow: /.claude/
 
 # Específico para Google
 User-agent: Googlebot

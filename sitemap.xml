@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <url>
-        <loc>https://www.henderlab.com.br/</loc>
-        <lastmod>2026-03-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/artigos.html</loc>
-        <lastmod>2026-03-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/projetos</loc>
-        <lastmod>2026-05-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/museu-de-bugs</loc>
-        <lastmod>2026-05-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/sobre.html</loc>
-        <lastmod>2026-03-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/artigos/primeiro-crud.html</loc>
-        <lastmod>2026-03-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-        <image:image>
-            <image:loc>https://www.henderlab.com.br/assets/primeiro-crud/capa_artigo.png</image:loc>
-            <image:title>Primeiro CRUD?</image:title>
-            <image:caption>Artigo sobre a construção do primeiro CRUD em Java</image:caption>
-        </image:image>
-    </url>
-    <url>
-        <loc>https://www.henderlab.com.br/artigos/audio-digital.html</loc>
-        <lastmod>2026-03-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-        <image:image>
-            <image:loc>https://www.henderlab.com.br/assets/audio-digital/tumb1.png</image:loc>
-            <image:title>44.100 Fotos Por Segundo</image:title>
-            <image:caption>Artigo sobre conversão analógico-digital</image:caption>
-        </image:image>
-    </url>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://henderlab.com.br/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/artigos.html</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/projetos</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/museu-de-bugs</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/sobre.html</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/artigos/primeiro-crud.html</loc>
+    <lastmod>2026-03-19</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/primeiro-crud/capa_artigo.png</image:loc>
+      <image:title>Primeiro CRUD?</image:title>
+      <image:caption>Artigo sobre a construção do primeiro CRUD em Java</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/artigos/audio-digital.html</loc>
+    <lastmod>2026-03-18</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/audio-digital/tumb1.png</image:loc>
+      <image:title>44.100 Fotos Por Segundo</image:title>
+      <image:caption>Artigo sobre conversão analógico-digital</image:caption>
+    </image:image>
+  </url>
+
 </urlset>

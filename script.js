@@ -255,6 +255,32 @@ function formatArticleDate(date) {
     }).format(new Date(parsedDate));
 }
 
+function createArticleCardMarkup(article) {
+    const publishedDate = formatArticleDate(article.date);
+    const coverImage = article.coverImage || "assets/branding/henderlabwi.svg";
+    const excerpt = article.excerpt || "Sem resumo cadastrado.";
+    const category = article.category || "Artigo";
+
+    return `
+        <article class="article-card">
+            <a class="article-card-link" href="${article.url}">
+                <div class="article-thumb">
+                    <img src="${coverImage}" alt="Capa do artigo ${article.title}" loading="lazy" decoding="async">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta-top">
+                        <span class="article-category">${category}</span>
+                        <time class="article-date" datetime="${article.date || ""}">${publishedDate}</time>
+                    </div>
+                    <h3 class="article-title">${article.title}</h3>
+                    <p class="article-excerpt">${excerpt}</p>
+                    <span class="article-link">Ler artigo</span>
+                </div>
+            </a>
+        </article>
+    `;
+}
+
 function renderRecentArticles() {
     const recentArticlesContainer = document.querySelector("[data-recent-articles]");
 
@@ -262,25 +288,14 @@ function renderRecentArticles() {
         return;
     }
 
-    const latestArticles = sortArticlesByDate(siteArticles).slice(0, 3);
+    const latestArticles = sortArticlesByDate(siteArticles).slice(0, 2);
 
     if (!latestArticles.length) {
-        recentArticlesContainer.innerHTML = '<p class="hero-recent-empty">Nenhum artigo publicado ainda.</p>';
+        recentArticlesContainer.innerHTML = '<p class="articles-empty">Nenhum artigo publicado ainda.</p>';
         return;
     }
 
-    recentArticlesContainer.innerHTML = latestArticles
-        .map((article) => {
-            const publishedDate = formatArticleDate(article.date);
-
-            return `
-                <article class="hero-recent-item">
-                    <a class="hero-recent-link" href="${article.url}">${article.title}</a>
-                    <p class="hero-recent-meta">${publishedDate}</p>
-                </article>
-            `;
-        })
-        .join("");
+    recentArticlesContainer.innerHTML = latestArticles.map(createArticleCardMarkup).join("");
 }
 
 function renderArticlesList() {
@@ -293,29 +308,11 @@ function renderArticlesList() {
     const orderedArticles = sortArticlesByDate(siteArticles);
 
     if (!orderedArticles.length) {
-        articlesListContainer.innerHTML = '<p class="hero-recent-empty">Nenhum artigo publicado ainda.</p>';
+        articlesListContainer.innerHTML = '<p class="articles-empty">Nenhum artigo publicado ainda.</p>';
         return;
     }
 
-    articlesListContainer.innerHTML = orderedArticles
-        .map((article) => {
-            const publishedDate = formatArticleDate(article.date);
-            const coverImage = article.coverImage || "logo.png";
-            const excerpt = article.excerpt || "Sem resumo cadastrado.";
-
-            return `
-                <a class="article-card article-card-link" href="${article.url}">
-                    <div class="article-image" style="background-image: url('${coverImage}');"></div>
-                    <div class="article-content">
-                        <p class="article-date">${publishedDate}</p>
-                        <h3 class="article-title">${article.title}</h3>
-                        <p class="article-excerpt">${excerpt}</p>
-                        <span class="read-more">Ler artigo</span>
-                    </div>
-                </a>
-            `;
-        })
-        .join("");
+    articlesListContainer.innerHTML = orderedArticles.map(createArticleCardMarkup).join("");
 }
 
 function updateArticleCount() {

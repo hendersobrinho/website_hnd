@@ -1,57 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeiro CRUD? | HenderLab</title>
-    <meta name="description" content="Relato sobre meu primeiro CRUD em Java, passando por Maven, MySQL, JPA, Hibernate, validações e vários erros no caminho.">
-    <meta name="keywords" content="CRUD em Java, JPA, Hibernate, Maven, MySQL, Bean Validation, HenderLab">
-    <meta name="author" content="Henderson">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.henderlab.com.br/artigos/primeiro-crud">
-    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
-    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="../index.html" class="brand" aria-label="HenderLab">
-                <span class="brand-text">HenderLab</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="../artigos.html" class="is-active">Artigos</a></li>
-                <li><a href="../projetos.html">Projetos</a></li>
-                <li><a href="../sobre.html">Sobre</a></li>
-            </ul>
-        </div>
-    </nav>
+---
+title: "Primeiro CRUD?"
+date: "2026-03-19"
+excerpt: "Meu primeiro projeto real em Java, passando por Maven, MySQL, JPA, Hibernate, validacoes e varios erros no caminho."
+coverImage: "assets/primeiro-crud/capa_artigo.png"
+category: "Artigo"
+slug: "primeiro-crud"
+description: "Relato sobre meu primeiro CRUD em Java, passando por Maven, MySQL, JPA, Hibernate, validações e vários erros no caminho."
+keywords:
+  - "CRUD em Java"
+  - "JPA"
+  - "Hibernate"
+  - "Maven"
+  - "MySQL"
+  - "Bean Validation"
+  - "HenderLab"
+aside: "Primeiro projeto real em Java, com Maven, MySQL, JPA, Hibernate, validações e os erros que vieram junto."
+---
 
-    <main class="page-main">
-        <div class="article-layout">
-            <article class="article-page">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <ol>
-                        <li><a href="../index.html">Início</a></li>
-                        <li><a href="../artigos.html">Artigos</a></li>
-                        <li>Primeiro CRUD?</li>
-                    </ol>
-                </nav>
-
-                <a href="../artigos.html" class="back-link">Voltar para artigos</a>
-
-                <header class="article-header">
-                    <h1>Primeiro CRUD?</h1>
-                    <div class="article-meta">
-                        <time datetime="2026-03-19">19 de março de 2026</time>
-                    </div>
-                </header>
-
-                <div class="article-body">
 <p>Após um tempo, algumas matérias e um curso depois, entrei de vez no mundo da tecnologia. Confesso que programar, no começo, me parecia muito abstrato, mas, à medida que consolido minha lógica de programação, aprender uma linguagem nova se torna algo natural. Afinal de contas, sabemos como precisamos escrever; em qual língua escrevemos se torna apenas um detalhe pesquisável.</p>
 
 <p>Para minha primeira experiência construindo de fato um sistema e aprendendo na marra com as dificuldades que um projeto real pode trazer, escolhi Java. Eu tinha acabado de fazer um curso muito bom de POO do Curso em Vídeo, que, pela didática e pela base que me deu, já foi suficiente para me fazer sentir vontade de começar a escrever linha por linha para valer dessa vez. E foi isso que eu fiz: com confiança ou sem, eu simplesmente comecei, porque nessa fase o mais importante é aprender.</p>
@@ -165,29 +130,3 @@
     <li><a href="https://hibernate.org/orm/documentation/getting-started/" target="_blank" rel="noopener">Hibernate ORM — Getting Started oficial</a></li>
     <li><a href="https://docs.hibernate.org/stable/orm/quickstart/html_single/" target="_blank" rel="noopener">Hibernate ORM — Quickstart oficial</a></li>
 </ul>
-                </div>
-            </article>
-
-            <aside class="article-aside">
-                <span class="panel-label">Neste artigo</span>
-                <p>Primeiro projeto real em Java, com Maven, MySQL, JPA, Hibernate, validações e os erros que vieram junto.</p>
-                <a href="../artigos.html" class="btn-primary">Voltar ao arquivo</a>
-            </aside>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="../index.html" class="brand brand-footer">
-                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
-                <span class="brand-text">HenderLab</span>
-            </a>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="../script.js"></script>
-</body>
-</html>

@@ -1,58 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>44.100 Fotos Por Segundo | HenderLab</title>
-    <meta name="description" content="Descubra como sinais analógicos são convertidos em digitais através de amostragem e quantização.">
-    <meta name="keywords" content="áudio digital, amostragem, quantização, tecnologia, HenderLab">
-    <meta name="author" content="Henderson">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.henderlab.com.br/artigos/audio-digital">
-    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
-    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../assets/css/tooltips.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="../index.html" class="brand" aria-label="HenderLab">
-                <span class="brand-text">HenderLab</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="../artigos.html" class="is-active">Artigos</a></li>
-                <li><a href="../projetos.html">Projetos</a></li>
-                <li><a href="../sobre.html">Sobre</a></li>
-            </ul>
-        </div>
-    </nav>
+---
+title: "44.100 Fotos Por Segundo"
+pageTitle: "44.100 Fotos Por Segundo: A Loucura Por Trás do Play"
+date: "2025-11-02"
+excerpt: "Descubra como funciona a conversao de audio analogico para digital, passando por amostragem, quantizacao e bits."
+coverImage: "assets/audio-digital/tumb1.png"
+category: "Artigo"
+slug: "audio-digital"
+description: "Descubra como sinais analógicos são convertidos em digitais através de amostragem e quantização."
+keywords:
+  - "áudio digital"
+  - "amostragem"
+  - "quantização"
+  - "tecnologia"
+  - "HenderLab"
+aside: "Conversão analógico-digital, amostragem, quantização, Nyquist-Shannon e representação binária."
+styles:
+  - "assets/css/tooltips.css"
+scripts:
+  - "assets/js/tooltips.js"
+---
 
-    <main class="page-main">
-        <div class="article-layout">
-            <article class="article-page">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <ol>
-                        <li><a href="../index.html">Início</a></li>
-                        <li><a href="../artigos.html">Artigos</a></li>
-                        <li>44.100 Fotos Por Segundo</li>
-                    </ol>
-                </nav>
-
-                <a href="../artigos.html" class="back-link">Voltar para artigos</a>
-
-                <header class="article-header">
-                    <h1>44.100 Fotos Por Segundo: A Loucura Por Trás do Play</h1>
-                    <div class="article-meta">
-                        <time datetime="2025-11-02">2 de novembro de 2025</time>
-                    </div>
-                </header>
-
-                <div class="article-body">
 <p>Algumas coisas nesse mundo me deixam fascinado e uma delas é a tecnologia. Quando enfim decidi o que eu queria estudar, para minha felicidade ou desespero, comecei a fazer Ciências da Computação; definitivamente é algo muito encantador, que preenche uma grande lacuna de curiosidades na minha mente.</p>
 
 <p>Uma das coisas que mais fazemos durante nossa vida é escutar música, e claro, isso é algo que nos comove, nos impulsiona, nos inspira; é uma válvula de escape para nossa mente também em muitos momentos, que nos desencadeia sentimentos e faz nossa realidade se tornar menos cruel. Quando vibramos as cordas vocais ou um instrumento vibra, o ar oscila em ondas contínuas de pressão. Essas ondas não têm interrupções, entre o silêncio e o volume máximo existem infinitos pontos intermediários. Esse é o coração de um <abbr class="term-tooltip" data-tooltip="Sinal contínuo que pode assumir infinitos valores ao longo do tempo, representando grandezas físicas como som, luz ou temperatura">sinal analógico</abbr>: ele é contínuo tanto no tempo quanto no valor.</p>
@@ -92,30 +59,3 @@
 <p>Pois é, galera, e esse ciclo magnífico de sinal analógico sendo convertido para o sinal digital, processado e depois voltando ao estado analógico de novo, acontece o tempo todo à nossa volta. Está no microfone capturando a voz em uma chamada de vídeo, onde a vibração do ar gera um sinal analógico que é convertido em números por um <abbr class="term-tooltip" data-tooltip="Conversor Analógico-Digital - dispositivo que transforma sinais analógicos contínuos em valores digitais discretos">conversor analógico-digital (ADC)</abbr>. Aí, depois dessa loucura feita ao vivo de coleta de milhões de amostras, esses números viajam pela rede e chegam no outro dispositivo, onde outro <abbr class="term-tooltip" data-tooltip="Conversor Digital-Analógico - dispositivo que transforma valores digitais discretos de volta em sinais analógicos contínuos">conversor digital-analógico (DAC)</abbr> vai transformar de digital para analógico, transformando 0 e 1 novamente em uma vibração contínua analógica, fazendo vibrar os fones de ouvido de quem ouve. O mesmo processo acontece com uma câmera digital: a luz captada pelo sensor é analógica, mas é convertida em milhões de valores numéricos que se tornam a imagem digital exibida na tela; assim, com cada valor, o processador sabe quais pixels acender e mostrar a imagem. É realmente uma loucura pensar que zeros e uns são capazes de tanto, que são estados, de verdadeiro ou falso, ou, na sua forma original, pulsos de energia elétrica ligados ou desligados.</p>
 
 <p>Hoje, vivemos em meio a esses dois universos. O mundo físico é analógico, contínuo e infinito em detalhes. Já o mundo digital é discreto, formado por recortes e números. A genialidade da ciência e da engenharia está em construir pontes perfeitas entre eles, de modo que possamos ouvir música, gravar vídeos, conversar em tempo real e até controlar máquinas, sem perceber que o que ouvimos e vemos é, na verdade, uma tradução matemática impecável.</p>
-                </div>
-            </article>
-
-            <aside class="article-aside">
-                <span class="panel-label">Neste artigo</span>
-                <p>Conversão analógico-digital, amostragem, quantização, Nyquist-Shannon e representação binária.</p>
-                <a href="../artigos.html" class="btn-primary">Voltar ao arquivo</a>
-            </aside>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="../index.html" class="brand brand-footer">
-                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
-                <span class="brand-text">HenderLab</span>
-            </a>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="../script.js"></script>
-    <script src="../assets/js/tooltips.js"></script>
-</body>
-</html>

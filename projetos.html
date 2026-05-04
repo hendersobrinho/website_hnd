@@ -32,78 +32,65 @@
     </nav>
 
     <main class="page-main">
-        <section class="page-hero">
-            <div class="section-shell page-hero-shell">
-                <span class="eyebrow">Projetos</span>
-                <h1>Construindo em público</h1>
-                <p>Uma vitrine dos projetos que estou desenvolvendo, publicando e usando para aprender tecnologia na prática.</p>
-            </div>
-        </section>
+        <section class="projects-showcase">
+            <div class="section-shell">
+                <div class="section-header">
+                    <span>Projetos</span>
+                    <h1>Projetos</h1>
+                    <p>Projetos reais do HenderLab, organizados como um arquivo vivo do que estou estudando e construindo.</p>
+                </div>
 
-        <section class="section-shell">
-            <div class="section-heading">
-                <span class="eyebrow">Em destaque</span>
-                <h2>Projetos ativos</h2>
-            </div>
+                <div class="projects-grid" aria-label="Lista de projetos">
+                    <article class="project-card">
+                        <img src="assets/home/museu-de-bugs-logo.png" alt="Museu de Bugs">
 
-            <div class="projects-grid" aria-label="Lista de projetos">
-                <article class="project-card">
-                    <div class="project-card-header">
-                        <div>
-                            <span class="project-status">Em produção</span>
-                            <h3><a href="projetos/museu-de-bugs.html" class="project-title-link">Museu de Bugs</a></h3>
+                        <div class="project-overlay">
+                            <span class="project-tag">ASP.NET Core • Angular • MySQL</span>
+                            <h2>Museu de Bugs</h2>
+                            <p>
+                                Uma coleção pública dos bugs mais curiosos, interessantes e desafiadores
+                                que encontrei enquanto estudo, desenvolvo e coloco projetos em produção.
+                            </p>
+
+                            <div class="project-links">
+                                <a href="projetos/museu-de-bugs.html">Detalhes</a>
+                                <a href="https://bugs.henderlab.com.br" target="_blank" rel="noopener">Projeto</a>
+                                <a href="https://github.com/hendersobrinho/MuseuDeBugs" target="_blank" rel="noopener">GitHub</a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <p>Uma coleção pública dos bugs mais curiosos, interessantes e desafiadores que encontrei enquanto estudo, desenvolvo e coloco projetos em produção.</p>
+                    <article class="project-card">
+                        <img src="assets/branding/henderlabwi.svg" alt="HenderLab">
 
-                    <ul class="project-tags" aria-label="Tecnologias do projeto">
-                        <li>Angular</li>
-                        <li>.NET</li>
-                        <li>C#</li>
-                        <li>API</li>
-                        <li>MySQL</li>
-                        <li>Produção</li>
-                    </ul>
+                        <div class="project-overlay">
+                            <span class="project-tag">HTML • CSS • JavaScript</span>
+                            <h2>HenderLab</h2>
+                            <p>
+                                O site onde organizo artigos, projetos e aprendizados, enquanto vou refinando
+                                interface, estrutura e identidade visual.
+                            </p>
 
-                    <div class="project-actions">
-                        <a href="projetos/museu-de-bugs.html" class="btn-primary">Ver detalhes</a>
-                        <a href="https://bugs.henderlab.com.br" class="btn-secondary" target="_blank" rel="noopener">Ver projeto</a>
-                        <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="btn-secondary" target="_blank" rel="noopener">Ver repositório</a>
-                    </div>
-                </article>
+                            <div class="project-links">
+                                <a href="index.html">Ver site</a>
+                                <a href="https://github.com/hendersobrinho/website_hnd" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <div>
-                <a href="index.html" class="brand brand-footer">
-                    <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
-                    <span class="brand-text">HenderLab</span>
-                </a>
-                <p class="footer-copy">Mais que um projeto, HenderLab é a extensão de uma mente inquieta, criativa e em constante evolução.</p>
-            </div>
-            <div>
-                <h4>Navegacao</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">In&iacute;cio</a></li>
-                    <li><a href="artigos.html">Artigos</a></li>
-                    <li><a href="projetos.html">Projetos</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Publicacoes</h4>
-                <ul class="footer-links">
-                    <li><a href="artigos/primeiro-crud.html">Primeiro CRUD?</a></li>
-                    <li><a href="artigos/audio-digital.html">&Aacute;udio digital</a></li>
-                </ul>
-            </div>
+            <a href="index.html" class="brand brand-footer">
+                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                <span class="brand-text">HenderLab</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025-2026 HenderLab. Todos os direitos reservados.</p>
+            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
         </div>
     </footer>
 

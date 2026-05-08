@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocFlow | Projetos | HenderLab</title>
+    <meta name="description" content="Resumo do projeto DocFlow, uma aplicacao desktop local criada para organizar o recebimento mensal de documentos empresariais com fluxo simples, backup e exportacao.">
+    <meta name="keywords" content="DocFlow, HenderLab, projetos, Python, Tkinter, SQLite, desktop, documentos, Excel">
+    <meta name="author" content="Henderson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.henderlab.com.br/projetos/docflow">
+    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
+    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="brand" aria-label="HenderLab">
+                <span class="brand-text">HenderLab</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">In&iacute;cio</a></li>
+                <li><a href="../artigos.html">Artigos</a></li>
+                <li><a href="../projetos.html" class="is-active">Projetos</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-main project-detail-main">
+        <section class="project-detail-hero">
+            <div class="section-shell">
+                <a href="../projetos.html" class="back-link">Voltar para projetos</a>
+
+                <article class="project-detail-card">
+                    <div class="project-detail-logo-panel">
+                        <div class="project-detail-logo-frame project-detail-logo-frame-square">
+                            <img src="../assets/home/DocFLow.svg" alt="Logo do DocFlow" class="project-detail-logo">
+                        </div>
+                        <span class="project-detail-logo-caption">Fluxo local para documentos recorrentes</span>
+                    </div>
+
+                    <div class="project-detail-copy">
+                        <div class="project-card-meta">
+                            <span class="project-status">Projeto desktop</span>
+                            <span>Python</span>
+                            <span>Tkinter</span>
+                            <span>SQLite</span>
+                            <span>Excel</span>
+                        </div>
+
+                        <h1>DocFlow</h1>
+                        <p class="project-detail-lead">
+                            Uma aplicacao desktop criada para substituir planilhas de controle e acompanhar,
+                            de forma local, o recebimento mensal de documentos por empresa, periodo e status.
+                        </p>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/hendersobrinho/g-docs" class="btn-primary" target="_blank" rel="noopener">Ver reposit&oacute;rio</a>
+                            <a href="../projetos.html" class="btn-secondary">Explorar outros projetos</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-shell project-detail-content" aria-labelledby="project-summary-title">
+            <div class="project-summary">
+                <span class="eyebrow">Resumo</span>
+                <h2 id="project-summary-title">Por que esse projeto foi criado</h2>
+                <div class="project-description">
+                    <p>
+                        O <strong>DocFlow</strong> nasceu para resolver um problema pr&aacute;tico: acompanhar documentos
+                        mensais de diferentes empresas sem depender de planilhas cheias de filtros, abas e controle manual.
+                        A ideia foi transformar esse processo em um fluxo mais claro, r&aacute;pido e menos sujeito a esquecimentos.
+                    </p>
+                    <br>
+                    <p>
+                        Em vez de espalhar informa&ccedil;&otilde;es por arquivos soltos, o sistema centraliza cadastros,
+                        pend&ecirc;ncias, hist&oacute;rico e status dentro de uma aplica&ccedil;&atilde;o local, simples de operar e pensada
+                        para rotinas administrativas que precisam de organiza&ccedil;&atilde;o sem complexidade desnecess&aacute;ria.
+                    </p>
+                    <br>
+                    <p>
+                        O foco n&atilde;o era criar um produto cheio de telas sofisticadas, mas uma ferramenta realmente &uacute;til
+                        para o dia a dia: registrar o que chegou, identificar o que ainda falta cobrar, exportar pend&ecirc;ncias
+                        e manter tudo salvo no pr&oacute;prio computador do usu&aacute;rio.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-detail-grid">
+                <article class="project-detail-info">
+                    <h3>Inten&ccedil;&atilde;o</h3>
+                    <p>
+                        Dar visibilidade ao fluxo mensal de recebimento de documentos, com uma base local que simplifica consulta,
+                        atualiza&ccedil;&atilde;o e acompanhamento por empresa.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>O que organiza</h3>
+                    <p>
+                        Empresas, tipos de documento, per&iacute;odos de entrega, status de recebimento, observa&ccedil;&otilde;es e sa&iacute;das
+                        em Excel para facilitar a cobran&ccedil;a das pend&ecirc;ncias.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>Como foi constru&iacute;do</h3>
+                    <p>
+                        A aplica&ccedil;&atilde;o foi desenvolvida com Python, Tkinter e SQLite, com apoio de bibliotecas para gera&ccedil;&atilde;o
+                        de arquivos, imagens, empacotamento e instala&ccedil;&atilde;o em ambiente Windows.
+                    </p>
+                </article>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>O problema que ele resolve</h2>
+                <p>
+                    Quando o controle de documentos fica espalhado em planilhas, e-mails e lembretes informais, a rotina passa
+                    a depender demais de confer&ecirc;ncia manual. O DocFlow concentra esse processo em um s&oacute; lugar e deixa claro
+                    o que foi recebido, o que ainda est&aacute; pendente e o que j&aacute; pode ser encerrado.
+                </p>
+                <ul class="project-detail-list">
+                    <li><strong>Menos retrabalho:</strong> evita procurar informa&ccedil;&otilde;es em arquivos diferentes para entender a situa&ccedil;&atilde;o de cada empresa.</li>
+                    <li><strong>Mais previsibilidade:</strong> ajuda a acompanhar meses, compet&ecirc;ncias e status com um fluxo padr&atilde;o.</li>
+                    <li><strong>Opera&ccedil;&atilde;o local:</strong> mant&eacute;m os dados no computador do usu&aacute;rio, sem depender de servi&ccedil;os externos.</li>
+                </ul>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>Principais recursos</h2>
+                <ul class="project-detail-list">
+                    <li><strong>Cadastro de empresas:</strong> organiza a base principal para vincular documentos e compet&ecirc;ncias.</li>
+                    <li><strong>Controle por status:</strong> classifica itens como pendente, recebido, n&atilde;o cobrar ou encerrado.</li>
+                    <li><strong>Gest&atilde;o mensal:</strong> acompanha documentos por per&iacute;odo, facilitando a rotina recorrente.</li>
+                    <li><strong>Exporta&ccedil;&atilde;o em Excel:</strong> gera relat&oacute;rios de pend&ecirc;ncias para consulta e cobran&ccedil;a.</li>
+                    <li><strong>Logs administrativos:</strong> registra movimenta&ccedil;&otilde;es importantes dentro da aplica&ccedil;&atilde;o.</li>
+                    <li><strong>Backup e restaura&ccedil;&atilde;o:</strong> protege a base local com suporte para c&oacute;pia e recupera&ccedil;&atilde;o.</li>
+                </ul>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>Decis&otilde;es t&eacute;cnicas</h2>
+                <p>
+                    A escolha de <strong>Tkinter</strong> e <strong>SQLite</strong> veio da necessidade de montar uma solu&ccedil;&atilde;o leve,
+                    direta e f&aacute;cil de distribuir. Como o foco est&aacute; na opera&ccedil;&atilde;o local, essa stack reduz depend&ecirc;ncias e
+                    deixa a instala&ccedil;&atilde;o mais simples para quem s&oacute; precisa abrir o sistema e trabalhar.
+                </p>
+                <br>
+                <p>
+                    No processo de entrega, entram ferramentas como <strong>openpyxl</strong> para gera&ccedil;&atilde;o das planilhas,
+                    <strong>Pillow</strong> para tratamento de imagens e <strong>PyInstaller</strong> com <strong>Inno Setup</strong>
+                    para transformar a aplica&ccedil;&atilde;o em uma experi&ecirc;ncia mais pronta para uso no desktop.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="../index.html" class="brand brand-footer">
+                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                <span class="brand-text">HenderLab</span>
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

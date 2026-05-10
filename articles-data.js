@@ -5,6 +5,14 @@
  */
 window.siteArticles = [
     {
+        "title": "Pipeline: a origem do conceito",
+        "date": "2026-05-10",
+        "excerpt": "Entenda de onde vem a ideia de pipeline e como o paralelismo entre etapas melhora o aproveitamento do processador.",
+        "coverImage": "assets/Pipeline-de-processadores/capa.png",
+        "category": "Artigo",
+        "url": "artigos/pipeline-origem-do-conceito.html"
+    },
+    {
         "title": "Primeiro CRUD?",
         "date": "2026-03-19",
         "excerpt": "Meu primeiro projeto real em Java, passando por Maven, MySQL, JPA, Hibernate, validacoes e varios erros no caminho.",

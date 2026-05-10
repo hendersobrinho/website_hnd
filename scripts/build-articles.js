@@ -160,7 +160,7 @@ ${extraLinks ? `${extraLinks}\n` : ""}</head>
         </div>
     </nav>
 
-    <main class="page-main">
+    <main class="page-main article-main">
         <div class="article-layout">
             <article class="article-page">
                 <nav class="breadcrumb" aria-label="Breadcrumb">

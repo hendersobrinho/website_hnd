@@ -1,42 +1,120 @@
-<svg width="100%" viewBox="0 0 680 285.56" role="img" style="" xmlns="http://www.w3.org/2000/svg">
-  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Arquitetura de camadas do Museu de Bugs</title>
-  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Quatro camadas: Controllers, Services, Entities e DTOs com suas responsabilidades</desc>
+<svg width="100%" viewBox="0 0 760 392" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Arquitetura em camadas do Museu de Bugs</title>
+  <desc>Fluxo da requisição HTTP passando por Controllers, Services, Entities e DTOs até o PostgreSQL.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f6ff"/>
+      <stop offset="50%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#fff8f0"/>
+    </linearGradient>
+    <linearGradient id="controllerFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0eeff"/>
+      <stop offset="100%" stop-color="#ebe8ff"/>
+    </linearGradient>
+    <linearGradient id="serviceFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e7f8f2"/>
+      <stop offset="100%" stop-color="#def4ec"/>
+    </linearGradient>
+    <linearGradient id="entityFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff3de"/>
+      <stop offset="100%" stop-color="#ffeed0"/>
+    </linearGradient>
+    <linearGradient id="dtoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0ea"/>
+      <stop offset="100%" stop-color="#ffe7dc"/>
+    </linearGradient>
+    <marker id="arrowSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
+    <style>
+      .frame { fill: url(#bgGlow); stroke: #d8ddea; stroke-width: 1; }
+      .eyebrow { font: 700 12px Manrope, Arial, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; }
+      .chip { font: 700 11px Manrope, Arial, sans-serif; letter-spacing: 0.04em; }
+      .title { font: 700 16px Manrope, Arial, sans-serif; }
+      .copy { font: 500 12px Manrope, Arial, sans-serif; }
+      .mini { font: 600 11px Manrope, Arial, sans-serif; }
+      .muted { fill: #7a7f8f; }
+      .requestLine { stroke: #a5adbd; stroke-width: 1.1; }
+      .controllerStroke { stroke: #7265ec; }
+      .serviceStroke { stroke: #22a475; }
+      .entityStroke { stroke: #cf8b23; }
+      .dtoStroke { stroke: #dc6f48; }
+      .controllerText { fill: #4135ab; }
+      .serviceText { fill: #0e7755; }
+      .entityText { fill: #91560f; }
+      .dtoText { fill: #ae4c25; }
+    </style>
   </defs>
-  <text x="60" y="25" style="fill:var(--color-text-tertiary);fill:rgb(115, 114, 108);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:auto">HTTP Request</text>
-  <line x1="60" y1="32" x2="60" y2="48" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" style="fill:rgb(0, 0, 0);stroke:rgba(31, 30, 29, 0.3);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect x="40" y="50" width="600" height="52" rx="8" stroke-width="0.5" style="fill:rgb(238, 237, 254);stroke:rgb(83, 74, 183);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="180" y="70" dominant-baseline="central" style="fill:rgb(60, 52, 137);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:start;dominant-baseline:central">Controllers</text>
-    <text x="180" y="88" dominant-baseline="central" style="fill:rgb(83, 74, 183);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:central">recebem HTTP e devolvem HTTP</text>
-    <text x="500" y="76" dominant-baseline="central" text-anchor="middle" style="fill:rgb(83, 74, 183);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">GET  POST  PUT  PATCH  DELETE</text>
+
+  <rect x="18" y="18" width="724" height="356" rx="14" class="frame"/>
+
+  <g transform="translate(54 34)">
+    <rect x="0" y="0" width="112" height="26" rx="13" fill="#ffffff" stroke="#d7dceb"/>
+    <text x="56" y="17" text-anchor="middle" class="eyebrow" fill="#6c7385">Entrada HTTP</text>
+    <text x="0" y="52" class="title" fill="#344054">Request chega ao controller</text>
+    <text x="0" y="72" class="copy muted">A partir daqui a aplicação distribui responsabilidade por camadas.</text>
+    <line x1="34" y1="86" x2="34" y2="106" class="requestLine" marker-end="url(#arrowSoft)"/>
   </g>
-  <line x1="200" y1="102" x2="200" y2="118" stroke="#7F77DD" stroke-width="1" marker-end="url(#arrow)" style="fill:rgb(0, 0, 0);stroke:rgb(127, 119, 221);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect x="40" y="120" width="600" height="52" rx="8" stroke-width="0.5" style="fill:rgb(225, 245, 238);stroke:rgb(15, 110, 86);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="180" y="140" dominant-baseline="central" style="fill:rgb(8, 80, 65);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:start;dominant-baseline:central">Services</text>
-    <text x="180" y="158" dominant-baseline="central" style="fill:rgb(15, 110, 86);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:central">guardam a lógica de negócio</text>
-    <text x="500" y="146" dominant-baseline="central" text-anchor="middle" style="fill:rgb(15, 110, 86);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">BugService  AuthService</text>
-  </g>
-  <line x1="200" y1="172" x2="200" y2="188" stroke="#1D9E75" stroke-width="1" marker-end="url(#arrow)" style="fill:rgb(0, 0, 0);stroke:rgb(29, 158, 117);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <g style="display:contents;fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-      <rect x="40" y="190" width="288" height="52" rx="8" stroke-width="0.5" style="fill:rgb(250, 238, 218);stroke:rgb(133, 79, 11);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-      <text x="160" y="210" dominant-baseline="central" text-anchor="middle" style="fill:rgb(99, 56, 6);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Entities</text>
-      <text x="160" y="228" dominant-baseline="central" text-anchor="middle" style="fill:rgb(133, 79, 11);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">representam tabelas do banco</text>
+
+  <g transform="translate(66 112)">
+    <rect x="0" y="0" width="628" height="70" rx="14" fill="url(#controllerFill)" class="controllerStroke" stroke-width="1.2"/>
+    <circle cx="34" cy="35" r="18" fill="#ffffff" opacity="0.92"/>
+    <text x="34" y="40" text-anchor="middle" class="title controllerText">{ }</text>
+    <text x="68" y="29" class="eyebrow controllerText">Controllers</text>
+    <text x="68" y="50" class="copy controllerText">recebem HTTP, validam entrada e devolvem resposta</text>
+
+    <g transform="translate(386 18)">
+      <rect x="0" y="0" width="42" height="22" rx="11" fill="#ffffff" opacity="0.92"/>
+      <text x="21" y="15" text-anchor="middle" class="chip controllerText">GET</text>
+      <rect x="48" y="0" width="48" height="22" rx="11" fill="#ffffff" opacity="0.92"/>
+      <text x="72" y="15" text-anchor="middle" class="chip controllerText">POST</text>
+      <rect x="102" y="0" width="40" height="22" rx="11" fill="#ffffff" opacity="0.92"/>
+      <text x="122" y="15" text-anchor="middle" class="chip controllerText">PUT</text>
+      <rect x="148" y="0" width="56" height="22" rx="11" fill="#ffffff" opacity="0.92"/>
+      <text x="176" y="15" text-anchor="middle" class="chip controllerText">PATCH</text>
+      <rect x="210" y="0" width="64" height="22" rx="11" fill="#ffffff" opacity="0.92"/>
+      <text x="242" y="15" text-anchor="middle" class="chip controllerText">DELETE</text>
     </g>
-    <g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-      <rect x="352" y="190" width="288" height="52" rx="8" stroke-width="0.5" style="fill:rgb(250, 236, 231);stroke:rgb(153, 60, 29);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-      <text x="472" y="210" dominant-baseline="central" text-anchor="middle" style="fill:rgb(113, 43, 19);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">DTOs</text>
-      <text x="472" y="228" dominant-baseline="central" text-anchor="middle" style="fill:rgb(153, 60, 29);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">carregam dados entre camadas</text>
+  </g>
+
+  <line x1="380" y1="182" x2="380" y2="205" stroke="#8a81ee" stroke-width="1.2" marker-end="url(#arrowSoft)"/>
+
+  <g transform="translate(66 206)">
+    <rect x="0" y="0" width="628" height="68" rx="14" fill="url(#serviceFill)" class="serviceStroke" stroke-width="1.2"/>
+    <circle cx="34" cy="34" r="18" fill="#ffffff" opacity="0.92"/>
+    <text x="34" y="39" text-anchor="middle" class="title serviceText">⚙</text>
+    <text x="68" y="28" class="eyebrow serviceText">Services</text>
+    <text x="68" y="49" class="copy serviceText">guardam a regra de negócio e coordenam o fluxo interno</text>
+
+    <g transform="translate(430 18)">
+      <rect x="0" y="0" width="84" height="24" rx="12" fill="#ffffff" opacity="0.92"/>
+      <text x="42" y="16" text-anchor="middle" class="chip serviceText">BugService</text>
+      <rect x="92" y="0" width="88" height="24" rx="12" fill="#ffffff" opacity="0.92"/>
+      <text x="136" y="16" text-anchor="middle" class="chip serviceText">AuthService</text>
     </g>
   </g>
-  <line x1="200" y1="242" x2="200" y2="258" stroke="var(--color-border-secondary)" stroke-width="1" marker-end="url(#arrow)" style="fill:rgb(0, 0, 0);stroke:rgba(31, 30, 29, 0.3);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect x="120" y="260" width="160" height="8" rx="4" stroke-width="0.5" style="fill:rgb(241, 239, 232);stroke:rgb(95, 94, 90);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <line x1="380" y1="274" x2="380" y2="295" stroke="#22a475" stroke-width="1.2" marker-end="url(#arrowSoft)"/>
+
+  <g transform="translate(66 296)">
+    <rect x="0" y="0" width="288" height="76" rx="14" fill="url(#entityFill)" class="entityStroke" stroke-width="1.2"/>
+    <circle cx="34" cy="38" r="18" fill="#ffffff" opacity="0.92"/>
+    <text x="34" y="43" text-anchor="middle" class="title entityText">▦</text>
+    <text x="68" y="30" class="eyebrow entityText">Entities</text>
+    <text x="68" y="50" class="copy entityText">representam as tabelas e o modelo persistido</text>
   </g>
-  <text x="310" y="268" dominant-baseline="central" style="fill:var(--color-text-tertiary);fill:rgb(115, 114, 108);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:central">PostgreSQL</text>
+
+  <g transform="translate(406 296)">
+    <rect x="0" y="0" width="288" height="76" rx="14" fill="url(#dtoFill)" class="dtoStroke" stroke-width="1.2"/>
+    <circle cx="34" cy="38" r="18" fill="#ffffff" opacity="0.92"/>
+    <text x="34" y="43" text-anchor="middle" class="title dtoText">⇄</text>
+    <text x="68" y="30" class="eyebrow dtoText">DTOs</text>
+    <text x="68" y="50" class="copy dtoText">carregam dados entre camadas sem expor tudo</text>
+  </g>
+
+  <g transform="translate(278 328)">
+    <line x1="0" y1="0" x2="0" y2="18" class="requestLine" marker-end="url(#arrowSoft)"/>
+    <rect x="-86" y="20" width="172" height="12" rx="6" fill="#f1efe8" stroke="#98948b" stroke-width="0.8"/>
+    <text x="116" y="31" class="mini muted">PostgreSQL</text>
+  </g>
 </svg>

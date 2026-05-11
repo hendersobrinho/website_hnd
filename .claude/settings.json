@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/hnd/Projects/website-hnd/website_hnd add assets/pipeline-desenvolvimento/arquitetura_camadas.svg assets/pipeline-desenvolvimento/pipeline_fluxo.svg)",
+      "Bash(git -C /home/hnd/Projects/website-hnd/website_hnd commit -m ' *)"
+    ]
+  }
+}

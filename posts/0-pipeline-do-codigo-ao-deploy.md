@@ -33,10 +33,6 @@ Como mencionei anteriormente, <span class="term-tooltip" data-tooltip="Pipeline 
 
 No desenvolvimento de software, esse fluxo costuma aparecer em alguns passos principais:
 
-```text
-Código => Build => Testes => Deploy
-```
-
 Claro que nem tudo é tão simples quanto parece à primeira vista. Só na prática mesmo para entendermos o quão custosa e desafiadora pode ser cada fase. A seguir vou falar de pipeline sem falar de CI/CD, porque o conceito já existia antes.
 
 <figure class="article-figure">

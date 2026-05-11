@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline: do código ao deploy | HenderLab</title>
+    <meta name="description" content="Um olhar prático sobre pipeline no desenvolvimento de software, usando o projeto Museu de Bugs para atravessar código, build, testes e deploy.">
+    <meta name="keywords" content="pipeline, desenvolvimento de software, build, testes, deploy, Museu de Bugs">
+    <meta name="author" content="Henderson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.henderlab.com.br/artigos/pipeline-do-codigo-ao-deploy">
+    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
+    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/tooltips.css">
+    <link rel="stylesheet" href="../assets/css/pipeline-dev-article.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="brand" aria-label="HenderLab">
+                <span class="brand-text">HenderLab</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../artigos.html" class="is-active">Artigos</a></li>
+                <li><a href="../projetos.html">Projetos</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-main article-main">
+        <div class="article-layout">
+            <article class="article-page">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../artigos.html">Artigos</a></li>
+                        <li>Pipeline: do código ao deploy</li>
+                    </ol>
+                </nav>
+
+                <a href="../artigos.html" class="back-link">Voltar para artigos</a>
+
+                <header class="article-header">
+                    <h1>Pipeline no desenvolvimento de software: do código ao deploy</h1>
+                    <div class="article-meta">
+                        <time datetime="2026-05-10">10 de maio de 2026</time>
+                    </div>
+                </header>
+
+                <div class="article-body">
+<h2>Introdução</h2>
+<div class="series-note">
+  <p><strong>Série pipeline.</strong> Este é o segundo artigo da série. No <a href="/artigos/pipeline-origem-do-conceito.html">primeiro texto</a>, eu falei da origem do conceito dentro do processador. Aqui, a ideia é trazer a mesma lógica para o desenvolvimento de software.</p>
+</div>
+
+<p>Como mencionei anteriormente, <span class="term-tooltip" data-tooltip="Pipeline é uma sequência organizada de etapas por onde o trabalho vai passando até chegar ao resultado final.">pipeline</span> é um fluxo que quebra um problema grande em várias partes menores, para que elas avancem em pequenos processos e mantenham o trabalho o mais contínuo possível.</p>
+<p>No desenvolvimento de software, esse fluxo costuma aparecer em alguns passos principais:</p>
+<pre><code class="language-text">Código =&gt; Build =&gt; Testes =&gt; Deploy
+</code></pre>
+<p>Claro que nem tudo é tão simples quanto parece à primeira vista. Só na prática mesmo para entendermos o quão custosa e desafiadora pode ser cada fase. A seguir vou falar de pipeline sem falar de CI/CD, porque o conceito já existia antes.</p>
+<figure class="article-figure">
+  <img src="../assets/pipeline-desenvolvimento/pipeline_fluxo.svg" alt="Fluxo do pipeline de desenvolvimento com as etapas código, build, testes e deploy" loading="lazy">
+  <figcaption>O fluxo básico do pipeline: escrever, compilar, validar e publicar.</figcaption>
+</figure>
+
+<h2>Etapa 1: Código</h2>
+<p>Essa é talvez a parte mais importante, porque quanto melhor fizermos ela, menos voltas daremos depois. Essa fase é marcada pela pesquisa e pelo planejamento, porque antes mesmo de começar a escrever o código, precisamos entender o que vamos fazer e como vamos fazer, pelo menos os primeiros passos.</p>
+<p>Algumas perguntas que precisamos responder:</p>
+<ul>
+<li>Quais funcionalidades a aplicação vai ter?</li>
+<li>Como estruturar o projeto?</li>
+<li>Quais tecnologias e frameworks usar?</li>
+<li>Como modelar o banco de dados?</li>
+<li>Qual a estratégia de autenticação?</li>
+</ul>
+<p>No meu projeto Museu de Bugs eu precisava de:</p>
+<ul>
+<li>Uma API que recebesse, listasse, editasse e deletasse bugs</li>
+<li>Um banco de dados para persistir esses bugs</li>
+<li>Autenticação para proteger rotas de escrita</li>
+<li>Um frontend que consumisse essa API</li>
+</ul>
+<h3>As decisões que moldam o código</h3>
+<p>A minha aplicação era simples no escopo, mas ainda assim pedia algumas decisões técnicas. Eu precisava registrar bugs e erros no banco por meio de uma aplicação web, então fui tentando manter a estrutura enxuta sem abrir mão de uma base minimamente organizada.</p>
+<p>Antes de escrever a primeira linha, precisei responder algumas perguntas.</p>
+<p><strong>1. Qual tipo de aplicação?</strong><br><a class="term-tooltip" href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener" data-tooltip="Uma API REST expõe recursos por HTTP usando verbos como GET, POST, PUT e DELETE para representar ações sobre esses dados.">API REST</a>. Isso define que vou usar HTTP, verbos como <code>GET</code>, <code>POST</code>, <code>PUT</code> e <code>DELETE</code>, e JSON como formato de troca de dados.</p>
+<p><strong>2. Qual banco de dados?</strong><br><a class="term-tooltip" href="https://www.postgresql.org/docs/17/intro-whatis.html" target="_blank" rel="noopener" data-tooltip="PostgreSQL é um banco de dados relacional open source, adequado quando os dados têm estrutura bem definida e relacionamentos claros.">PostgreSQL</a>. Relacional, porque os bugs têm estrutura fixa: título, linguagem, descrição e status. NoSQL não faria muito sentido aqui.</p>
+<p><strong>3. Como autenticar?</strong><br>A escolha foi usar cookie em vez de <a class="term-tooltip" href="https://jwt.io/introduction/" target="_blank" rel="noopener" data-tooltip="JWT é um token compacto enviado pelo cliente para provar identidade ou autorização, geralmente no header Authorization.">JWT</a>. Para entender o motivo, é preciso entender o que o domínio representa nesse contexto.</p>
+<p>Quando o navegador faz uma requisição, ele segue uma política de segurança chamada <a class="term-tooltip" href="https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy" target="_blank" rel="noopener" data-tooltip="Same-Origin Policy limita como páginas de uma origem podem interagir com recursos de outra origem. Origem é a combinação de protocolo, domínio e porta."><strong>Same-Origin Policy</strong></a>, que controla o que pode ser compartilhado automaticamente entre requisições. Uma origem é a combinação de protocolo, domínio e porta, como <code>https://museudebug.com:443</code>.</p>
+<p>Como o frontend e o backend vão estar no mesmo domínio em produção, o cookie é enviado automaticamente em toda requisição sem nenhuma configuração extra. Você seta no login e o navegador cuida do resto.</p>
+<p>O JWT faria mais sentido quando os domínios são diferentes, quando terceiros consomem sua API, ou quando existem múltiplos clientes como mobile e desktop. Nesses casos o cookie deixa de ser a escolha mais natural, porque depende do navegador e da origem da requisição.</p>
+<div class="pipeline-auth" data-auth-scenarios></div>
+
+<p><strong>4. Como organizar o código?</strong><br>Decidi manter uma organização simples, mas suficiente para explorar um pouco da arquitetura de camadas:</p>
+<ul>
+<li><strong>Controllers</strong> recebem HTTP e devolvem HTTP</li>
+<li><strong>Services</strong> guardam a lógica de negócio</li>
+<li><strong>Entities</strong> representam as tabelas do banco</li>
+<li><strong><a class="term-tooltip" href="https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api" target="_blank" rel="noopener" data-tooltip="DTO significa Data Transfer Object: um objeto usado para transportar dados entre camadas sem expor diretamente a entidade do banco.">DTOs</a></strong> carregam dados entre camadas</li>
+</ul>
+<figure class="article-figure">
+  <img src="../assets/pipeline-desenvolvimento/arquitetura_camadas.svg" alt="Diagrama da arquitetura de camadas com controllers, services, entities e DTOs" loading="lazy">
+  <figcaption>Uma estrutura pequena, mas organizada o bastante para separar entrada HTTP, regra de negócio e transporte de dados.</figcaption>
+</figure>
+
+<p><strong>5. Como validar dados?</strong><br><a class="term-tooltip" href="https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api" target="_blank" rel="noopener" data-tooltip="Data Annotations são atributos colocados nas propriedades do modelo para declarar regras como obrigatoriedade, tamanho máximo e intervalos.">Data Annotations</a>. Atributos como <code>[Required]</code>, <code>[MaxLength]</code> e <code>[MinLength]</code> direto nos DTOs. Poderia usar FluentValidation, mas Data Annotations era o caminho mais simples para esse projeto.</p>
+<h3>Fechando a etapa de código</h3>
+<p>Cada uma dessas decisões eliminou uma série de outras opções, e isso é bom. Quanto mais você simplifica no início, menos voltas dá depois.</p>
+<p>Mesmo assim, foi difícil me sintonizar na comunicação entre camadas. E isso é algo que a sintaxe básica da linguagem não resolve, porque construir uma aplicação real é muito mais do que saber escrever <code>if</code> e <code>else</code>. Frameworks e bibliotecas trazem seus próprios padrões, seus próprios métodos, quase uma linguagem dentro da linguagem.</p>
+<div class="pipeline-highlight">
+  <strong>O ponto principal dessa fase:</strong> não é decorar sintaxe. É entender por que um controller existe, por que um DTO existe, por que um service existe e como cada parte se comunica com a outra.
+</div>
+
+<p>Com o código escrito e as decisões tomadas, o próximo passo é colocar essa aplicação para rodar. E aqui que entra a etapa de build.</p>
+<h2>Etapa 2: Build</h2>
+<p>Em C#, o comando para buildar é <code>dotnet build</code>. Nesse processo, o compilador lê todo o código e o transforma em um arquivo <code>.dll</code> dentro da pasta <code>bin/</code>, que é o que o runtime do .NET vai executar de fato.</p>
+<p>O que aprendi na prática é que o <code>dotnet run</code> já faz esse processo internamente antes de executar a aplicação. Ele também é inteligente o suficiente para pular a compilação quando nenhum arquivo foi alterado desde o último build, por isso às vezes parecia instantâneo e outras vezes demorava mais.</p>
+<p>Essa etapa foi marcada por torcer para aparecer a mensagem de sucesso na cor certa e não um monte de texto vermelho. E o vermelho apareceu bastante.</p>
+<p>Os erros que enfrentei foram de dois tipos:</p>
+<ul>
+<li>Erro de sintaxe, com código digitado errado</li>
+<li>Incompatibilidade de versão entre pacotes do <a class="term-tooltip" href="https://learn.microsoft.com/en-us/ef/core/" target="_blank" rel="noopener" data-tooltip="Entity Framework Core é o ORM do ecossistema .NET que mapeia classes e objetos para tabelas e registros do banco de dados.">Entity Framework Core</a></li>
+</ul>
+<p>A solução, em um dos casos, foi remover o pacote conflitante e instalar a versão correta:</p>
+<pre><code class="language-bash">dotnet remove package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore --version x.x.x
+dotnet restore
+</code></pre>
+<p>O <code>dotnet restore</code> sincroniza todas as dependências listadas no <code>.csproj</code>, que funciona como um catálogo do que a aplicação precisa para compilar e rodar.</p>
+<h3>Fechando a etapa de build</h3>
+<p>Uma coisa que aprendi depois de já ter passado por isso: o modo <a class="term-tooltip" href="https://learn.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2022" target="_blank" rel="noopener" data-tooltip="Debug compila a aplicação com mais informações de depuração e menos otimizações, o que facilita inspeção de variáveis e rastreamento de erros."><strong>Debug</strong></a> é o ideal para desenvolvimento. Ele mantém informações extras no código compilado que permitem ver o erro acontecendo em tempo real, inspecionar variáveis e entender exatamente onde a coisa quebrou.</p>
+<p>O modo <a class="term-tooltip" href="https://learn.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2022" target="_blank" rel="noopener" data-tooltip="Release prioriza otimização para entrega e execução final, reduzindo o suporte direto à depuração durante o desenvolvimento."><strong>Release</strong></a>, que eu usava por padrão sem saber, é otimizado para produção: mais leve, mais rápido, mas sem o mesmo apoio de diagnóstico.</p>
+<h2>Etapa 3: Testes</h2>
+<p>Essa etapa começou assim que terminei os dois primeiros endpoints, o <code>GET</code> e o <code>POST</code>, quando eu já conseguia criar um bug e receber um response de volta.</p>
+<p>No começo eu ainda não usava Swagger. O template padrão do .NET já vinha com uma interface básica, mas por algum motivo passei horas tentando substituir e configurar o Swagger corretamente e não conseguia. Desisti por um tempo e comecei a testar direto pelo terminal com ajuda de IA, que me gerava os arquivos JSON para usar nas requisições.</p>
+<p>Foi aí que aprendi na prática que JSON é o formato padrão de comunicação de uma API REST. É como ela envia e recebe dados.</p>
+<p>Para subir a API durante o desenvolvimento, o comando mais útil não era o <code>dotnet run</code> puro, mas sim o <code>dotnet watch run</code>. Ele sobe a aplicação e fica monitorando alterações nos arquivos. Quando você salva algo, ele reinicia automaticamente sem precisar parar e subir de novo.</p>
+<p>A estratégia de teste foi simples:</p>
+<ul>
+<li>Primeiro mandei um request no formato certo para ver se criava o bug corretamente</li>
+<li>Depois mandei um no formato errado de propósito para validar se o sistema rejeitava</li>
+<li>Fui repetindo esse ciclo a cada novo endpoint</li>
+</ul>
+<p>Isso é testar o contrato da API: verificar se ela aceita o que deve aceitar e rejeita o que deve rejeitar.</p>
+<p>Com ajuda de IA consegui instalar o Swagger corretamente através do pacote <a class="term-tooltip" href="https://learn.microsoft.com/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0" target="_blank" rel="noopener" data-tooltip="Swashbuckle é o pacote que adiciona geração de documentação Swagger/OpenAPI e uma interface visual para testar endpoints no ASP.NET Core."><strong>Swashbuckle</strong></a>. A partir daí, ficou mais fácil enxergar as rotas disponíveis, os formatos esperados e as mensagens de erro sem depender só da resposta crua do terminal.</p>
+<p>Com todos os endpoints testados e funcionando, o próximo passo natural foi construir uma interface para tornar a aplicação utilizável de verdade. A escolha foi Angular com TypeScript. Nessa altura eu já estava no 13º dia de projeto e havia conteúdo suficiente para estudar por meses, então o frontend foi construído com apoio de IA enquanto eu acompanhava o que estava sendo gerado para entender o mínimo do que estava acontecendo.</p>
+<h2>Etapa 4: Deploy</h2>
+<p>Com a aplicação funcionando localmente, chegou a hora de colocar tudo no ar. A primeira decisão foi onde hospedar. Como eu queria algo gratuito, a stack escolhida foi:</p>
+<ul>
+<li><strong>Frontend</strong> na <a class="term-tooltip" href="https://vercel.com/docs/" target="_blank" rel="noopener" data-tooltip="Vercel é uma plataforma de deploy focada em aplicações web, com integração automática com repositórios e deploy a cada push.">Vercel</a></li>
+<li><strong>Backend</strong> no <a class="term-tooltip" href="https://render.com/docs/web-services/" target="_blank" rel="noopener" data-tooltip="Render hospeda serviços web e pode fazer build e deploy automático a partir do repositório, inclusive com Docker.">Render</a></li>
+<li><strong>Banco de dados</strong> no <a class="term-tooltip" href="https://supabase.com/docs/guides/database/connecting-to-postgres" target="_blank" rel="noopener" data-tooltip="Supabase oferece Postgres gerenciado e já inclui opções de conexão direta e via pooler.">Supabase</a></li>
+</ul>
+<p>O repositório continha frontend e backend juntos, então nas plataformas de deploy bastava apontar para a pasta correta. Isso também significa que cada push no GitHub podia disparar deploy automático, o que na prática já desenha um fluxo de entrega contínua.</p>
+<h3>Banco de dados no Supabase</h3>
+<p>Configurar o banco foi a parte mais tranquila. Você cria pelo painel, preenche as configurações e conecta. Um detalhe importante: usar os mesmos nomes definidos no código ajuda a evitar divergências entre o nome das tabelas no banco e no projeto.</p>
+<p>Na hora de configurar a connection string no Render, tentei usar Direct Connection e Transactional Pooler, e nenhum funcionou. O que resolveu foi o <a class="term-tooltip" href="https://supabase.com/docs/reference/postgres/connection-strings" target="_blank" rel="noopener" data-tooltip="Session Pooler passa a conexão por um pooler do Postgres e costuma ser uma alternativa útil quando a conexão direta não encaixa bem no ambiente de deploy."><strong>Session Pooler</strong></a>, que é o modo de conexão mais adequado para a minha aplicação com .NET e Entity Framework.</p>
+<h3>Docker e o Render</h3>
+<p>Para subir a API no Render era necessário usar <a class="term-tooltip" href="https://docs.docker.com/build/" target="_blank" rel="noopener" data-tooltip="Docker empacota aplicação, dependências e configuração em containers, deixando o ambiente mais previsível entre máquina local e produção.">Docker</a>. O conceito importante aqui é que Docker não simula hardware; ele empacota o ambiente do sistema operacional. Isso significa que você consegue criar um container com exatamente as dependências que sua aplicação precisa para rodar, independente do sistema onde ela vai ser executada.</p>
+<p>O Dockerfile do projeto usa um <a class="term-tooltip" href="https://docs.docker.com/build/building/multi-stage/" target="_blank" rel="noopener" data-tooltip="Multi-stage build separa a etapa de compilação da etapa final de runtime, copiando só o resultado necessário para a imagem de produção."><strong>multi-stage build</strong></a>: uma imagem com o SDK completo compila o código e gera o <code>.dll</code>, e depois só o resultado vai para uma imagem menor, com o runtime. A imagem final fica mais leve e sem ferramentas de build que não são necessárias em produção.</p>
+<div class="deploy-failures" data-deploy-failures></div>
+
+<p>No fim, o que resolveu foi a combinação de três coisas:</p>
+<ul>
+<li>Configurar a porta corretamente com <code>ASPNETCORE_HTTP_PORTS=10000</code></li>
+<li>Instalar a dependência <code>libgssapi-krb5-2</code> na imagem de runtime</li>
+<li>Ajustar o contexto do Dockerfile para a pasta correta da API</li>
+</ul>
+<h3>Os primeiros bugs em produção</h3>
+<p>Depois que a API subiu, o frontend na Vercel ainda não conseguia se conectar. A partir daí começou uma nova rodada de problemas, e esses foram os primeiros bugs registrados no próprio Museu de Bugs.</p>
+<p>O primeiro foi que o frontend em produção continuava chamando <code>localhost:5041</code> em vez da API do Render. O build antigo na pasta <code>dist</code> ainda tinha arquivos com a URL local, sobrescrevendo as configurações novas. A solução foi apagar a <code>dist</code>, gerar um novo build e confirmar com <code>grep</code> que a URL correta estava nos arquivos gerados.</p>
+<p>O segundo foi um <code>400 Bad Request</code> dizendo que o campo descrição precisava ser preenchido mesmo com o campo preenchido na tela. O problema estava em um <code>[RegularExpression]</code> desnecessário no DTO, que quebrava com textos maiores e com quebra de linha. Remover o regex e deixar só o <code>[Required]</code> resolveu.</p>
+<p>Além disso, as variáveis de ambiente de autenticação não tinham sido configuradas no Render, então o backend não tinha com o que comparar as credenciais. E o <a class="term-tooltip" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS" target="_blank" rel="noopener" data-tooltip="CORS é o mecanismo que permite ao servidor dizer de quais origens o navegador pode aceitar requisições entre domínios diferentes.">CORS</a> precisou de ajuste, porque sem a origem do frontend liberada o backend recusava as requisições mesmo com o resto aparentemente certo.</p>
+<p>Uma limitação do plano gratuito do Render é que a API dorme depois de um período sem uso, então a primeira requisição demora alguns segundos enquanto o container acorda. Para o propósito do projeto, isso funcionou bem.</p>
+<h2>Conclusão</h2>
+<p>Terminar minha primeira aplicação gerou um pico de dopamina que eu não esperava. É extremamente frustrante, extenuante e, às vezes, doloroso, mas é igualmente gratificante.</p>
+<p>Depois de 13 dias de hiperfoco nos meus tempos livres, com algumas partes feitas mais às pressas como o frontend, consegui terminar. E quanto mais eu entendo, mais sei o quanto ainda preciso estudar. São muitos conceitos vistos de uma vez, e boa parte deles só vai realmente assentar com o tempo.</p>
+<p>Fazer projetos reais é exatamente isso: entrar em contato direto com esse conteúdo, tomar essa bomba na cara e decidir se você gosta ou não.</p>
+<p>Porque não é fácil. Não é simples como escrever um punhado de <code>if</code> e <code>else</code> em um curso e achar que está fazendo uma aplicação real só porque aparece algo no terminal. Uma aplicação real vai muito mais fundo que isso. É arquitetura, organização, resiliência e tomada de decisão.</p>
+<p>Talvez eu não trabalhe em projetos que mudam o mundo, mas a capacidade de imaginar um sistema, pensar como usuário e transformar isso em algo utilizável é o que me move. E o principal aprendizado daqui foi este: comece com a versão mais básica e enxuta possível e vá adicionando o resto depois.</p>
+                </div>
+            </article>
+
+            <aside class="article-aside">
+                <span class="panel-label">Neste artigo</span>
+                <p>Uma leitura prática sobre como o pipeline aparece no desenvolvimento: planejar, compilar, validar e publicar sem perder de vista as decisões que moldam a aplicação.</p>
+                <a href="../artigos.html" class="btn-primary">Voltar ao arquivo</a>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="../index.html" class="brand brand-footer">
+                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                <span class="brand-text">HenderLab</span>
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="../assets/js/tooltips.js"></script>
+    <script src="../assets/js/pipeline-dev-article.js"></script>
+</body>
+</html>

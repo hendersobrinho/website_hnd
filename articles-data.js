@@ -5,6 +5,14 @@
  */
 window.siteArticles = [
     {
+        "title": "Pipeline: do código ao deploy",
+        "date": "2026-05-10",
+        "excerpt": "Como o conceito de pipeline aparece no desenvolvimento de software, passando por código, build, testes e deploy.",
+        "coverImage": "assets/pipeline-desenvolvimento/capa.png",
+        "category": "Artigo",
+        "url": "artigos/pipeline-do-codigo-ao-deploy.html"
+    },
+    {
         "title": "Pipeline: a origem do conceito",
         "date": "2026-05-10",
         "excerpt": "Entenda de onde vem a ideia de pipeline e como o paralelismo entre etapas melhora o aproveitamento do processador.",

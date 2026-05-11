@@ -26,11 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustTooltipPosition);
 
     // Suporte para mobile (tap para mostrar tooltip)
-    if ('ontouchstart' in window) {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         const tooltips = document.querySelectorAll('.term-tooltip, .bio-tooltip');
 
         tooltips.forEach(tooltip => {
             tooltip.addEventListener('touchstart', function(e) {
+                const hasLink = Boolean(
+                    e.target.closest('a[href]') ||
+                    (this.matches('a[href]') ? this.getAttribute('href') : this.querySelector('a[href]'))
+                );
+                const wasActive = this.classList.contains('active');
+
                 // Remove 'active' de todos os outros tooltips
                 tooltips.forEach(t => {
                     if (t !== tooltip) {
@@ -38,10 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
-                // Toggle 'active' no tooltip clicado
+                // Em links: primeiro toque mostra o tooltip, segundo toque abre a fonte.
+                // Em elementos sem link: o toque apenas alterna o tooltip.
+                if (hasLink) {
+                    this.classList.add('active');
+
+                    if (!wasActive) {
+                        e.preventDefault();
+                    }
+
+                    return;
+                }
+
                 this.classList.toggle('active');
                 e.preventDefault();
-            });
+            }, { passive: false });
         });
 
         // Remover tooltip ao tocar fora

@@ -4310,3 +4310,138 @@ body {
     .ar-grid { grid-template-columns: 1fr; }
     .ar-section { padding: 3rem 0 5rem; }
 }
+
+/* ── Artigos hero atmosférico ── */
+.ar-hero {
+    position: relative;
+    padding: 9rem 1.5rem 8rem;
+    background: #05050b;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* linha divisória com glow */
+.ar-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(79, 124, 255, 0.6) 30%,
+        rgba(124, 58, 237, 0.5) 70%,
+        transparent
+    );
+}
+
+/* orbs flutuantes */
+.ar-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+.ar-orb-1 {
+    width: 550px; height: 550px;
+    background: rgba(79, 124, 255, 0.2);
+    top: -220px; left: -120px;
+    animation: ar-drift-a 10s ease-in-out infinite alternate;
+}
+
+.ar-orb-2 {
+    width: 380px; height: 380px;
+    background: rgba(124, 58, 237, 0.18);
+    top: -80px; right: -80px;
+    animation: ar-drift-b 13s ease-in-out infinite alternate;
+}
+
+.ar-orb-3 {
+    width: 260px; height: 260px;
+    background: rgba(0, 210, 255, 0.1);
+    bottom: 60px; left: 42%;
+    animation: ar-drift-a 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ar-drift-a {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(35px, -45px) scale(1.1); }
+}
+
+@keyframes ar-drift-b {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-25px, 30px) scale(0.92); }
+}
+
+/* grid de perspectiva */
+.ar-hero-grid {
+    position: absolute;
+    bottom: 0;
+    left: -60%;
+    right: -60%;
+    height: 320px;
+    background-image:
+        linear-gradient(rgba(79, 124, 255, 0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 124, 255, 0.22) 1px, transparent 1px);
+    background-size: 90px 90px;
+    transform: perspective(380px) rotateX(72deg);
+    transform-origin: center bottom;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 70%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* conteúdo do hero */
+.ar-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.ar-hero-content .ar-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4f7cff;
+}
+
+.ar-hero-content h1 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0;
+    /* glow sutil no texto */
+    text-shadow: 0 0 80px rgba(79, 124, 255, 0.35);
+}
+
+.ar-hero-content p {
+    color: #64748b;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 420px;
+}
+
+/* seção de conteúdo */
+.ar-content {
+    padding: 5rem 0 7rem;
+    background: #07090f;
+}
+
+@media (max-width: 760px) {
+    .ar-hero { padding: 7rem 1.25rem 6rem; }
+    .ar-orb-1 { width: 320px; height: 320px; top: -120px; left: -80px; }
+    .ar-orb-2 { width: 240px; height: 240px; }
+    .ar-orb-3 { display: none; }
+    .ar-hero-grid { height: 200px; }
+}

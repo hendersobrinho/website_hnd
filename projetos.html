@@ -40,71 +40,66 @@
     </nav>
 
     <main class="page-main">
-        <section class="projects-showcase">
+        <section class="pj-section">
             <div class="section-shell">
-                <div class="section-header">
-                    <span>Projetos</span>
+
+                <div class="pj-header">
+                    <span class="pj-header-eyebrow">Em construção</span>
                     <h1>Projetos</h1>
-                    <p>Projetos reais do HenderLab, organizados como um arquivo vivo do que estou estudando e construindo.</p>
+                    <p>Projetos reais organizados como um arquivo vivo do que estou estudando e construindo.</p>
                 </div>
 
-                <div class="projects-grid" aria-label="Lista de projetos">
-                    <article class="project-card">
-                        <img src="assets/home/museu-de-bugs-logo.png" alt="Museu de Bugs">
+                <div class="pj-grid" aria-label="Lista de projetos">
 
-                        <div class="project-overlay">
-                            <span class="project-tag">ASP.NET Core • Angular • PostgreSQL</span>
+                    <!-- Museu de Bugs -->
+                    <article class="pj-card" style="--pj-accent: #f59e0b; --pj-accent-dim: rgba(245,158,11,0.12);">
+                        <div class="pj-card-logo">
+                            <img src="assets/home/museu-de-bugs-logo.png" alt="Logo do Museu de Bugs">
+                        </div>
+                        <div class="pj-card-body">
+                            <span class="pj-card-tag">ASP.NET Core &bull; Angular &bull; PostgreSQL</span>
                             <h2>Museu de Bugs</h2>
-                            <p>
-                                Uma coleção pública dos bugs mais curiosos, interessantes e desafiadores
-                                que encontrei enquanto estudo, desenvolvo e coloco projetos em produção.
-                            </p>
-
-                            <div class="project-links">
-                                <a href="projetos/museu-de-bugs.html">Detalhes</a>
-                                <a href="https://bugs.henderlab.com.br" target="_blank" rel="noopener">Projeto</a>
-                                <a href="https://github.com/hendersobrinho/MuseuDeBugs" target="_blank" rel="noopener">GitHub</a>
+                            <p>Uma cole&ccedil;&atilde;o p&uacute;blica de bugs reais com contexto, causa e solu&ccedil;&atilde;o documentados. Porque erro tamb&eacute;m &eacute; parte do aprendizado.</p>
+                            <div class="pj-card-links">
+                                <a href="projetos/museu-de-bugs.html" class="pj-link-primary">Detalhes</a>
+                                <a href="https://bugs.henderlab.com.br" class="pj-link-ghost" target="_blank" rel="noopener">Ver projeto ↗</a>
+                                <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                    <img src="assets/home/DocFLow.svg" alt="DocFlow">
-
-                    <div class="project-overlay">
-                        <span class="project-tag">Python • Tkinter • SQLite</span>
-                        <h2>DocFlow</h2>
-                        <p>
-                        Aplicação desktop local para controle de recebimento de documentos
-                        empresariais, com pendências, status por período, exportação em Excel,
-                        logs e backup.
-                        </p>
-
-                        <div class="project-links">
-                        <a href="projetos/docflow.html">Detalhes</a>
-                        <a href="https://github.com/hendersobrinho/g-docs" target="_blank" rel="noopener">GitHub</a>
+                    <!-- DocFlow -->
+                    <article class="pj-card" style="--pj-accent: #2563eb; --pj-accent-dim: rgba(37,99,235,0.12);">
+                        <div class="pj-card-logo">
+                            <img src="assets/home/DocFLow.svg" alt="Logo do DocFlow">
                         </div>
-                    </div>
+                        <div class="pj-card-body">
+                            <span class="pj-card-tag">Python &bull; Tkinter &bull; SQLite</span>
+                            <h2>DocFlow</h2>
+                            <p>Aplica&ccedil;&atilde;o desktop local para controle mensal de documentos empresariais. Substitui planilhas por um fluxo simples e organizado.</p>
+                            <div class="pj-card-links">
+                                <a href="projetos/docflow.html" class="pj-link-primary">Detalhes</a>
+                                <a href="https://github.com/hendersobrinho/g-docs" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <img src="assets/home/caderno-vivo.svg" alt="Caderno Vivo">
-
-                        <div class="project-overlay">
-                            <span class="project-tag">ASP.NET Razor Pages • SQLite • Bootstrap</span>
+                    <!-- Caderno Vivo -->
+                    <article class="pj-card" style="--pj-accent: #7c3aed; --pj-accent-dim: rgba(124,58,237,0.12);">
+                        <div class="pj-card-logo">
+                            <img src="assets/home/caderno-vivo.svg" alt="Logo do Caderno Vivo">
+                        </div>
+                        <div class="pj-card-body">
+                            <span class="pj-card-tag">ASP.NET Razor Pages &bull; SQLite &bull; Bootstrap</span>
                             <h2>Caderno Vivo</h2>
-                            <p>
-                                App local de organização de estudos com cronômetro por bloco, dashboard
-                                semanal, cronograma gerado por IA e exportação para calendário. Roda na
-                                máquina, abre no navegador, sem nuvem.
-                            </p>
-
-                            <div class="project-links">
-                                <a href="projetos/caderno-vivo.html">Detalhes</a>
-                                <a href="https://github.com/hendersobrinho/Caderno-Vivo" target="_blank" rel="noopener">GitHub</a>
+                            <p>App local de organiza&ccedil;&atilde;o de estudos com cron&ocirc;metro por bloco, dashboard semanal e cronograma gerado por IA. Sem nuvem, sem conta.</p>
+                            <div class="pj-card-links">
+                                <a href="projetos/caderno-vivo.html" class="pj-link-primary">Detalhes</a>
+                                <a href="https://github.com/hendersobrinho/Caderno-Vivo" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
                             </div>
                         </div>
                     </article>
+
                 </div>
             </div>
         </section>

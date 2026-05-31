@@ -592,8 +592,29 @@ a {
     align-items: center;
     justify-content: center;
     max-width: 100%;
-    gap: 0.45rem;
+    gap: clamp(1.05rem, 2.2vw, 1.55rem);
     text-align: center;
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    white-space: normal;
+}
+
+.hero-name {
+    white-space: nowrap;
+}
+
+.hero-tagline {
+    font-size: clamp(0.72rem, 1.2vw, 0.85rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-contrast-muted, #9aa6b2);
+    line-height: 1;
 }
 
 .hero-brand-line {
@@ -4471,26 +4492,26 @@ body {
 }
 
 /* seção de artigos na home — mesma textura das outras seções claras */
+/* faixa de artigos — mesma estilização do Stack (dark azul sempre) */
 .home-articles-section {
     position: relative;
     overflow: hidden;
+    color: var(--panel-title);
     background:
-        radial-gradient(circle at 88% 25%, var(--quiet-section-glow-primary), transparent 18rem),
-        radial-gradient(circle at 10% 75%, var(--quiet-section-glow-secondary), transparent 16rem),
-        radial-gradient(var(--quiet-section-dot) 1px, transparent 1px),
-        var(--quiet-section-gradient);
-    background-size: auto, auto, 24px 24px, auto;
-    border-top: 1px solid rgba(31, 41, 55, 0.08);
+        radial-gradient(circle at 88% 25%, rgba(50, 166, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 10% 75%, rgba(91, 184, 255, 0.1), transparent 28%),
+        linear-gradient(180deg, #07111f 0%, #0a1426 100%);
+    border-top: 1px solid rgba(214, 220, 229, 0.08);
 }
 
-:root[data-theme="dark"] .home-articles-section {
-    border-top-color: var(--border);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .home-articles-section {
-        border-top-color: var(--border);
-    }
+.home-articles-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(80, 170, 255, 0.16) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: 0.22;
 }
 
 /* ── Artigos hero — suporte ao tema claro ── */

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caderno Vivo | Projetos | HenderLab</title>
+    <meta name="description" content="Caderno Vivo é um app local de organização de estudos com cronômetro por bloco, dashboard semanal, cronograma via IA e exportação para calendário.">
+    <meta name="keywords" content="Caderno Vivo, HenderLab, projetos, ASP.NET, Razor Pages, SQLite, Bootstrap, estudos, organização">
+    <meta name="author" content="Henderson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.henderlab.com.br/projetos/caderno-vivo">
+    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
+    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="brand" aria-label="HenderLab">
+                <span class="brand-text">HenderLab</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">In&iacute;cio</a></li>
+                <li><a href="../artigos.html">Artigos</a></li>
+                <li><a href="../projetos.html" class="is-active">Projetos</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-main project-detail-main">
+        <section class="project-detail-hero">
+            <div class="section-shell">
+                <a href="../projetos.html" class="back-link">Voltar para projetos</a>
+
+                <article class="project-detail-card">
+                    <div class="project-detail-logo-panel">
+                        <div class="project-detail-logo-frame project-detail-logo-frame-square">
+                            <img src="../assets/home/caderno-vivo.svg" alt="Logo do Caderno Vivo" class="project-detail-logo">
+                        </div>
+                        <span class="project-detail-logo-caption">Organiza&ccedil;&atilde;o de estudos que roda na sua m&aacute;quina</span>
+                    </div>
+
+                    <div class="project-detail-copy">
+                        <div class="project-card-meta">
+                            <span class="project-status">Projeto local</span>
+                            <span>ASP.NET Razor Pages</span>
+                            <span>SQLite</span>
+                            <span>Bootstrap</span>
+                        </div>
+
+                        <h1>Caderno Vivo</h1>
+                        <p class="project-detail-lead">
+                            App local de organiza&ccedil;&atilde;o de estudos com cron&ocirc;metro por bloco, dashboard semanal,
+                            cronograma gerado por IA e exporta&ccedil;&atilde;o para calend&aacute;rio. Sem nuvem, sem conta, sem assinatura.
+                        </p>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/hendersobrinho/Caderno-Vivo" class="btn-primary" target="_blank" rel="noopener">Ver reposit&oacute;rio</a>
+                            <a href="../projetos.html" class="btn-secondary">Explorar outros projetos</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-shell project-detail-content" aria-labelledby="project-summary-title">
+            <div class="project-summary">
+                <span class="eyebrow">Resumo</span>
+                <h2 id="project-summary-title">Por que esse projeto foi criado</h2>
+                <div class="project-description">
+                    <p>
+                        O <strong>Caderno Vivo</strong> surgiu de uma necessidade simples: ter um lugar centralizado para planejar
+                        blocos de estudo, acompanhar o que foi feito e registrar o que ficou pelo caminho. Ferramentas online
+                        resolvem parte do problema, mas sempre têm algo que não encaixa. Uma conta a mais para criar, um plano
+                        pago para liberar alguma função, uma interface pensada para outra finalidade.
+                    </p>
+                    <br>
+                    <p>
+                        A proposta foi montar algo que funciona sem depender de serviço externo: abre no navegador, roda na
+                        máquina, salva tudo em um banco local. O banco é um arquivo gerado automaticamente na raiz do projeto.
+                        Nada é enviado a lugar nenhum.
+                    </p>
+                    <br>
+                    <p>
+                        Do ponto de vista técnico, o projeto foi uma oportunidade real de trabalhar com ASP.NET Razor Pages,
+                        Entity Framework Core e SQLite em conjunto. A complexidade foi crescendo conforme as necessidades foram
+                        aparecendo no uso diário, e o resultado é um app que eu uso de verdade.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-detail-grid">
+                <article class="project-detail-info">
+                    <h3>Inten&ccedil;&atilde;o</h3>
+                    <p>
+                        Ter um painel centralizado para planejar, executar e revisar blocos de estudo sem precisar de nenhuma
+                        ferramenta online, conta ou assinatura.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>O que organiza</h3>
+                    <p>
+                        Blocos de estudo com cron&ocirc;metro, projetos com checklist e roadmap, mat&eacute;rias da faculdade,
+                        artigos em produ&ccedil;&atilde;o, lembretes e exporta&ccedil;&atilde;o para o calend&aacute;rio do celular.
+                    </p>
+                </article>
+
+                <article class="project-detail-info">
+                    <h3>Como foi constru&iacute;do</h3>
+                    <p>
+                        ASP.NET Core Razor Pages com .NET&nbsp;10, Entity Framework Core&nbsp;8 e SQLite. Frontend com
+                        Bootstrap&nbsp;5 e Bootstrap Icons. Funciona em Linux, macOS e Windows.
+                    </p>
+                </article>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>O que tem dentro</h2>
+                <p>
+                    O app cresceu em m&oacute;dulos conforme a necessidade foi aparecendo. Cada tela resolve uma parte
+                    do problema de organizar estudos de forma s&eacute;ria e cont&iacute;nua.
+                </p>
+                <ul class="project-detail-list">
+                    <li>
+                        <strong>Hoje:</strong> a fila do dia com os blocos de estudo em ordem de hor&aacute;rio.
+                        Cada bloco tem um cron&ocirc;metro integrado com suporte a pausa, e o app dispara alertas
+                        no navegador cinco minutos antes de cada bloco come&ccedil;ar.
+                    </li>
+                    <li>
+                        <strong>Dashboard:</strong> painel semanal com gr&aacute;fico de barras por dia, percentual
+                        de blocos conclu&iacute;dos e m&eacute;tricas de ritmo como blocos no prazo, antecipados,
+                        depois do prazo, hora extra e m&eacute;dia real por bloco no hist&oacute;rico completo.
+                    </li>
+                    <li>
+                        <strong>Linha do Tempo:</strong> navega&ccedil;&atilde;o por data para revisar dias anteriores,
+                        ver o status de cada bloco e acompanhar os pr&oacute;ximos dias planejados em uma linha s&oacute;.
+                    </li>
+                    <li>
+                        <strong>Projetos:</strong> cada projeto tem descri&ccedil;&atilde;o, prazo, prioridade, status,
+                        checklist de itens e um roadmap com fases e marcos. Blocos de estudo podem ser criados
+                        diretamente de dentro do projeto e ficam vinculados a ele.
+                    </li>
+                    <li>
+                        <strong>Faculdade:</strong> cadastro de mat&eacute;rias com carga hor&aacute;ria, tarefas com prazo
+                        e prioridade, hist&oacute;rico de aulas, pend&ecirc;ncias e d&uacute;vidas por mat&eacute;ria, e plano
+                        da semana com sele&ccedil;&atilde;o em massa de blocos para excluir ou reorganizar.
+                    </li>
+                    <li>
+                        <strong>Cronograma:</strong> o app gera um prompt pronto para colar em qualquer IA.
+                        A IA devolve um JSON com o plano do per&iacute;odo e o app importa todos os blocos de uma vez,
+                        ignorando duplicatas e criando mat&eacute;rias automaticamente pelo nome. Tamb&eacute;m &eacute;
+                        poss&iacute;vel adicionar blocos manualmente sem passar pelo JSON.
+                    </li>
+                    <li>
+                        <strong>Lembretes:</strong> lembretes avulsos ou vinculados a mat&eacute;ria, projeto ou artigo,
+                        com prazo, prioridade e op&ccedil;&atilde;o de fixar no topo do dashboard.
+                    </li>
+                    <li>
+                        <strong>Exportar:</strong> tr&ecirc;s formatos de sa&iacute;da. Markdown para colar em uma IA com
+                        contexto completo dos estudos. JSON para reimportar um plano atualizado. Arquivo
+                        <code>.ics</code> para o Google Calendar ou qualquer app de calend&aacute;rio, com alerta
+                        de 10 minutos antes de cada bloco.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="project-detail-section">
+                <h2>Decis&otilde;es t&eacute;cnicas</h2>
+                <p>
+                    A escolha de <strong>Razor Pages</strong> foi prática. Para um app local sem API pública,
+                    o modelo de página por rota é mais direto do que separar backend e frontend. Cada funcionalidade
+                    fica concentrada em seu próprio módulo, o que facilitou crescer o projeto conforme as necessidades
+                    foram aparecendo.
+                </p>
+                <br>
+                <p>
+                    O banco de dados é um arquivo <strong>SQLite</strong> gerado automaticamente na raiz do projeto.
+                    Sem configuração, sem servidor, sem variáveis de conexão para ajustar. Funciona igual em Linux,
+                    macOS e Windows. O caminho do arquivo pode ser sobrescrito por variável de ambiente quando necessário.
+                </p>
+                <br>
+                <p>
+                    No Linux, o app pode ser instalado como serviço de usuário via systemd. O repositório já inclui
+                    o arquivo de serviço pronto para usar, então o app inicia automaticamente ao fazer login e fica
+                    disponível no navegador sem precisar rodar nenhum comando manualmente.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="../index.html" class="brand brand-footer">
+                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                <span class="brand-text">HenderLab</span>
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

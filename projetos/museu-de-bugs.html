@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museu de Bugs | Projetos | HenderLab</title>
-    <meta name="description" content="Resumo do projeto Museu de Bugs, criado para registrar bugs curiosos, aprendizados e solucoes encontradas em desenvolvimento de software.">
+    <meta name="description" content="Museu de Bugs é uma coleção pública de bugs reais encontrados durante o desenvolvimento, com contexto, causa e solução documentados.">
     <meta name="keywords" content="Museu de Bugs, HenderLab, projetos, Angular, .NET, C#, API, MySQL">
     <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/museu-de-bugs.css">
 </head>
 <body>
     <nav class="navbar">
@@ -31,124 +32,191 @@
         </div>
     </nav>
 
-    <main class="page-main project-detail-main">
-        <section class="project-detail-hero">
-            <div class="section-shell">
-                <a href="../projetos.html" class="back-link">Voltar para projetos</a>
+    <main>
 
-                <article class="project-detail-card">
-                    <div class="project-detail-logo-panel">
-                        <div class="project-detail-logo-frame">
-                            <img src="../assets/home/museu-de-bugs-logo.png" alt="Logo do Museu de Bugs" class="project-detail-logo">
-                        </div>
-                    </div>
+        <!-- HERO -->
+        <section class="mb-hero">
+            <div class="mb-hero-inner">
+                <img src="../assets/home/museu-de-bugs-logo.png" alt="Logo do Museu de Bugs" class="mb-hero-logo">
 
-                    <div class="project-detail-copy">
-                        <div class="project-card-meta">
-                            <span class="project-status">Em produção</span>
-                            <span>Angular</span>
-                            <span>.NET</span>
-                            <span>C#</span>
-                            <span>MySQL</span>
-                        </div>
+                <span class="mb-badge">Em produ&ccedil;&atilde;o &bull; ASP.NET &bull; Angular &bull; MySQL</span>
 
-                        <h1>Museu de Bugs</h1>
-                        <p class="project-detail-lead">
-                            Uma coleção de Bugs e erros que vou encontrando durante os processos de aprendizado.
-                        </p>
+                <h1>Museu de Bugs</h1>
 
-                        <div class="project-actions">
-                            <a href="https://bugs.henderlab.com.br" class="btn-primary" target="_blank" rel="noopener">Ver projeto</a>
-                            <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="btn-secondary" target="_blank" rel="noopener">Ver repositório</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-shell project-detail-content" aria-labelledby="project-summary-title">
-            <div class="project-summary">
-                <span class="eyebrow">Resumo</span>
-                <h2 id="project-summary-title">Por que esse projeto foi criado</h2>
-                <section class="project-description">
-  <p>
-    O <strong>Museu de Bugs</strong> nasceu da ideia de transformar erros reais em material de estudo.
-    Em vez de deixar cada problema perdido em prints, anotações soltas ou mensagens antigas, o projeto
-    organiza esses casos em uma vitrine pública para consulta, aprendizado e memória técnica.
-  </p>
-  <br>
-  <p>
-    Esse projeto também reuniu tudo que eu precisava praticar naquele momento: entender o fluxo completo
-    de uma aplicação, desde a confecção das classes, persistência no banco de dados, services, controllers,
-    APIs REST e comunicação HTTP.
-  </p>
-  <br>
-  <p>
-    O frontend foi algo que fiz de forma mais leve. procurei saber o necessário para consumir a API e dar
-    forma ao projeto, mas sem tentar me aprofundar tanto nessa parte naquele momento.
-  </p>
-  <br>
-  <p>
-    A imersão no projeto durou 13 dias. Nesse período, consumi uma quantidade absurda de conteúdo,
-    provavelmente suficiente para meses de estudo. Como nem tudo
-    dava para absorver com o mesmo zelo, afinal só o ecossistema .NET é gigantesco, principalmente na parte sobre frontend, anotei algumas peças chaves no Obsidian para que eu possa continuar
-    dando continuidade nos estudos reforçando a teoria para voltar mais forte no próximo projeto.
-  </p>
-  <br>
-  <p>
-    Agora, a ideia é revisitar esses pontos com mais calma e me debruçar nos conceitos teóricos por trás
-    do que foi feito. Não apenas sintaxe, mas principalmente fluxo, arquitetura, organização de projeto e
-    comunicação entre as partes da aplicação.
-  </p>
-  <br>
-  <p>
-    O projeto é simples e conta com uma estrutura inicial bem enxuta, mas me proporcionou aprendizados
-    extremamente importantes: organização de camadas, persistência, API, frontend consumindo backend e até
-    deploy, que acabou exigindo subir partes do projeto em plataformas diferentes.
-  </p>
-  <br>
-  <p>
-    No fim, a proposta foi concluída: criei um app para registrar erros, organizar aprendizados e formar
-    um banco de casos reais para consultar, estudar e tratar depois.
-  </p>
-</section>
-            </div>
-
-            <div class="project-detail-grid">
-                <article class="project-detail-info">
-                    <h3>Intenção</h3>
-                    <p>
-                        Registrar bugs de forma clara, com contexto, causa provável, solução e aprendizados. A ideia é mostrar que erro também documenta evolução, principalmente quando o processo fica visível.
-                    </p>
-                </article>
-
-                <article class="project-detail-info">
-                    <h3>O que resolve</h3>
-                    <p>
-                        Ajuda a centralizar problemas recorrentes, guardar soluções encontradas e criar um acervo que pode servir tanto para revisão pessoal quanto para outras pessoas que passem por desafios parecidos.
-                    </p>
-                </article>
-
-                <article class="project-detail-info">
-                    <h3>Como contribui</h3>
-                    <p>
-                        Funciona como um laboratório público: cada bug documentado vira um pequeno estudo de caso sobre desenvolvimento, arquitetura, deploy, API, banco de dados ou integração entre ferramentas.
-                    </p>
-                </article>
-            </div>
-
-            <div class="project-detail-section">
-                <h2>O problema que ele ataca</h2>
-                <p>
-                    Durante o desenvolvimento, muita coisa importante se perde depois que o erro é corrigido. O Museu de Bugs tenta preservar esse caminho: o que aconteceu, onde estava a falha, qual foi a hipótese testada e qual decisão resolveu o problema.
+                <p class="mb-hero-lead">
+                    Um acervo p&uacute;blico de bugs reais encontrados durante o desenvolvimento,
+                    com contexto, causa e solu&ccedil;&atilde;o documentados. Porque erro tamb&eacute;m
+                    &eacute; parte do aprendizado.
                 </p>
-                <ul class="project-detail-list">
-                    <li><strong>Memória técnica:</strong> evita que soluções úteis desapareçam depois do deploy.</li>
-                    <li><strong>Aprendizado prático:</strong> transforma bugs em exemplos reais, sem depender só de teoria.</li>
-                    <li><strong>Compartilhamento:</strong> permite que outras pessoas entendam o problema e aproveitem a solução.</li>
-                </ul>
+
+                <div class="mb-hero-actions">
+                    <a href="https://bugs.henderlab.com.br" class="mb-btn-primary" target="_blank" rel="noopener">
+                        Ver o acervo
+                    </a>
+                    <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="mb-btn-secondary" target="_blank" rel="noopener">
+                        GitHub
+                    </a>
+                </div>
             </div>
         </section>
+
+        <!-- SCREENSHOT -->
+        <section class="mb-showcase">
+            <div class="mb-showcase-inner">
+                <div class="mb-screenshot-frame">
+                    <img src="../assets/meseu-de-bugs/museu-de-bugs.png" alt="Tela principal do Museu de Bugs mostrando o acervo de bugs registrados" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="mb-stats">
+            <div class="mb-stats-inner">
+                <div>
+                    <span class="mb-stat-num">13</span>
+                    <span class="mb-stat-label">dias de imers&atilde;o total no projeto</span>
+                </div>
+                <div>
+                    <span class="mb-stat-num">4</span>
+                    <span class="mb-stat-label">tecnologias integradas do zero</span>
+                </div>
+                <div>
+                    <span class="mb-stat-num">1</span>
+                    <span class="mb-stat-label">app completo em produ&ccedil;&atilde;o</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORY -->
+        <section class="mb-story">
+            <div class="mb-story-inner">
+                <div class="mb-story-heading">
+                    <span>O projeto</span>
+                    <h2>Transformar erros em material de estudo</h2>
+                </div>
+                <div class="mb-story-text">
+                    <p>
+                        A ideia veio de um problema simples: durante o desenvolvimento, muita coisa importante
+                        se perde depois que o erro &eacute; corrigido. O fix acontece, o deploy sobe e o contexto
+                        vai embora. O <strong>Museu de Bugs</strong> &eacute; uma tentativa de preservar esse caminho:
+                        o que aconteceu, onde estava a falha, qual foi a hipótese e qual decis&atilde;o resolveu.
+                    </p>
+                    <p>
+                        Ele tamb&eacute;m foi o projeto onde eu aprendi de verdade o que &eacute; construir uma aplica&ccedil;&atilde;o
+                        completa. Backend com ASP.NET Core, API REST, Angular consumindo a API, banco de dados,
+                        autentica&ccedil;&atilde;o, CORS e deploy em plataformas diferentes. Tudo em 13 dias de imers&atilde;o.
+                        A quantidade de conte&uacute;do consumida nesse per&iacute;odo provavelmente equivale a meses de estudo linear.
+                    </p>
+                    <p>
+                        O projeto &eacute; simples e a estrutura inicial &eacute; enxuta, mas ele cumpre o que promete:
+                        registrar bugs com contexto real, manter um acervo consultável e documentar evolu&ccedil;&atilde;o
+                        de forma honesta e p&uacute;blica.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="mb-features">
+            <div class="mb-features-inner">
+                <div class="mb-features-header">
+                    <span>Funcionalidades</span>
+                    <h2>O que o acervo faz</h2>
+                </div>
+
+                <div class="mb-features-grid">
+                    <div class="mb-feature-card">
+                        <span class="mb-feature-icon">🗃️</span>
+                        <h3>Acervo p&uacute;blico</h3>
+                        <p>
+                            Qualquer pessoa pode consultar os bugs registrados. Cada entrada tem <strong>t&iacute;tulo,
+                            descri&ccedil;&atilde;o, tags de tecnologia e status</strong> de resolu&ccedil;&atilde;o. A busca por id
+                            ou nome facilita encontrar casos parecidos com o que voc&ecirc; est&aacute; enfrentando.
+                        </p>
+                    </div>
+
+                    <div class="mb-feature-card">
+                        <span class="mb-feature-icon">📝</span>
+                        <h3>Registro com contexto</h3>
+                        <p>
+                            Cada bug &eacute; documentado com <strong>mensagem de erro real, causa prov&aacute;vel,
+                            solu&ccedil;&atilde;o aplicada e n&iacute;vel de risco</strong>. A ideia &eacute; que o registro sirva
+                            tanto para consulta r&aacute;pida quanto para entender o racioc&iacute;nio por tr&aacute;s da corre&ccedil;&atilde;o.
+                        </p>
+                    </div>
+
+                    <div class="mb-feature-card">
+                        <span class="mb-feature-icon">🔍</span>
+                        <h3>Filtros e categorias</h3>
+                        <p>
+                            Os bugs podem ser filtrados por <strong>status</strong> (aberto ou resolvido) e por
+                            <strong>linguagem ou tecnologia</strong>. Os filtros ficam em abas na parte superior
+                            do acervo para acesso r&aacute;pido.
+                        </p>
+                    </div>
+
+                    <div class="mb-feature-card">
+                        <span class="mb-feature-icon">🔐</span>
+                        <h3>&Aacute;rea administrativa</h3>
+                        <p>
+                            O registro de novos bugs &eacute; feito por uma &aacute;rea autenticada. S&oacute; o administrador
+                            consegue criar, editar e gerenciar as entradas do acervo, mantendo o conte&uacute;do
+                            curado e com qualidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="mb-stack">
+            <div class="mb-stack-inner">
+                <span>Stack</span>
+                <h2>Como foi constru&iacute;do</h2>
+                <div class="mb-stack-grid">
+                    <div class="mb-stack-item">
+                        <img src="../assets/home/Csharp.svg" alt="C#">
+                        <h4>C# / .NET</h4>
+                        <p>ASP.NET Core &bull; API REST &bull; autentica&ccedil;&atilde;o</p>
+                    </div>
+                    <div class="mb-stack-item">
+                        <img src="../assets/home/Angular.svg" alt="Angular">
+                        <h4>Angular</h4>
+                        <p>Frontend &bull; consumo de API &bull; TypeScript</p>
+                    </div>
+                    <div class="mb-stack-item">
+                        <img src="../assets/home/Docker.svg" alt="Docker">
+                        <h4>Docker</h4>
+                        <p>Containeriza&ccedil;&atilde;o &bull; deploy no Render</p>
+                    </div>
+                    <div class="mb-stack-item">
+                        <span style="font-size:2rem;line-height:1">🗄️</span>
+                        <h4>MySQL</h4>
+                        <p>Banco relacional &bull; Supabase &bull; EF Core</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="mb-cta">
+            <div class="mb-cta-inner">
+                <h2>O acervo est&aacute; no ar</h2>
+                <p>
+                    Todos os bugs documentados durante meu aprendizado est&atilde;o p&uacute;blicos e dispon&iacute;veis
+                    para consulta.
+                </p>
+                <div class="mb-cta-actions">
+                    <a href="https://bugs.henderlab.com.br" class="mb-btn-primary" target="_blank" rel="noopener">
+                        Visitar o Museu de Bugs
+                    </a>
+                    <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="mb-btn-secondary" target="_blank" rel="noopener">
+                        Ver reposit&oacute;rio
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">

@@ -67,7 +67,7 @@
 }
 
 .df-hero h1 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: clamp(2.8rem, 6vw, 4.2rem);
   font-weight: 700;
   line-height: 1.1;
@@ -164,7 +164,7 @@
 }
 
 .df-context-inner h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 1.65rem;
   font-weight: 600;
   color: #f1f5f9;
@@ -206,7 +206,7 @@
 }
 
 .df-features-header h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 700;
   color: #f1f5f9;
@@ -243,7 +243,7 @@
 }
 
 .df-feature-copy h3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 1.65rem;
   font-weight: 600;
   color: #f1f5f9;
@@ -310,7 +310,7 @@
 }
 
 .df-stack-inner h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
   color: #f1f5f9;
@@ -374,7 +374,7 @@
 }
 
 .df-cta h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #f1f5f9;

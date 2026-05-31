@@ -50,7 +50,7 @@
 
     /* Tokens de tipografia */
     --font-sans: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --font-serif: "Fraunces", Georgia, serif;
+    --font-serif: "Space Grotesk", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
     --font-size-base: 16px;
     --line-height-body: 1.75;
@@ -3934,7 +3934,7 @@ body {
 }
 
 .pj-header h1 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     font-size: clamp(2.4rem, 5vw, 3.4rem);
     font-weight: 700;
     color: #f1f5f9;
@@ -4014,7 +4014,7 @@ body {
 }
 
 .pj-card-body h2 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     font-size: 1.45rem;
     font-weight: 600;
     color: #f1f5f9;
@@ -4077,4 +4077,236 @@ body {
 @media (max-width: 560px) {
     .pj-grid { grid-template-columns: 1fr; }
     .pj-section { padding: 3rem 0 5rem; }
+}
+
+/* ── Artigos page — layout redesenhado ── */
+.ar-section {
+    padding: 5rem 0 7rem;
+}
+
+.ar-header {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 4rem;
+}
+
+.ar-eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4f7cff;
+    margin-bottom: 0.75rem;
+}
+
+.ar-header h1 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+}
+
+.ar-header p {
+    color: #94a3b8;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* featured */
+.ar-featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 1.35rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(21,38,65,0.86), rgba(10,20,38,0.92));
+    border: 1px solid rgba(255,255,255,0.09);
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1.5rem;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.ar-featured:hover {
+    transform: translateY(-4px);
+    border-color: rgba(50,166,255,0.35);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(50,166,255,0.08);
+}
+
+.ar-featured-thumb {
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.ar-featured-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.ar-featured:hover .ar-featured-thumb img {
+    transform: scale(1.05);
+}
+
+.ar-featured-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2.5rem;
+}
+
+.ar-featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ar-featured-meta time {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.ar-category {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(50,166,255,0.14);
+    border: 1px solid rgba(50,166,255,0.28);
+    color: #32a6ff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.ar-featured-body h2 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.ar-featured-body p {
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 0.97rem;
+    margin: 0;
+}
+
+.ar-read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #4f7cff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: gap 0.2s ease;
+}
+
+.ar-featured:hover .ar-read-link,
+.ar-card:hover .ar-read-link {
+    gap: 0.55rem;
+}
+
+/* grid dos demais */
+.ar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.ar-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(21,38,65,0.86), rgba(10,20,38,0.92));
+    border: 1px solid rgba(255,255,255,0.09);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.ar-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(50,166,255,0.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.32), 0 0 0 1px rgba(50,166,255,0.06);
+}
+
+.ar-card-thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.ar-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ar-card:hover .ar-card-thumb img {
+    transform: scale(1.06);
+}
+
+.ar-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.3rem;
+    flex: 1;
+}
+
+.ar-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.ar-card-meta time {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.ar-card-body h3 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.ar-card-body p {
+    font-size: 0.87rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+}
+
+.ar-card-body .ar-read-link {
+    margin-top: 0.4rem;
+}
+
+@media (max-width: 900px) {
+    .ar-featured { grid-template-columns: 1fr; }
+    .ar-featured-thumb { min-height: 220px; }
+    .ar-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .ar-grid { grid-template-columns: 1fr; }
+    .ar-section { padding: 3rem 0 5rem; }
 }

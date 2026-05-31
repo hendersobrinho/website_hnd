@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocFlow | Projetos | HenderLab</title>
-    <meta name="description" content="Resumo do projeto DocFlow, uma aplicacao desktop local criada para organizar o recebimento mensal de documentos empresariais com fluxo simples, backup e exportacao.">
+    <meta name="description" content="DocFlow é uma aplicação desktop local para controle mensal de documentos empresariais, com fluxo simples, backup e exportação em Excel.">
     <meta name="keywords" content="DocFlow, HenderLab, projetos, Python, Tkinter, SQLite, desktop, documentos, Excel">
     <meta name="author" content="Henderson">
     <meta name="robots" content="index, follow">
@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/docflow.css">
 </head>
 <body>
     <nav class="navbar">
@@ -31,135 +32,214 @@
         </div>
     </nav>
 
-    <main class="page-main project-detail-main">
-        <section class="project-detail-hero">
-            <div class="section-shell">
-                <a href="../projetos.html" class="back-link">Voltar para projetos</a>
+    <main>
 
-                <article class="project-detail-card">
-                    <div class="project-detail-logo-panel">
-                        <div class="project-detail-logo-frame project-detail-logo-frame-square">
-                            <img src="../assets/home/DocFLow.svg" alt="Logo do DocFlow" class="project-detail-logo">
-                        </div>
-                        <span class="project-detail-logo-caption">Fluxo local para documentos recorrentes</span>
-                    </div>
+        <!-- HERO -->
+        <section class="df-hero">
+            <div class="df-hero-inner">
+                <img src="../assets/home/DocFLow.svg" alt="Logo do DocFlow" class="df-hero-logo">
 
-                    <div class="project-detail-copy">
-                        <div class="project-card-meta">
-                            <span class="project-status">Projeto desktop</span>
-                            <span>Python</span>
-                            <span>Tkinter</span>
-                            <span>SQLite</span>
-                            <span>Excel</span>
-                        </div>
+                <span class="df-badge">Desktop local &bull; Python &bull; SQLite</span>
 
-                        <h1>DocFlow</h1>
-                        <p class="project-detail-lead">
-                            Uma aplicacao desktop criada para substituir planilhas de controle e acompanhar,
-                            de forma local, o recebimento mensal de documentos por empresa, periodo e status.
-                        </p>
+                <h1>DocFlow</h1>
 
-                        <div class="project-actions">
-                            <a href="https://github.com/hendersobrinho/g-docs" class="btn-primary" target="_blank" rel="noopener">Ver reposit&oacute;rio</a>
-                            <a href="../projetos.html" class="btn-secondary">Explorar outros projetos</a>
-                        </div>
-                    </div>
-                </article>
+                <p class="df-hero-lead">
+                    Aplica&ccedil;&atilde;o desktop local para controle mensal de documentos empresariais.
+                    Substitui planilhas por um fluxo simples: empresa, per&iacute;odo, status e pend&ecirc;ncias
+                    num s&oacute; lugar.
+                </p>
+
+                <div class="df-hero-actions">
+                    <a href="https://github.com/hendersobrinho/g-docs" class="df-btn-primary" target="_blank" rel="noopener">
+                        Ver reposit&oacute;rio no GitHub
+                    </a>
+                    <a href="../projetos.html" class="df-btn-secondary">Voltar para projetos</a>
+                </div>
             </div>
         </section>
 
-        <section class="section-shell project-detail-content" aria-labelledby="project-summary-title">
-            <div class="project-summary">
-                <span class="eyebrow">Resumo</span>
-                <h2 id="project-summary-title">Por que esse projeto foi criado</h2>
-                <div class="project-description">
+        <!-- CONTEXTO -->
+        <section class="df-context">
+            <div class="df-context-inner">
+                <p class="df-context-eyebrow">Como surgiu</p>
+
+                <h2>Uma rotina administrativa que precisava de um fluxo melhor</h2>
+
+                <p>
+                    O DocFlow surgiu de uma necessidade pr&aacute;tica: acompanhar o recebimento mensal de documentos
+                    de v&aacute;rias empresas sem depender de planilhas espalhadas, filtros manuais e abas
+                    que acumulam informa&ccedil;&atilde;o solta. Quando o controle fica assim, &eacute; f&aacute;cil perder o
+                    que ainda est&aacute; pendente e s&oacute; perceber tarde demais.
+                </p>
+
+                <p>
+                    A ideia foi centralizar tudo: cadastro de empresas, tipos de documento, per&iacute;odos de
+                    entrega e status de recebimento dentro de uma aplica&ccedil;&atilde;o local que roda sem internet,
+                    sem conta e sem depend&ecirc;ncias externas. O banco fica no pr&oacute;prio computador.
+                </p>
+
+                <p>
+                    Foi o primeiro projeto que desenvolvi com o objetivo claro de resolver um problema real,
+                    n&atilde;o s&oacute; praticar c&oacute;digo. Isso mudou bastante como eu pensei em cada decis&atilde;o durante
+                    a constru&ccedil;&atilde;o.
+                </p>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="df-features">
+            <div class="df-features-header">
+                <span>O app por dentro</span>
+                <h2>Cada aba tem uma fun&ccedil;&atilde;o espec&iacute;fica</h2>
+            </div>
+
+            <!-- Panorama -->
+            <div class="df-feature-row">
+                <div class="df-feature-copy">
+                    <span class="df-feature-num">01</span>
+                    <h3>Panorama operacional</h3>
                     <p>
-                        O <strong>DocFlow</strong> nasceu para resolver um problema pr&aacute;tico: acompanhar documentos
-                        mensais de diferentes empresas sem depender de planilhas cheias de filtros, abas e controle manual.
-                        A ideia foi transformar esse processo em um fluxo mais claro, r&aacute;pido e menos sujeito a esquecimentos.
+                        A tela principal mostra um <strong>dashboard mensal</strong> com o status geral de todas
+                        as empresas: quantas est&atilde;o em atraso, conclu&iacute;das, dentro do prazo ou com pend&ecirc;ncia.
+                        Uma tabela abaixo lista cada empresa com a situa&ccedil;&atilde;o do m&ecirc;s, progresso de recebimento,
+                        cobran&ccedil;a e pend&ecirc;ncias anteriores.
                     </p>
-                    <br>
                     <p>
-                        Em vez de espalhar informa&ccedil;&otilde;es por arquivos soltos, o sistema centraliza cadastros,
-                        pend&ecirc;ncias, hist&oacute;rico e status dentro de uma aplica&ccedil;&atilde;o local, simples de operar e pensada
-                        para rotinas administrativas que precisam de organiza&ccedil;&atilde;o sem complexidade desnecess&aacute;ria.
+                        O filtro por compet&ecirc;ncia permite selecionar qualquer m&ecirc;s e carregar o resumo
+                        correspondente com um clique.
                     </p>
-                    <br>
-                    <p>
-                        O foco n&atilde;o era criar um produto cheio de telas sofisticadas, mas uma ferramenta realmente &uacute;til
-                        para o dia a dia: registrar o que chegou, identificar o que ainda falta cobrar, exportar pend&ecirc;ncias
-                        e manter tudo salvo no pr&oacute;prio computador do usu&aacute;rio.
-                    </p>
+                </div>
+                <div class="df-screenshot-wrap">
+                    <img src="../assets/docflow/panorama.png" alt="Tela Panorama mostrando dashboard mensal com status das empresas" loading="lazy">
                 </div>
             </div>
 
-            <div class="project-detail-grid">
-                <article class="project-detail-info">
-                    <h3>Inten&ccedil;&atilde;o</h3>
+            <!-- Controle -->
+            <div class="df-feature-row reverse">
+                <div class="df-feature-copy">
+                    <span class="df-feature-num">02</span>
+                    <h3>Controle por per&iacute;odo</h3>
                     <p>
-                        Dar visibilidade ao fluxo mensal de recebimento de documentos, com uma base local que simplifica consulta,
-                        atualiza&ccedil;&atilde;o e acompanhamento por empresa.
+                        A aba de Controle permite selecionar uma empresa e um intervalo de at&eacute; 12 meses
+                        para ver o hist&oacute;rico de recebimentos. Cada linha mostra o documento, o m&ecirc;s
+                        e o status atual, com as op&ccedil;&otilde;es <strong>Recebido, Pendente, Encerrado</strong> e
+                        <strong>N&atilde;o cobrar</strong> acess&iacute;veis direto na lista.
                     </p>
-                </article>
-
-                <article class="project-detail-info">
-                    <h3>O que organiza</h3>
                     <p>
-                        Empresas, tipos de documento, per&iacute;odos de entrega, status de recebimento, observa&ccedil;&otilde;es e sa&iacute;das
-                        em Excel para facilitar a cobran&ccedil;a das pend&ecirc;ncias.
+                        A sele&ccedil;&atilde;o em lote permite atualizar v&aacute;rios itens de uma vez, o que economiza
+                        bastante tempo nas atualiza&ccedil;&otilde;es mensais recorrentes.
                     </p>
-                </article>
-
-                <article class="project-detail-info">
-                    <h3>Como foi constru&iacute;do</h3>
-                    <p>
-                        A aplica&ccedil;&atilde;o foi desenvolvida com Python, Tkinter e SQLite, com apoio de bibliotecas para gera&ccedil;&atilde;o
-                        de arquivos, imagens, empacotamento e instala&ccedil;&atilde;o em ambiente Windows.
-                    </p>
-                </article>
+                </div>
+                <div class="df-screenshot-wrap">
+                    <img src="../assets/docflow/controle.png" alt="Tela Controle com consulta por empresa e período" loading="lazy">
+                </div>
             </div>
 
-            <div class="project-detail-section">
-                <h2>O problema que ele resolve</h2>
-                <p>
-                    Quando o controle de documentos fica espalhado em planilhas, e-mails e lembretes informais, a rotina passa
-                    a depender demais de confer&ecirc;ncia manual. O DocFlow concentra esse processo em um s&oacute; lugar e deixa claro
-                    o que foi recebido, o que ainda est&aacute; pendente e o que j&aacute; pode ser encerrado.
-                </p>
-                <ul class="project-detail-list">
-                    <li><strong>Menos retrabalho:</strong> evita procurar informa&ccedil;&otilde;es em arquivos diferentes para entender a situa&ccedil;&atilde;o de cada empresa.</li>
-                    <li><strong>Mais previsibilidade:</strong> ajuda a acompanhar meses, compet&ecirc;ncias e status com um fluxo padr&atilde;o.</li>
-                    <li><strong>Opera&ccedil;&atilde;o local:</strong> mant&eacute;m os dados no computador do usu&aacute;rio, sem depender de servi&ccedil;os externos.</li>
-                </ul>
+            <!-- Empresas -->
+            <div class="df-feature-row">
+                <div class="df-feature-copy">
+                    <span class="df-feature-num">03</span>
+                    <h3>Cadastro de empresas</h3>
+                    <p>
+                        Cada empresa tem c&oacute;digo, nome, e-mail de contato, observa&ccedil;&atilde;o livre e uma
+                        <strong>regra pr&oacute;pria de cobran&ccedil;a</strong>. Quando a regra da empresa est&aacute; em branco,
+                        ela herda automaticamente a regra global configurada no Panorama.
+                    </p>
+                    <p>
+                        A tela tamb&eacute;m permite inativar e excluir cadastros, mantendo o hist&oacute;rico de
+                        empresas que deixaram de operar sem apagar os registros antigos.
+                    </p>
+                </div>
+                <div class="df-screenshot-wrap">
+                    <img src="../assets/docflow/empresas.png" alt="Tela de cadastro de empresas" loading="lazy">
+                </div>
             </div>
 
-            <div class="project-detail-section">
-                <h2>Principais recursos</h2>
-                <ul class="project-detail-list">
-                    <li><strong>Cadastro de empresas:</strong> organiza a base principal para vincular documentos e compet&ecirc;ncias.</li>
-                    <li><strong>Controle por status:</strong> classifica itens como pendente, recebido, n&atilde;o cobrar ou encerrado.</li>
-                    <li><strong>Gest&atilde;o mensal:</strong> acompanha documentos por per&iacute;odo, facilitando a rotina recorrente.</li>
-                    <li><strong>Exporta&ccedil;&atilde;o em Excel:</strong> gera relat&oacute;rios de pend&ecirc;ncias para consulta e cobran&ccedil;a.</li>
-                    <li><strong>Logs administrativos:</strong> registra movimenta&ccedil;&otilde;es importantes dentro da aplica&ccedil;&atilde;o.</li>
-                    <li><strong>Backup e restaura&ccedil;&atilde;o:</strong> protege a base local com suporte para c&oacute;pia e recupera&ccedil;&atilde;o.</li>
-                </ul>
+            <!-- Documentos -->
+            <div class="df-feature-row reverse">
+                <div class="df-feature-copy">
+                    <span class="df-feature-num">04</span>
+                    <h3>Documentos vinculados</h3>
+                    <p>
+                        Cada empresa tem uma lista de documentos que precisa entregar mensalmente. &Eacute; poss&iacute;vel
+                        configurar o <strong>nome do documento, tipo e meio de recebimento</strong>, que pode ser
+                        mais de um por documento.
+                    </p>
+                    <p>
+                        Os documentos vinculados aparecem na tabela de Controle para cada compet&ecirc;ncia,
+                        formando o conjunto completo do que precisa ser conferido todo m&ecirc;s para aquela empresa.
+                    </p>
+                </div>
+                <div class="df-screenshot-wrap">
+                    <img src="../assets/docflow/documentos.png" alt="Tela de cadastro e manutenção de documentos" loading="lazy">
+                </div>
             </div>
 
-            <div class="project-detail-section">
-                <h2>Decis&otilde;es t&eacute;cnicas</h2>
-                <p>
-                    A escolha de <strong>Tkinter</strong> e <strong>SQLite</strong> veio da necessidade de montar uma solu&ccedil;&atilde;o leve,
-                    direta e f&aacute;cil de distribuir. Como o foco est&aacute; na opera&ccedil;&atilde;o local, essa stack reduz depend&ecirc;ncias e
-                    deixa a instala&ccedil;&atilde;o mais simples para quem s&oacute; precisa abrir o sistema e trabalhar.
-                </p>
-                <br>
-                <p>
-                    No processo de entrega, entram ferramentas como <strong>openpyxl</strong> para gera&ccedil;&atilde;o das planilhas,
-                    <strong>Pillow</strong> para tratamento de imagens e <strong>PyInstaller</strong> com <strong>Inno Setup</strong>
-                    para transformar a aplica&ccedil;&atilde;o em uma experi&ecirc;ncia mais pronta para uso no desktop.
-                </p>
+            <!-- Logs -->
+            <div class="df-feature-row">
+                <div class="df-feature-copy">
+                    <span class="df-feature-num">05</span>
+                    <h3>Logs administrativos</h3>
+                    <p>
+                        Toda movimenta&ccedil;&atilde;o importante dentro do sistema fica registrada na aba de Logs:
+                        qual usu&aacute;rio fez a a&ccedil;&atilde;o, qual empresa foi afetada, o per&iacute;odo e a descri&ccedil;&atilde;o
+                        do que aconteceu.
+                    </p>
+                    <p>
+                        Os filtros por empresa, ano e m&ecirc;s permitem localizar rapidamente um evento
+                        espec&iacute;fico, o que &eacute; &uacute;til para auditar altera&ccedil;&otilde;es e entender o hist&oacute;rico
+                        de opera&ccedil;&otilde;es de qualquer per&iacute;odo.
+                    </p>
+                </div>
+                <div class="df-screenshot-wrap">
+                    <img src="../assets/docflow/logs.png" alt="Tela de logs com filtros por empresa, ano e mês" loading="lazy">
+                </div>
             </div>
         </section>
+
+        <!-- STACK -->
+        <section class="df-stack">
+            <div class="df-stack-inner">
+                <span>Stack</span>
+                <h2>Como foi constru&iacute;do</h2>
+                <div class="df-stack-grid">
+                    <div class="df-stack-item">
+                        <span class="df-stack-item-icon">🐍</span>
+                        <h4>Python</h4>
+                        <p>L&oacute;gica do sistema e regras de neg&oacute;cio</p>
+                    </div>
+                    <div class="df-stack-item">
+                        <span class="df-stack-item-icon">🖥️</span>
+                        <h4>Tkinter</h4>
+                        <p>Interface desktop nativa &bull; sem depend&ecirc;ncia de browser</p>
+                    </div>
+                    <div class="df-stack-item">
+                        <span class="df-stack-item-icon">🗄️</span>
+                        <h4>SQLite</h4>
+                        <p>Banco local como arquivo &bull; sem servidor</p>
+                    </div>
+                    <div class="df-stack-item">
+                        <span class="df-stack-item-icon">📊</span>
+                        <h4>openpyxl</h4>
+                        <p>Exporta&ccedil;&atilde;o de pend&ecirc;ncias em Excel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="df-cta">
+            <div class="df-cta-inner">
+                <h2>C&oacute;digo aberto no GitHub</h2>
+                <p>
+                    O reposit&oacute;rio tem o c&oacute;digo completo. S&oacute; precisa de Python instalado para rodar.
+                </p>
+                <a href="https://github.com/hendersobrinho/g-docs" class="df-btn-primary" target="_blank" rel="noopener">
+                    Ver reposit&oacute;rio
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">

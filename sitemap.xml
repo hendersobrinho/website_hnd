@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
+<urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://henderlab.com.br/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-07-18</lastmod>
   </url>
 
   <url>
     <loc>https://henderlab.com.br/artigos.html</loc>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/projetos.html</loc>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/projetos/museu-de-bugs.html</loc>
     <lastmod>2026-05-03</lastmod>
   </url>
 
   <url>
-    <loc>https://henderlab.com.br/projetos</loc>
+    <loc>https://henderlab.com.br/projetos/docflow.html</loc>
     <lastmod>2026-05-03</lastmod>
   </url>
 
   <url>
-    <loc>https://henderlab.com.br/museu-de-bugs</loc>
+    <loc>https://henderlab.com.br/projetos/caderno-vivo.html</loc>
     <lastmod>2026-05-03</lastmod>
   </url>
 
   <url>
-    <loc>https://henderlab.com.br/sobre.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://henderlab.com.br/artigos/pipeline-do-codigo-ao-deploy.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/pipeline-desenvolvimento/capa.png</image:loc>
+      <image:title>Pipeline: do código ao deploy</image:title>
+      <image:caption>Artigo sobre pipeline no desenvolvimento de software</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/artigos/pipeline-origem-do-conceito.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/Pipeline-de-processadores/capa.png</image:loc>
+      <image:title>Pipeline: a origem do conceito</image:title>
+      <image:caption>Artigo sobre pipeline de processadores</image:caption>
+    </image:image>
   </url>
 
   <url>

@@ -7,7 +7,7 @@ window.siteArticles = [
     {
         "title": "Pipeline: do código ao deploy",
         "date": "2026-05-10",
-        "excerpt": "Como o conceito de pipeline aparece no desenvolvimento de software, passando por código, build, testes e deploy.",
+        "excerpt": "Como o conceito de pipeline aparece no desenvolvimento de software na prática. Usando o Museu de Bugs como fio condutor, o artigo atravessa as decisões de planejamento, o código, o build, os testes e o deploy, mostrando como cada etapa transforma uma ideia em uma aplicação rodando em produção.",
         "coverImage": "assets/pipeline-desenvolvimento/capa.png",
         "category": "Artigo",
         "url": "artigos/pipeline-do-codigo-ao-deploy.html"
@@ -15,7 +15,7 @@ window.siteArticles = [
     {
         "title": "Pipeline: a origem do conceito",
         "date": "2026-05-10",
-        "excerpt": "Entenda de onde vem a ideia de pipeline e como o paralelismo entre etapas melhora o aproveitamento do processador.",
+        "excerpt": "De onde vem a ideia de pipeline? Este artigo volta às origens do conceito nos processadores, explicando como a divisão do trabalho em estágios como busca, decodificação e execução permite o paralelismo entre instruções e melhora o aproveitamento do hardware a cada ciclo de clock.",
         "coverImage": "assets/Pipeline-de-processadores/capa.png",
         "category": "Artigo",
         "url": "artigos/pipeline-origem-do-conceito.html"
@@ -23,7 +23,7 @@ window.siteArticles = [
     {
         "title": "Primeiro CRUD?",
         "date": "2026-03-19",
-        "excerpt": "Meu primeiro projeto real em Java, passando por Maven, MySQL, JPA, Hibernate, validacoes e varios erros no caminho.",
+        "excerpt": "Meu primeiro projeto real em Java: um CRUD completo passando por Maven, MySQL, JPA e Hibernate. Um relato honesto do processo, com os erros de configuração, os conceitos que precisei aprender no caminho, as validações e o que ficou de aprendizado no final.",
         "coverImage": "assets/primeiro-crud/capa_artigo.png",
         "category": "Artigo",
         "url": "artigos/primeiro-crud.html"
@@ -31,7 +31,7 @@ window.siteArticles = [
     {
         "title": "44.100 Fotos Por Segundo",
         "date": "2025-11-02",
-        "excerpt": "Descubra como funciona a conversao de audio analogico para digital, passando por amostragem, quantizacao e bits.",
+        "excerpt": "Como a música sai do mundo físico e vira número? Este artigo explica a conversão analógico-digital na prática: amostragem, quantização, o teorema de Nyquist-Shannon e o motivo de um CD capturar exatamente 44.100 fotografias do som por segundo.",
         "coverImage": "assets/audio-digital/tumb1.png",
         "category": "Artigo",
         "url": "artigos/audio-digital.html"

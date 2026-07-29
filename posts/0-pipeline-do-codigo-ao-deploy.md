@@ -2,7 +2,7 @@
 title: "Pipeline: do código ao deploy"
 pageTitle: "Pipeline no desenvolvimento de software: do código ao deploy"
 date: "2026-05-10"
-excerpt: "Como o conceito de pipeline aparece no desenvolvimento de software, passando por código, build, testes e deploy."
+excerpt: "Como o conceito de pipeline aparece no desenvolvimento de software na prática. Usando o Museu de Bugs como fio condutor, o artigo atravessa as decisões de planejamento, o código, o build, os testes e o deploy, mostrando como cada etapa transforma uma ideia em uma aplicação rodando em produção."
 coverImage: "assets/pipeline-desenvolvimento/capa.png"
 category: "Artigo"
 slug: "pipeline-do-codigo-ao-deploy"
@@ -14,7 +14,6 @@ keywords:
   - "testes"
   - "deploy"
   - "Museu de Bugs"
-aside: "Uma leitura prática sobre como o pipeline aparece no desenvolvimento: planejar, compilar, validar e publicar sem perder de vista as decisões que moldam a aplicação."
 styles:
   - "assets/css/tooltips.css"
   - "assets/css/pipeline-dev-article.css"

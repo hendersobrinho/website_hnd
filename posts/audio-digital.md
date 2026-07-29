@@ -2,7 +2,7 @@
 title: "44.100 Fotos Por Segundo"
 pageTitle: "44.100 Fotos Por Segundo: A Loucura Por Trás do Play"
 date: "2025-11-02"
-excerpt: "Descubra como funciona a conversao de audio analogico para digital, passando por amostragem, quantizacao e bits."
+excerpt: "Como a música sai do mundo físico e vira número? Este artigo explica a conversão analógico-digital na prática: amostragem, quantização, o teorema de Nyquist-Shannon e o motivo de um CD capturar exatamente 44.100 fotografias do som por segundo."
 coverImage: "assets/audio-digital/tumb1.png"
 category: "Artigo"
 slug: "audio-digital"
@@ -13,7 +13,6 @@ keywords:
   - "quantização"
   - "tecnologia"
   - "HenderLab"
-aside: "Conversão analógico-digital, amostragem, quantização, Nyquist-Shannon e representação binária."
 styles:
   - "assets/css/tooltips.css"
 scripts:

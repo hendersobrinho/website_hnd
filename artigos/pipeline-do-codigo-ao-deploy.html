@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../assets/css/tooltips.css">
     <link rel="stylesheet" href="../assets/css/pipeline-dev-article.css">
@@ -22,13 +22,12 @@
     <nav class="navbar">
         <div class="navbar-container">
             <a href="../index.html" class="brand" aria-label="HenderLab">
-                <span class="brand-text">HenderLab</span>
+                <span class="brand-text">HENDERLAB</span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="../index.html">Início</a></li>
                 <li><a href="../artigos.html" class="is-active">Artigos</a></li>
                 <li><a href="../projetos.html">Projetos</a></li>
-                <li><a href="../sobre.html">Sobre</a></li>
                 <li>
                     <a href="https://github.com/hendersobrinho" class="nav-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Henderson">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
@@ -68,11 +67,12 @@
 
 <p>Como mencionei anteriormente, <span class="term-tooltip" data-tooltip="Pipeline é uma sequência organizada de etapas por onde o trabalho vai passando até chegar ao resultado final.">pipeline</span> é um fluxo que quebra um problema grande em várias partes menores, para que elas avancem em pequenos processos e mantenham o trabalho o mais contínuo possível.</p>
 <p>No desenvolvimento de software, esse fluxo costuma aparecer em alguns passos principais:</p>
+<p>Claro que nem tudo é tão simples quanto parece à primeira vista. Só na prática mesmo para entendermos o quão custosa e desafiadora pode ser cada fase. A seguir vou falar de pipeline sem falar de CI/CD, porque o conceito já existia antes.</p>
 <figure class="article-figure">
   <img src="../assets/pipeline-desenvolvimento/pipeline_fluxo.svg" alt="Fluxo do pipeline de desenvolvimento com as etapas código, build, testes e deploy" loading="lazy">
   <figcaption>O fluxo básico do pipeline: escrever, compilar, validar e publicar.</figcaption>
 </figure>
-<p>Claro que nem tudo é tão simples quanto parece à primeira vista. Só na prática mesmo para entendermos o quão custosa e desafiadora pode ser cada fase. A seguir vou falar de pipeline sem falar de CI/CD, porque o conceito já existia antes.</p>
+
 <h2>Etapa 1: Código</h2>
 <p>Essa é talvez a parte mais importante, porque quanto melhor fizermos ela, menos voltas daremos depois. Essa fase é marcada pela pesquisa e pelo planejamento, porque antes mesmo de começar a escrever o código, precisamos entender o que vamos fazer e como vamos fazer, pelo menos os primeiros passos.</p>
 <p>Algumas perguntas que precisamos responder:</p>
@@ -166,9 +166,10 @@ dotnet restore
 <p>Configurar o banco foi a parte mais tranquila. Você cria pelo painel, preenche as configurações e conecta. Um detalhe importante: usar os mesmos nomes definidos no código ajuda a evitar divergências entre o nome das tabelas no banco e no projeto.</p>
 <p>Na hora de configurar a connection string no Render, tentei usar Direct Connection e Transactional Pooler, e nenhum funcionou. O que resolveu foi o <a class="term-tooltip" href="https://supabase.com/docs/reference/postgres/connection-strings" target="_blank" rel="noopener" data-tooltip="Session Pooler passa a conexão por um pooler do Postgres e costuma ser uma alternativa útil quando a conexão direta não encaixa bem no ambiente de deploy."><strong>Session Pooler</strong></a>, que é o modo de conexão mais adequado para a minha aplicação com .NET e Entity Framework.</p>
 <h3>Docker e o Render</h3>
-<p>Para subir a API no Render era necessário usar <a class="term-tooltip" href="https://docs.docker.com/build/" target="_blank" rel="noopener" data-tooltip="Docker empacota aplicação, dependências e configuração em containers, deixando o ambiente mais previsível entre máquina local e produção.">Docker</a>. Para entender o que ele faz, ajuda comparar com o que ele <em>não</em> faz: uma máquina virtual simula hardware completo e roda um sistema operacional inteiro por cima do seu. Docker não faz isso. Ele usa recursos do próprio kernel do host — como namespaces e cgroups — para isolar processos. O que é empacotado não é um SO completo, mas o ambiente de <em>user-space</em>: as bibliotecas, binários e arquivos de configuração que a aplicação precisa para rodar.</p>
-<p>Na prática, isso significa que um container Docker é muito mais leve que uma VM e inicia em segundos, porque não tem nenhum SO extra para subir. O kernel já está rodando no host; o container apenas usa uma fatia isolada dele. O ganho real é a previsibilidade: a mesma imagem que roda na minha máquina é exatamente o que vai para o servidor, sem surpresas de "funcionava aqui, quebrou lá".</p>
+<p>Para subir a API no Render era necessário usar <a class="term-tooltip" href="https://docs.docker.com/build/" target="_blank" rel="noopener" data-tooltip="Docker empacota aplicação, dependências e configuração em containers, deixando o ambiente mais previsível entre máquina local e produção.">Docker</a>. O conceito importante aqui é que Docker não simula hardware; ele empacota o ambiente do sistema operacional. Isso significa que você consegue criar um container com exatamente as dependências que sua aplicação precisa para rodar, independente do sistema onde ela vai ser executada.</p>
 <p>O Dockerfile do projeto usa um <a class="term-tooltip" href="https://docs.docker.com/build/building/multi-stage/" target="_blank" rel="noopener" data-tooltip="Multi-stage build separa a etapa de compilação da etapa final de runtime, copiando só o resultado necessário para a imagem de produção."><strong>multi-stage build</strong></a>: uma imagem com o SDK completo compila o código e gera o <code>.dll</code>, e depois só o resultado vai para uma imagem menor, com o runtime. A imagem final fica mais leve e sem ferramentas de build que não são necessárias em produção.</p>
+<h3>36 falhas de deploy</h3>
+<p>O histórico de commits contou essa história:</p>
 <div class="deploy-failures" data-deploy-failures></div>
 
 <p>No fim, o que resolveu foi a combinação de três coisas:</p>
@@ -191,12 +192,6 @@ dotnet restore
 <p>Talvez eu não trabalhe em projetos que mudam o mundo, mas a capacidade de imaginar um sistema, pensar como usuário e transformar isso em algo utilizável é o que me move. E o principal aprendizado daqui foi este: comece com a versão mais básica e enxuta possível e vá adicionando o resto depois.</p>
                 </div>
             </article>
-
-            <aside class="article-aside">
-                <span class="panel-label">Neste artigo</span>
-                <p>Uma leitura prática sobre como o pipeline aparece no desenvolvimento: planejar, compilar, validar e publicar sem perder de vista as decisões que moldam a aplicação.</p>
-                <a href="../artigos.html" class="btn-primary">Voltar ao arquivo</a>
-            </aside>
         </div>
     </main>
 

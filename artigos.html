@@ -21,20 +21,19 @@
     <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="brand" aria-label="HenderLab">
-                <span class="brand-text">HenderLab</span>
+                <span class="brand-text">HENDERLAB</span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">In&iacute;cio</a></li>
                 <li><a href="artigos.html" class="is-active">Artigos</a></li>
                 <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
                 <li>
                     <a href="https://github.com/hendersobrinho" class="nav-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Henderson">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
@@ -48,89 +47,43 @@
 
     <main>
 
-        <!-- HERO ATMOSFÉRICO -->
-        <section class="ar-hero" aria-hidden="false">
-            <!-- orbs animados -->
-            <div class="ar-orb ar-orb-1"></div>
-            <div class="ar-orb ar-orb-2"></div>
-            <div class="ar-orb ar-orb-3"></div>
-
-            <!-- grid de perspectiva -->
-            <div class="ar-hero-grid" aria-hidden="true"></div>
-
-            <!-- conteúdo do hero -->
-            <div class="ar-hero-content">
-                <span class="ar-eyebrow">Publica&ccedil;&otilde;es</span>
-                <h1>Artigos</h1>
-                <p>Estudo, experimentos e aprendizados que foram ganhando forma no processo.</p>
-            </div>
+        <!-- FAIXA DE TÍTULO -->
+        <section class="page-band">
+            <h1>Artigos</h1>
+            <p>Estudo, experimentos e aprendizados que foram ganhando forma no processo.</p>
         </section>
 
         <!-- CONTEÚDO -->
         <section class="ar-content">
             <div class="section-shell">
+                <div class="entry-list">
 
-                <!-- artigo em destaque -->
-                <a class="ar-featured" href="artigos/pipeline-do-codigo-ao-deploy.html">
-                    <div class="ar-featured-thumb">
-                        <img src="assets/pipeline-desenvolvimento/capa.png" alt="Capa do artigo Pipeline: do código ao deploy" loading="eager" decoding="async">
-                    </div>
-                    <div class="ar-featured-body">
-                        <div class="ar-featured-meta">
-                            <span class="ar-category">Artigo</span>
-                            <time datetime="2026-05-10">10 de maio de 2026</time>
-                        </div>
-                        <h2>Pipeline: do c&oacute;digo ao deploy</h2>
-                        <p>Como o conceito de pipeline aparece no desenvolvimento de software, passando por c&oacute;digo, build, testes e deploy.</p>
-                        <span class="ar-read-link">Ler artigo &rarr;</span>
-                    </div>
-                </a>
-
-                <!-- demais artigos -->
-                <div class="ar-grid">
-
-                    <a class="ar-card" href="artigos/pipeline-origem-do-conceito.html">
-                        <div class="ar-card-thumb">
-                            <img src="assets/Pipeline-de-processadores/capa.png" alt="Capa do artigo Pipeline: a origem do conceito" loading="lazy" decoding="async">
-                        </div>
-                        <div class="ar-card-body">
-                            <div class="ar-card-meta">
-                                <span class="ar-category">Artigo</span>
-                                <time datetime="2026-05-10">10 mai. 2026</time>
+                    <a class="entry-row" href="artigos/pipeline-do-codigo-ao-deploy.html">
+                        <div class="entry-body">
+                            <div class="entry-eyebrow">
+                                <time datetime="2026-05-10">10 de maio de 2026</time>
                             </div>
-                            <h3>Pipeline: a origem do conceito</h3>
-                            <p>Entenda de onde vem a ideia de pipeline e como o paralelismo entre etapas melhora o aproveitamento do processador.</p>
-                            <span class="ar-read-link">Ler artigo &rarr;</span>
+                            <h2 class="entry-title">Pipeline: do c&oacute;digo ao deploy</h2>
+                            <p class="entry-excerpt">Como o conceito de pipeline aparece no desenvolvimento de software na pr&aacute;tica. Usando o Museu de Bugs como fio condutor, o artigo atravessa as decis&otilde;es de planejamento, o c&oacute;digo, o build, os testes e o deploy, mostrando como cada etapa transforma uma ideia em uma aplica&ccedil;&atilde;o rodando em produ&ccedil;&atilde;o.</p>
                         </div>
                     </a>
 
-                    <a class="ar-card" href="artigos/primeiro-crud.html">
-                        <div class="ar-card-thumb">
-                            <img src="assets/primeiro-crud/capa_artigo.png" alt="Capa do artigo Primeiro CRUD?" loading="lazy" decoding="async">
-                        </div>
-                        <div class="ar-card-body">
-                            <div class="ar-card-meta">
-                                <span class="ar-category">Artigo</span>
-                                <time datetime="2026-03-19">19 mar. 2026</time>
+                    <a class="entry-row" href="artigos/pipeline-origem-do-conceito.html">
+                        <div class="entry-body">
+                            <div class="entry-eyebrow">
+                                <time datetime="2026-05-10">10 de maio de 2026</time>
                             </div>
-                            <h3>Primeiro CRUD?</h3>
-                            <p>Meu primeiro projeto real em Java, passando por Maven, MySQL, JPA, Hibernate, valida&ccedil;&otilde;es e v&aacute;rios erros no caminho.</p>
-                            <span class="ar-read-link">Ler artigo &rarr;</span>
+                            <h2 class="entry-title">Pipeline: a origem do conceito</h2>
+                            <p class="entry-excerpt">De onde vem a ideia de pipeline? Este artigo volta &agrave;s origens do conceito nos processadores, explicando como a divis&atilde;o do trabalho em est&aacute;gios como busca, decodifica&ccedil;&atilde;o e execu&ccedil;&atilde;o permite o paralelismo entre instru&ccedil;&otilde;es e melhora o aproveitamento do hardware a cada ciclo de clock.</p>
                         </div>
                     </a>
-
-                    <a class="ar-card" href="artigos/audio-digital.html">
-                        <div class="ar-card-thumb">
-                            <img src="assets/audio-digital/tumb1.png" alt="Capa do artigo 44.100 Fotos Por Segundo" loading="lazy" decoding="async">
-                        </div>
-                        <div class="ar-card-body">
-                            <div class="ar-card-meta">
-                                <span class="ar-category">Artigo</span>
-                                <time datetime="2025-11-02">2 nov. 2025</time>
+                    <a class="entry-row" href="artigos/audio-digital.html">
+                        <div class="entry-body">
+                            <div class="entry-eyebrow">
+                                <time datetime="2025-11-02">2 de novembro de 2025</time>
                             </div>
-                            <h3>44.100 Fotos Por Segundo</h3>
-                            <p>Descubra como funciona a convers&atilde;o de &aacute;udio anal&oacute;gico para digital, passando por amostragem, quantiza&ccedil;&atilde;o e bits.</p>
-                            <span class="ar-read-link">Ler artigo &rarr;</span>
+                            <h2 class="entry-title">44.100 Fotos Por Segundo</h2>
+                            <p class="entry-excerpt">Como a m&uacute;sica sai do mundo f&iacute;sico e vira n&uacute;mero? Este artigo explica a convers&atilde;o anal&oacute;gico-digital na pr&aacute;tica: amostragem, quantiza&ccedil;&atilde;o, o teorema de Nyquist-Shannon e o motivo de um CD capturar exatamente 44.100 fotografias do som por segundo.</p>
                         </div>
                     </a>
 

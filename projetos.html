@@ -21,20 +21,19 @@
     <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="brand" aria-label="HenderLab">
-                <span class="brand-text">HenderLab</span>
+                <span class="brand-text">HENDERLAB</span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">In&iacute;cio</a></li>
                 <li><a href="artigos.html">Artigos</a></li>
                 <li><a href="projetos.html" class="is-active">Projetos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
                 <li>
                     <a href="https://github.com/hendersobrinho" class="nav-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Henderson">
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
@@ -48,81 +47,59 @@
 
     <main>
 
-        <!-- HERO -->
-        <section class="pj-hero">
-            <div class="ar-orb ar-orb-1" aria-hidden="true"></div>
-            <div class="ar-orb ar-orb-2" aria-hidden="true"></div>
-            <div class="pj-hero-dots" aria-hidden="true"></div>
-            <div class="pj-hero-inner">
-                <span class="pj-hero-eyebrow">Em constru&ccedil;&atilde;o</span>
-                <h1>Projetos</h1>
-                <p>Projetos reais organizados como um arquivo vivo do que estou estudando e construindo.</p>
-            </div>
+        <!-- FAIXA DE TÍTULO -->
+        <section class="page-band">
+            <h1>Projetos</h1>
+            <p>Projetos reais organizados como um arquivo vivo do que estou estudando e construindo.</p>
         </section>
 
         <section class="pj-section">
             <div class="section-shell">
 
-                <div class="pj-header" style="display:none;">
-                    <span class="pj-header-eyebrow">Em construção</span>
-                    <h1>Projetos</h1>
-                    <p>Projetos reais organizados como um arquivo vivo do que estou estudando e construindo.</p>
-                </div>
-
-                <div class="pj-grid" aria-label="Lista de projetos">
+                <div class="entry-list" aria-label="Lista de projetos">
 
                     <!-- Museu de Bugs -->
-                    <article class="pj-card" style="--pj-accent: #f59e0b; --pj-accent-dim: rgba(245,158,11,0.12);">
-                        <div class="pj-card-logo">
-                            <img src="assets/home/museu-de-bugs-logo.png" alt="Logo do Museu de Bugs">
-                        </div>
-                        <div class="pj-card-body">
-                            <span class="pj-card-tag">ASP.NET Core &bull; Angular &bull; PostgreSQL</span>
-                            <h2>Museu de Bugs</h2>
-                            <p>Uma cole&ccedil;&atilde;o p&uacute;blica de bugs reais com contexto, causa e solu&ccedil;&atilde;o documentados. Porque erro tamb&eacute;m &eacute; parte do aprendizado.</p>
-                            <div class="pj-card-links">
-                                <a href="projetos/museu-de-bugs.html" class="pj-link-primary">Detalhes</a>
-                                <a href="https://bugs.henderlab.com.br" class="pj-link-ghost" target="_blank" rel="noopener">Ver projeto ↗</a>
-                                <a href="https://github.com/hendersobrinho/MuseuDeBugs" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
+                    <div class="entry-row">
+                        <div class="entry-body">
+                            <span class="entry-eyebrow">ASP.NET Core &bull; Angular &bull; PostgreSQL</span>
+                            <h2 class="entry-title"><a href="projetos/museu-de-bugs.html">Museu de Bugs</a></h2>
+                            <p class="entry-excerpt">Uma cole&ccedil;&atilde;o p&uacute;blica de bugs reais com contexto, causa e solu&ccedil;&atilde;o documentados. Porque erro tamb&eacute;m &eacute; parte do aprendizado.</p>
+                            <div class="entry-links">
+                                <a href="projetos/museu-de-bugs.html">Detalhes</a>
+                                <a href="https://bugs.henderlab.com.br" target="_blank" rel="noopener">Ver projeto ↗</a>
+                                <a href="https://github.com/hendersobrinho/MuseuDeBugs" target="_blank" rel="noopener">GitHub</a>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- DocFlow -->
-                    <article class="pj-card" style="--pj-accent: #2563eb; --pj-accent-dim: rgba(37,99,235,0.12);">
-                        <div class="pj-card-logo">
-                            <img src="assets/home/DocFLow.svg" alt="Logo do DocFlow">
-                        </div>
-                        <div class="pj-card-body">
-                            <span class="pj-card-tag">Python &bull; Tkinter &bull; SQLite</span>
-                            <h2>DocFlow</h2>
-                            <p>Aplica&ccedil;&atilde;o desktop local para controle mensal de documentos empresariais. Substitui planilhas por um fluxo simples e organizado.</p>
-                            <div class="pj-card-links">
-                                <a href="projetos/docflow.html" class="pj-link-primary">Detalhes</a>
-                                <a href="https://github.com/hendersobrinho/g-docs" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
+                    <div class="entry-row">
+                        <div class="entry-body">
+                            <span class="entry-eyebrow">Python &bull; Tkinter &bull; SQLite</span>
+                            <h2 class="entry-title"><a href="projetos/docflow.html">DocFlow</a></h2>
+                            <p class="entry-excerpt">Aplica&ccedil;&atilde;o desktop local para controle mensal de documentos empresariais. Substitui planilhas por um fluxo simples e organizado.</p>
+                            <div class="entry-links">
+                                <a href="projetos/docflow.html">Detalhes</a>
+                                <a href="https://github.com/hendersobrinho/g-docs" target="_blank" rel="noopener">GitHub</a>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- Caderno Vivo -->
-                    <article class="pj-card" style="--pj-accent: #7c3aed; --pj-accent-dim: rgba(124,58,237,0.12);">
-                        <div class="pj-card-logo">
-                            <img src="assets/home/caderno-vivo.svg" alt="Logo do Caderno Vivo">
-                        </div>
-                        <div class="pj-card-body">
-                            <span class="pj-card-tag">ASP.NET Razor Pages &bull; SQLite &bull; Bootstrap</span>
-                            <h2>Caderno Vivo</h2>
-                            <p>App local de organiza&ccedil;&atilde;o de estudos com cron&ocirc;metro por bloco, dashboard semanal e cronograma gerado por IA. Sem nuvem, sem conta.</p>
-                            <div class="pj-card-links">
-                                <a href="projetos/caderno-vivo.html" class="pj-link-primary">Detalhes</a>
-                                <a href="https://github.com/hendersobrinho/Caderno-Vivo" class="pj-link-ghost" target="_blank" rel="noopener">GitHub</a>
+                    <div class="entry-row">
+                        <div class="entry-body">
+                            <span class="entry-eyebrow">ASP.NET Razor Pages &bull; SQLite &bull; Bootstrap</span>
+                            <h2 class="entry-title"><a href="projetos/caderno-vivo.html">Caderno Vivo</a></h2>
+                            <p class="entry-excerpt">App local de organiza&ccedil;&atilde;o de estudos com cron&ocirc;metro por bloco, dashboard semanal e cronograma gerado por IA. Sem nuvem, sem conta.</p>
+                            <div class="entry-links">
+                                <a href="projetos/caderno-vivo.html">Detalhes</a>
+                                <a href="https://github.com/hendersobrinho/Caderno-Vivo" target="_blank" rel="noopener">GitHub</a>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                 </div>
             </div>
-        </section>
         </section>
 
     </main>

@@ -1,7 +1,7 @@
 ---
 title: "Primeiro CRUD?"
 date: "2026-03-19"
-excerpt: "Meu primeiro projeto real em Java, passando por Maven, MySQL, JPA, Hibernate, validacoes e varios erros no caminho."
+excerpt: "Meu primeiro projeto real em Java: um CRUD completo passando por Maven, MySQL, JPA e Hibernate. Um relato honesto do processo, com os erros de configuração, os conceitos que precisei aprender no caminho, as validações e o que ficou de aprendizado no final."
 coverImage: "assets/primeiro-crud/capa_artigo.png"
 category: "Artigo"
 slug: "primeiro-crud"
@@ -14,7 +14,6 @@ keywords:
   - "MySQL"
   - "Bean Validation"
   - "HenderLab"
-aside: "Primeiro projeto real em Java, com Maven, MySQL, JPA, Hibernate, validações e os erros que vieram junto."
 ---
 
 <p>Após um tempo, algumas matérias e um curso depois, entrei de vez no mundo da tecnologia. Confesso que programar, no começo, me parecia muito abstrato, mas, à medida que consolido minha lógica de programação, aprender uma linguagem nova se torna algo natural. Afinal de contas, sabemos como precisamos escrever; em qual língua escrevemos se torna apenas um detalhe pesquisável.</p>

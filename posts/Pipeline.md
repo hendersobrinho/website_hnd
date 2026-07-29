@@ -2,7 +2,7 @@
 title: "Pipeline: a origem do conceito"
 pageTitle: "Pipeline: a origem do conceito"
 date: "2026-05-10"
-excerpt: "Entenda de onde vem a ideia de pipeline e como o paralelismo entre etapas melhora o aproveitamento do processador."
+excerpt: "De onde vem a ideia de pipeline? Este artigo volta às origens do conceito nos processadores, explicando como a divisão do trabalho em estágios como busca, decodificação e execução permite o paralelismo entre instruções e melhora o aproveitamento do hardware a cada ciclo de clock."
 coverImage: "assets/Pipeline-de-processadores/capa.png"
 category: "Artigo"
 slug: "pipeline-origem-do-conceito"
@@ -13,7 +13,6 @@ keywords:
   - "processadores"
   - "paralelismo"
   - "HenderLab"
-aside: "Uma visão introdutória sobre pipeline, microprogramação, estágios IF/ID/EX/MEM/WB e o ganho de throughput no processador."
 styles:
   - "assets/css/tooltips.css"
   - "assets/css/pipeline-article.css"

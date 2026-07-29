@@ -257,27 +257,18 @@ function formatArticleDate(date) {
 
 function createArticleCardMarkup(article) {
     const publishedDate = formatArticleDate(article.date);
-    const coverImage = article.coverImage || "assets/branding/henderlabwi.svg";
     const excerpt = article.excerpt || "Sem resumo cadastrado.";
-    const category = article.category || "Artigo";
 
     return `
-        <article class="article-card">
-            <a class="article-card-link" href="${article.url}">
-                <div class="article-thumb">
-                    <img src="${coverImage}" alt="Capa do artigo ${article.title}" loading="lazy" decoding="async">
+        <a class="entry-row" href="${article.url}">
+            <div class="entry-body">
+                <h3 class="entry-title">${article.title}</h3>
+                <div class="entry-eyebrow">
+                    <time datetime="${article.date || ""}">${publishedDate}</time>
                 </div>
-                <div class="article-content">
-                    <div class="article-meta-top">
-                        <span class="article-category">${category}</span>
-                        <time class="article-date" datetime="${article.date || ""}">${publishedDate}</time>
-                    </div>
-                    <h3 class="article-title">${article.title}</h3>
-                    <p class="article-excerpt">${excerpt}</p>
-                    <span class="article-link">Ler artigo</span>
-                </div>
-            </a>
-        </article>
+                <p class="entry-excerpt">${excerpt}</p>
+            </div>
+        </a>
     `;
 }
 
@@ -298,116 +289,7 @@ function renderRecentArticles() {
     recentArticlesContainer.innerHTML = latestArticles.map(createArticleCardMarkup).join("");
 }
 
-function renderArticlesList() {
-    const articlesListContainer = document.querySelector("[data-articles-list]");
-
-    if (!articlesListContainer) {
-        return;
-    }
-
-    const orderedArticles = sortArticlesByDate(siteArticles);
-
-    if (!orderedArticles.length) {
-        articlesListContainer.innerHTML = '<p class="articles-empty">Nenhum artigo publicado ainda.</p>';
-        return;
-    }
-
-    articlesListContainer.innerHTML = orderedArticles.map(createArticleCardMarkup).join("");
-}
-
-function updateArticleCount() {
-    const articleCount = siteArticles.length;
-    const countElement = document.querySelector("[data-article-count]");
-    const countLabelElement = document.querySelector("[data-article-count-label]");
-
-    if (countElement) {
-        countElement.textContent = String(articleCount).padStart(2, "0");
-    }
-
-    if (countLabelElement) {
-        countLabelElement.textContent = articleCount === 1 ? "artigo publicado" : "artigos publicados";
-    }
-}
-
-function setupHeroLogoReplay() {
-    const hero = document.querySelector(".hero-home");
-
-    if (!hero) {
-        return;
-    }
-
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const animatedElements = document.querySelectorAll(
-        ".hero-home .hero-logo-mark, .hero-home .hero-logo-mark > path, .hero-home .hero-title, .hero-home .hero-brand-copy, .start-path-card"
-    );
-    let hasScrolledAway = false;
-    let frameId = 0;
-
-    const getAwayOffset = () => Math.min(260, Math.max(130, hero.offsetHeight * 0.32));
-
-    const restartHeroAnimation = () => {
-        animatedElements.forEach((element) => {
-            element.style.animation = "none";
-        });
-
-        void hero.offsetWidth;
-
-        animatedElements.forEach((element) => {
-            element.style.animation = "";
-        });
-    };
-
-    const syncHeroLogoState = () => {
-        frameId = 0;
-
-        if (motionQuery.matches) {
-            hasScrolledAway = false;
-            hero.classList.remove("hero-logo-away");
-            return;
-        }
-
-        if (window.scrollY > getAwayOffset()) {
-            hasScrolledAway = true;
-            hero.classList.add("hero-logo-away");
-            return;
-        }
-
-        if (hasScrolledAway && window.scrollY <= 24) {
-            hasScrolledAway = false;
-            hero.classList.remove("hero-logo-away");
-            restartHeroAnimation();
-            return;
-        }
-
-        if (!hasScrolledAway) {
-            hero.classList.remove("hero-logo-away");
-        }
-    };
-
-    const requestSync = () => {
-        if (frameId) {
-            return;
-        }
-
-        frameId = window.requestAnimationFrame(syncHeroLogoState);
-    };
-
-    window.addEventListener("scroll", requestSync, { passive: true });
-    window.addEventListener("resize", requestSync);
-
-    if (typeof motionQuery.addEventListener === "function") {
-        motionQuery.addEventListener("change", requestSync);
-    } else if (typeof motionQuery.addListener === "function") {
-        motionQuery.addListener(requestSync);
-    }
-
-    syncHeroLogoState();
-}
-
 renderRecentArticles();
-renderArticlesList();
-updateArticleCount();
-setupHeroLogoReplay();
 themeService.mountToggle();
 comfortService.mountToggle();
 
@@ -416,33 +298,3 @@ window.addEventListener("scroll", () => {
         navbar.classList.toggle("is-scrolled", window.scrollY > 24);
     }
 });
-const stackCarousel = document.querySelector("#stackCarousel");
-const stackPrevButton = document.querySelector(".stack-nav-prev");
-const stackNextButton = document.querySelector(".stack-nav-next");
-
-if (stackCarousel && stackPrevButton && stackNextButton) {
-    const getScrollAmount = () => {
-        const firstCard = stackCarousel.querySelector(".stack-card");
-        const gap = 16;
-
-        if (!firstCard) {
-            return 320;
-        }
-
-        return firstCard.offsetWidth + gap;
-    };
-
-    stackPrevButton.addEventListener("click", () => {
-        stackCarousel.scrollBy({
-            left: -getScrollAmount(),
-            behavior: "smooth"
-        });
-    });
-
-    stackNextButton.addEventListener("click", () => {
-        stackCarousel.scrollBy({
-            left: getScrollAmount(),
-            behavior: "smooth"
-        });
-    });
-}

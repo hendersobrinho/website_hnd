@@ -33,6 +33,8 @@
     --comfort-overlay: transparent;
     --comfort-surface-wash: transparent;
     --comfort-contrast-wash: transparent;
+    --texture-cube-edge: #C7C4C0;
+    --texture-cube-shade: #B0ADA8;
 
     /* Tokens de tipografia */
     --font-sans: "Source Sans 3", "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -111,6 +113,8 @@
     --comfort-overlay: transparent;
     --comfort-surface-wash: transparent;
     --comfort-contrast-wash: transparent;
+    --texture-cube-edge: #38363A;
+    --texture-cube-shade: #4A484C;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.28);
     --shadow-lg: 0 22px 54px rgba(0, 0, 0, 0.32);
@@ -143,6 +147,8 @@
         --comfort-overlay: transparent;
         --comfort-surface-wash: transparent;
         --comfort-contrast-wash: transparent;
+        --texture-cube-edge: #38363A;
+        --texture-cube-shade: #4A484C;
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
         --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.28);
         --shadow-lg: 0 22px 54px rgba(0, 0, 0, 0.32);
@@ -1051,9 +1057,52 @@ a.recent-card:hover {
     background: var(--bg);
 }
 
+/* Textura decorativa nas laterais da leitura: cubos isometricos, visivel so em telas bem largas pra nunca disputar espaco com o texto. */
 .article-main::before,
 .article-main::after {
-    content: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    display: none;
+    pointer-events: none;
+    opacity: 0.85;
+    --cube-s: 72px;
+    background:
+        linear-gradient(30deg, var(--texture-cube-edge) 12%, transparent 12.5%, transparent 87%, var(--texture-cube-edge) 87.5%, var(--texture-cube-edge)),
+        linear-gradient(150deg, var(--texture-cube-edge) 12%, transparent 12.5%, transparent 87%, var(--texture-cube-edge) 87.5%, var(--texture-cube-edge)),
+        linear-gradient(30deg, var(--texture-cube-edge) 12%, transparent 12.5%, transparent 87%, var(--texture-cube-edge) 87.5%, var(--texture-cube-edge)) calc(var(--cube-s) / 2) calc(var(--cube-s) * 0.866),
+        linear-gradient(150deg, var(--texture-cube-edge) 12%, transparent 12.5%, transparent 87%, var(--texture-cube-edge) 87.5%, var(--texture-cube-edge)) calc(var(--cube-s) / 2) calc(var(--cube-s) * 0.866),
+        linear-gradient(60deg, var(--texture-cube-shade) 25%, transparent 25.5%, transparent 75%, var(--texture-cube-shade) 75%, var(--texture-cube-shade)),
+        linear-gradient(60deg, var(--texture-cube-shade) 25%, transparent 25.5%, transparent 75%, var(--texture-cube-shade) 75%, var(--texture-cube-shade)) calc(var(--cube-s) / 2) calc(var(--cube-s) * 0.866);
+    background-size: var(--cube-s) calc(var(--cube-s) * 1.732);
+}
+
+.article-main::before {
+    left: 0;
+    -webkit-mask-image: linear-gradient(to right, black 15%, transparent 92%);
+    mask-image: linear-gradient(to right, black 15%, transparent 92%);
+}
+
+.article-main::after {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to left, black 15%, transparent 92%);
+    mask-image: linear-gradient(to left, black 15%, transparent 92%);
+}
+
+@media (min-width: 1600px) {
+    .article-main::before,
+    .article-main::after {
+        display: block;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .article-main::before,
+    .article-main::after {
+        display: none;
+    }
 }
 
 .article-layout {

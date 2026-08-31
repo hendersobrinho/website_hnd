@@ -5,6 +5,14 @@
  */
 window.siteArticles = [
     {
+        "title": "Portas na Prática: o Número que Decide Quem Atende Cada Conexão",
+        "date": "2026-08-31",
+        "excerpt": "O que é, de verdade, uma porta de rede: um campo de 16 bits dentro do cabeçalho TCP/UDP e uma entrada numa tabela que o kernel mantém, não um pino nem um espaço físico. Uma dissecação prática, com terminal de verdade, sobre onde essa informação mora, de onde vêm as convenções de porta 80/443/22 e o que muda com proxy reverso, Docker e firewall.",
+        "coverImage": "assets/portas-de-rede/capa.svg",
+        "category": "Artigo",
+        "url": "artigos/portas-de-rede.html"
+    },
+    {
         "title": "Pipeline: do código ao deploy",
         "date": "2026-05-10",
         "excerpt": "Como o conceito de pipeline aparece no desenvolvimento de software na prática. Usando o Museu de Bugs como fio condutor, o artigo atravessa as decisões de planejamento, o código, o build, os testes e o deploy, mostrando como cada etapa transforma uma ideia em uma aplicação rodando em produção.",

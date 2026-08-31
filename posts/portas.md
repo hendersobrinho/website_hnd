@@ -1,0 +1,176 @@
+---
+title: "Portas na Prática: o Número que Decide Quem Atende Cada Conexão"
+date: "2026-08-31"
+excerpt: "O que é, de verdade, uma porta de rede: um campo de 16 bits dentro do cabeçalho TCP/UDP e uma entrada numa tabela que o kernel mantém, não um pino nem um espaço físico. Uma dissecação prática, com terminal de verdade, sobre onde essa informação mora, de onde vêm as convenções de porta 80/443/22 e o que muda com proxy reverso, Docker e firewall."
+coverImage: "assets/portas-de-rede/capa.svg"
+category: "Artigo"
+slug: "portas-de-rede"
+description: "Como portas de rede funcionam de verdade: onde o sistema operacional guarda essa informação, de onde vêm as convenções de porta 80, 443 e 22, e como isso aparece na prática com TcpListener, nginx, Docker e firewall."
+keywords:
+  - "portas"
+  - "portas de rede"
+  - "TCP"
+  - "UDP"
+  - "socket"
+  - "firewall"
+  - "nginx"
+  - "docker"
+  - "IANA"
+  - "HenderLab"
+styles:
+  - "assets/css/tooltips.css"
+  - "assets/css/portas-diagram.css"
+  - "assets/css/port-demux-lab.css"
+  - "assets/css/port-ranges-lab.css"
+scripts:
+  - "assets/js/tooltips.js"
+  - "assets/js/port-demux-lab.js"
+  - "assets/js/port-ranges-lab.js"
+---
+
+<p>No artigo sobre <a href="/artigos/tcp-cliente-servidor.html">TCP</a>, a porta apareceu só de passagem: "uma porta TCP é exatamente isso, um número que identifica qual ramal da máquina está esperando ligação." Essa frase ficou martelando, porque porta é uma dessas palavras que todo mundo usa com naturalidade (abrir uma porta, fechar uma porta, a porta 80) sem parar pra notar que não existe porta nenhuma, fisicamente, em lugar algum. Não tem pino na placa de rede, não tem espaço reservado no cabo, não tem uma gaveta correspondente dentro do computador. Porta é um número de 16 bits dentro de um cabeçalho, e uma entrada numa tabela que o sistema operacional mantém na memória. Esse artigo é sobre destrinchar esse número: onde ele mora de fato, de onde vieram as convenções de usar 80 pra isso e 443 pra aquilo, e o que acontece na prática quando dois programas disputam o mesmo número.</p>
+
+<h2>Uma porta não é um lugar, é um número num cabeçalho</h2>
+<p>Todo segmento <abbr class="term-tooltip" data-tooltip="Transmission Control Protocol.">TCP</abbr> e todo datagrama <abbr class="term-tooltip" data-tooltip="User Datagram Protocol.">UDP</abbr> carrega, nos primeiros 4 bytes do cabeçalho, dois campos de 16 bits: porta de origem e porta de destino. Só isso. Um número de 0 a 65535 dizendo de onde o dado saiu e pra onde ele deveria ir, dentro daquela máquina específica. Se o <span class="term-tooltip" data-tooltip="Endereço lógico que identifica uma máquina (ou interface de rede) dentro de uma rede.">endereço IP</span> identifica o prédio, a porta identifica o apartamento. O carteiro (a placa de rede, o roteador, tudo que fica no caminho) só sabe entregar a carta no prédio certo; descobrir em qual apartamento aquela carta deveria cair é trabalho de outra camada: o síndico do prédio, ou seja, o sistema operacional da máquina que recebeu.</p>
+<p>É por isso que uma porta sozinha não identifica nada de único no mundo. A porta 443 do seu notebook e a porta 443 do servidor do banco não têm relação nenhuma entre si, exceto a coincidência do número. O que dá significado a uma porta é sempre o contexto: qual máquina, qual protocolo (TCP ou UDP contam como espaços separados: nada impede um programa de ouvir UDP/53 e outro programa de ouvir TCP/53 na mesma máquina, ao mesmo tempo, sem conflito nenhum) e, no caso de uma conexão já aberta, também quem está do outro lado.</p>
+
+<h2>Onde essa informação realmente mora</h2>
+<p>A resposta é chata e concreta: dentro do kernel, numa tabela de sockets mantida em memória. No Linux, dá pra espiar uma versão bruta dessa tabela direto em <code>/proc/net/tcp</code> e <code>/proc/net/udp</code>, embora ninguém leia isso à mão no dia a dia. O jeito prático é uma ferramenta como <code>ss</code> (ou o mais antigo <code>netstat</code>), que só formata o conteúdo dessa mesma tabela. Cada linha representa um socket, e a peça central de cada socket é uma combinação de cinco valores: protocolo, IP local, porta local, IP remoto e porta remota. É essa combinação, a <span class="term-tooltip" data-tooltip="A tupla (protocolo, IP local, porta local, IP remoto, porta remota) que identifica de forma única um socket dentro do sistema operacional.">tupla de cinco elementos</span>, que o kernel usa pra decidir, a cada pacote que chega, pra qual processo entregar o conteúdo.</p>
+<p>Quando um pacote chega na placa de rede com destino a uma porta específica, o kernel confere essa tabela. Se existe um socket em <code>LISTEN</code> casando com aquele protocolo e aquela porta, o pacote vira trabalho pra esse processo. Se não existe nada, o kernel nem tenta insistir: no TCP, ele responde na hora com um pacote <abbr class="term-tooltip" data-tooltip="Reset. Flag do TCP que encerra uma conexão de forma abrupta, geralmente usada quando não há socket escutando na porta de destino.">RST</abbr>, recusando a conexão antes dela existir de verdade. É exatamente o "connection refused" que qualquer um já viu alguma vez tentando acessar um serviço que não estava no ar.</p>
+
+<div class="port-demux-lab" data-port-demux-lab></div>
+
+<p>Vale notar um detalhe que costuma confundir: só pode existir <strong>um</strong> socket em <code>LISTEN</code> por combinação de protocolo e porta (falando de forma simplificada; existem exceções como <code>SO_REUSEPORT</code>, fora do escopo aqui). Mas isso não significa que uma porta só atenda um cliente por vez. Um servidor web escutando na porta 80 aceita milhares de conexões simultâneas exatamente porque cada conexão aceita ganha uma tupla própria, com um IP e uma porta remota diferentes do lado do cliente. A porta 80 do lado do servidor continua sendo sempre a mesma; o que muda, e garante que as conexões não se misturem, é o lado de fora da tupla. É a mesma lógica do <code>AcceptTcpClientAsync()</code> do TcpDemo: cada chamada devolve um <code>TcpClient</code> novo, com sua própria tupla, mesmo que todos tenham chegado na mesma porta 8080.</p>
+
+<h2>Faixas de portas e de onde vêm as convenções</h2>
+<p>Nada no TCP ou no UDP obriga a porta 80 a significar HTTP. O protocolo de transporte não lê, nem se importa com, o número: pra ele, 80 é só um inteiro como outro qualquer. O significado vem inteiramente de uma convenção social, documentada e mantida pela <abbr class="term-tooltip" data-tooltip="Internet Assigned Numbers Authority. Organização responsável por coordenar a alocação global de números usados em protocolos de internet, incluindo portas.">IANA</abbr>, e reforçada por décadas de ferramentas assumindo esse número por padrão.</p>
+<p>O espaço de 0 a 65535 é dividido, por convenção, em três faixas:</p>
+<ul>
+<li><strong>Portas conhecidas, 0 a 1023.</strong> Historicamente, em sistemas Unix, só um processo com privilégio de root conseguia abrir um socket nessa faixa, uma regra de segurança dos anos 1980 pra dificultar que qualquer usuário comum se passasse por um serviço do sistema. É por isso que rodar um servidor web direto na porta 80 em desenvolvimento costuma pedir <code>sudo</code>, e por isso que ferramentas de desenvolvimento preferem uma porta alta qualquer.</li>
+<li><strong>Portas registradas, 1024 a 49151.</strong> Também catalogadas pela IANA, mas sem exigir privilégio nenhum pra usar. É onde vivem bancos de dados, filas, APIs e praticamente todo software que não é um serviço "clássico" da internet.</li>
+<li><strong>Portas dinâmicas ou efêmeras, 49152 a 65535.</strong> Formalizadas na <span class="term-tooltip" data-tooltip="RFC 6335, de 2011, formalizou as faixas de portas conhecidas, registradas e dinâmicas mantidas pela IANA.">RFC 6335</span>, de 2011, embora a prática já existisse muito antes. Ninguém registra nada nessa faixa: o sistema operacional escolhe uma porta dali automaticamente, na hora, pro lado que <em>inicia</em> uma conexão.</li>
+</ul>
+
+<div class="port-ranges-lab" data-port-ranges-lab></div>
+
+<p>Essa última faixa é um bom lugar pra parar e conferir a teoria contra a realidade. A recomendação da IANA é 49152 a 65535, mas cada sistema operacional pode configurar sua própria janela. Rodando <code>cat /proc/sys/net/ipv4/ip_local_port_range</code> nesta própria máquina, o intervalo real configurado é <code>32768 60999</code>, o padrão histórico do kernel Linux, bem diferente do que a RFC sugere. É exatamente essa a porta que aparece, escolhida sem aviso, do lado do cliente sempre que <code>ConnectAsync</code> é chamado no TcpDemo: uma porta efêmera, emprestada pelo sistema operacional só pra aquela conversa, e devolvida assim que a conexão fecha.</p>
+
+<h2>Vendo isso no seu próprio terminal</h2>
+<p>Teoria à parte, o jeito mais direto de sentir isso funcionando é reaproveitar o próprio TcpDemo do artigo anterior. Rodando o servidor e checando a tabela de sockets logo em seguida:</p>
+
+```bash
+$ dotnet run --project Server
+[SERVIDOR] Escutando na porta 8080...
+[SERVIDOR] Aguardando conexões (Ctrl+C para parar)
+```
+
+```bash
+$ ss -tulpn | grep 8080
+tcp   LISTEN 0   4096   0.0.0.0:8080   0.0.0.0:*   users:(("Server",pid=221424,fd=41))
+```
+
+<p>Ali estão, lado a lado, exatamente os elementos que este artigo vem descrevendo: o protocolo (<code>tcp</code>), o estado do socket (<code>LISTEN</code>), o endereço e a porta local (<code>0.0.0.0:8080</code>, aceitando qualquer interface) e o processo dono daquele socket, com PID e tudo. Essa mesma informação é o que uma ferramenta como <code>lsof -i :8080</code> mostra de outro ângulo, já ligando a porta diretamente a um processo do sistema operacional.</p>
+<p>Agora o experimento mais didático: tentar subir uma <em>segunda</em> instância do mesmo servidor, com a primeira ainda rodando.</p>
+
+```bash
+$ dotnet run --project Server
+[SERVIDOR] Escutando na porta 8080...
+[SERVIDOR] Aguardando conexões (Ctrl+C para parar)
+
+Unhandled exception. System.Net.Sockets.SocketException (98): Address already in use
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(...)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at System.Net.Sockets.TcpListener.Start(Int32 backlog)
+```
+
+<p>Essa exceção não é um bug do TcpDemo, é o sistema operacional recusando, com toda a razão, duas entradas idênticas na mesma tabela: já existe um socket em <code>LISTEN</code> pra (TCP, 0.0.0.0, 8080), e não pode existir outro igual. A saída, também via terminal, é achar o processo dono da porta e decidir o que fazer com ele:</p>
+
+```bash
+$ lsof -i :8080
+COMMAND   PID USER FD   TYPE DEVICE SIZE/OFF NODE NAME
+Server 221424  hnd 41u  IPv4 1276146    0t0  TCP *:8080 (LISTEN)
+
+$ kill 221424
+```
+
+<p>Depois do <code>kill</code>, a entrada desaparece da tabela e a porta 8080 volta a estar livre pra qualquer processo pedir de novo. Não tem mágica nenhuma acontecendo, só uma tabela sendo atualizada.</p>
+
+<h2>Uma porta escondida atrás de outra: proxy reverso</h2>
+<p>Um problema aparece rápido assim que mais de uma aplicação precisa ficar acessível num mesmo servidor: só uma delas pode segurar a porta 80 (ou a 443) diretamente, e os visitantes esperam acessar o site sem digitar número de porta nenhum na URL. A solução padrão é um <span class="term-tooltip" data-tooltip="Servidor que recebe as requisições em nome de outros servidores internos, encaminhando cada uma pra o destino certo.">proxy reverso</span>: um único processo, como o nginx, segura a 80 e a 443 de verdade, e encaminha cada requisição internamente pra a porta certa de cada aplicação, com base no domínio ou no caminho da URL.</p>
+
+<figure class="portas-diagram">
+  <svg viewBox="0 0 640 220" role="img" aria-labelledby="proxyTitle proxyDesc">
+    <title id="proxyTitle">Proxy reverso remapeando porta</title>
+    <desc id="proxyDesc">Cliente conecta na porta 80 do nginx, que encaminha internamente para a porta 5000 da aplicação, e a resposta volta pelo mesmo caminho.</desc>
+    <rect x="30" y="70" width="140" height="80" rx="8" class="portas-diagram-box"/>
+    <text x="100" y="105" class="portas-diagram-label" text-anchor="middle">Cliente</text>
+    <text x="100" y="125" class="portas-diagram-port" text-anchor="middle">porta efêmera</text>
+    <rect x="250" y="70" width="140" height="80" rx="8" class="portas-diagram-box"/>
+    <text x="320" y="105" class="portas-diagram-label" text-anchor="middle">nginx</text>
+    <text x="320" y="125" class="portas-diagram-port" text-anchor="middle">:80 / :443</text>
+    <rect x="470" y="70" width="140" height="80" rx="8" class="portas-diagram-box"/>
+    <text x="540" y="105" class="portas-diagram-label" text-anchor="middle">App .NET</text>
+    <text x="540" y="125" class="portas-diagram-port" text-anchor="middle">127.0.0.1:5000</text>
+    <line x1="170" y1="95" x2="250" y2="95" class="portas-diagram-arrow" marker-end="url(#pArrow)"/>
+    <text x="210" y="85" class="portas-diagram-step" text-anchor="middle">GET /</text>
+    <line x1="390" y1="110" x2="470" y2="110" class="portas-diagram-arrow" marker-end="url(#pArrow)"/>
+    <text x="430" y="100" class="portas-diagram-step" text-anchor="middle">proxy_pass</text>
+    <line x1="470" y1="135" x2="390" y2="135" class="portas-diagram-arrow-dim" marker-end="url(#pArrow)"/>
+    <line x1="250" y1="150" x2="170" y2="150" class="portas-diagram-arrow-dim" marker-end="url(#pArrow)"/>
+    <text x="320" y="175" class="portas-diagram-step" text-anchor="middle">resposta volta pelo mesmo caminho</text>
+    <defs>
+      <marker id="pArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" class="portas-diagram-arrowhead"/>
+      </marker>
+    </defs>
+  </svg>
+  <figcaption>O cliente só conhece a porta 80. A porta 5000 nunca aparece pra fora, só entre nginx e a aplicação.</figcaption>
+</figure>
+
+<p>Do lado da aplicação, isso costuma vir acompanhado de outra decisão deliberada: fazer o <code>TcpListener</code> escutar em <code>127.0.0.1</code> em vez de <code>IPAddress.Any</code>. Rodar em <code>127.0.0.1</code> significa que a aplicação só aceita conexões vindas da própria máquina, o que, na prática, isola completamente o acesso externo direto: mesmo que alguém descubra que a porta 5000 existe, o pacote nunca vai chegar até ela vindo de fora, porque não é a interface de rede externa que está com o socket em <code>LISTEN</code>. Todo o tráfego de fora é obrigado a passar pelo nginx primeiro.</p>
+
+<h2>Portas dentro de uma caixa: Docker</h2>
+<p>Contêineres levam essa ideia de isolamento um passo além. Cada contêiner Docker tem seu próprio <span class="term-tooltip" data-tooltip="Mecanismo do kernel Linux que isola recursos de rede (interfaces, tabelas de roteamento, portas) entre grupos de processos.">namespace de rede</span>, o que significa uma tabela de sockets inteiramente separada da do host. Um contêiner pode escutar na porta 80 internamente sem conflito nenhum com um servidor que já esteja usando a porta 80 direto no host, porque, do ponto de vista do kernel, são duas tabelas completamente diferentes.</p>
+<p>O problema, então, é o oposto do proxy reverso: como alguém de fora do contêiner alcança um serviço que só existe dentro de um namespace isolado? A resposta é mapeamento de porta, declarado explicitamente:</p>
+
+```bash
+docker run -p 8080:80 nginx
+```
+
+<p>Esse <code>-p 8080:80</code> diz: qualquer coisa que chegar na porta 8080 do host deve ser redirecionada pra porta 80 dentro do contêiner. É o Docker fazendo, via regras de <abbr class="term-tooltip" data-tooltip="Network Address Translation. Técnica que reescreve endereços (e portas) de pacotes de rede em trânsito.">NAT</abbr>, exatamente o mesmo tipo de remapeamento que o nginx faz na camada de aplicação, só que uma camada mais abaixo, entre o host e o namespace de rede do contêiner. O mesmo conceito aparece de forma declarativa num <code>docker-compose.yml</code>:</p>
+
+```yaml
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+```
+
+<p>Depois de subir, <code>docker port &lt;container&gt;</code> mostra exatamente esse mapeamento, confirmando qual porta do host está de fato amarrada a qual porta interna do contêiner.</p>
+
+<h2>Porta aberta não é a mesma coisa que porta alcançável</h2>
+<p>"Porta aberta" é uma expressão que mistura duas coisas diferentes, e separar essas duas coisas resolve boa parte da confusão que aparece na hora de debugar rede. A primeira é puramente local: existe algum processo com um socket em <code>LISTEN</code> naquela porta? Isso é o que <code>ss</code> e <code>lsof</code> respondem, e é inteiramente uma questão de sistema operacional, sem nada a ver com rede externa. A segunda é uma questão de política de rede: mesmo que exista um socket escutando, o firewall permite que um pacote vindo de fora chegue até ele?</p>
+<p>No Linux, uma ferramenta comum pra essa segunda camada é o <code>ufw</code>, uma interface simplificada pra regras de <code>iptables</code>/<code>nftables</code>:</p>
+
+```bash
+$ sudo ufw allow 22
+$ sudo ufw deny 8080
+$ sudo ufw status verbose
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW IN    Anywhere
+8080                       DENY IN     Anywhere
+```
+
+<p>Com essas regras, a porta 22 continua tendo, ou não, um processo escutando nela (isso o firewall nem sabe dizer), mas o tráfego chegando de fora com destino a ela é permitido. A porta 8080, mesmo que o TcpDemo esteja rodando e com um socket perfeitamente saudável em <code>LISTEN</code>, fica inacessível pra qualquer conexão originada fora da própria máquina, porque o firewall descarta o pacote antes dele sequer chegar na camada de transporte. São dois sistemas diferentes, respondendo perguntas diferentes, e "a porta está aberta" costuma significar coisas distintas dependendo de qual das duas perguntas alguém está realmente fazendo.</p>
+
+<h2>Os limites desse mergulho</h2>
+<p>Esse artigo parou na fronteira de uma única máquina: o kernel local, o namespace de um contêiner, o firewall daquele host. Existe ainda outra camada de mapeamento de porta acontecendo do lado de fora, em qualquer roteador doméstico fazendo <span class="term-tooltip" data-tooltip="Network Address Translation. No contexto de um roteador doméstico, traduz o IP público único da conexão para os IPs privados de cada dispositivo da rede local.">NAT</span> entre a internet pública e a rede local, geralmente configurável como "encaminhamento de porta" no painel do roteador. O princípio é o mesmo mapeamento externo/interno do Docker, só que numa fronteira de rede física em vez de um namespace do kernel, e fica de fora do escopo deste artigo.</p>
+
+<h2>Conclusão</h2>
+<p>Dá pra resumir porta numa frase seca: é um campo de 16 bits dentro de um cabeçalho, mais uma entrada numa tabela que o kernel mantém, mais uma convenção social sobre qual número deveria significar o quê. Nenhuma dessas três coisas é imposta pelo protocolo. TCP e UDP não sabem, nem se importam, que a porta 80 "é" HTTP: isso é acordo entre quem escreve servidor e quem escreve cliente, catalogado pela IANA e reforçado por décadas de ferramentas assumindo esse número por padrão. Entender essa separação muda a leitura de qualquer erro de rede: "connection refused" numa porta significa, literalmente, que nenhuma entrada da tabela de sockets bateu com aquele número; "address already in use" significa que já existe uma entrada lá, exclusiva, e o sistema operacional não vai permitir duas iguais.</p>
+<p>É também a peça que fecha o TcpDemo por inteiro. Quando o servidor chama <code>new TcpListener(IPAddress.Any, 8080)</code>, ele está pedindo ao kernel uma entrada exclusiva naquela tabela. Quando o cliente chama <code>ConnectAsync</code>, é o próprio kernel que escolhe, sem perguntar, uma porta efêmera pro lado que inicia a conversa. Handshake, framing, e tudo o que os próximos artigos da série ainda vão cobrir sobre TLS, WebSocket e gRPC, continuam acontecendo por cima dessa mesma tabela, identificada sempre pela mesma combinação: protocolo, IP e porta.</p>

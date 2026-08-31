@@ -1,0 +1,38 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1536" height="1024" fill="#1C1B1A"/>
+  <g opacity="0.5">
+    <circle cx="1180" cy="260" r="420" fill="#34322F"/>
+    <circle cx="1180" cy="260" r="420" fill="url(#fade)"/>
+  </g>
+  <defs>
+    <radialGradient id="fade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1C1B1A" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1C1B1A" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <g fill="none" stroke="#5C5A58" stroke-width="3">
+    <rect x="120" y="392" width="150" height="150" rx="10"/>
+    <rect x="300" y="392" width="150" height="150" rx="10"/>
+    <rect x="480" y="392" width="150" height="150" rx="10"/>
+    <rect x="660" y="392" width="150" height="150" rx="10"/>
+    <rect x="840" y="392" width="150" height="150" rx="10"/>
+  </g>
+  <rect x="480" y="392" width="150" height="150" rx="10" fill="#EDEBE8" stroke="#EDEBE8"/>
+
+  <g font-family="Monaco, Consolas, monospace" fill="#A8A5A1" font-size="26">
+    <text x="145" y="470">21</text>
+    <text x="320" y="470">22</text>
+    <text x="925" y="470">443</text>
+  </g>
+  <text x="505" y="480" font-family="Monaco, Consolas, monospace" fill="#1C1B1A" font-size="30" font-weight="700" text-anchor="middle">80</text>
+
+  <g font-family="Monaco, Consolas, monospace" fill="#5C5A58" font-size="22" letter-spacing="2">
+    <text x="120" y="360">0</text>
+    <text x="920" y="360">65535</text>
+  </g>
+  <line x1="120" y1="342" x2="990" y2="342" stroke="#38363A" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <text x="120" y="700" font-family="'Source Sans 3', sans-serif" fill="#EDEBE8" font-size="76" font-weight="800">PORTAS</text>
+  <text x="120" y="750" font-family="Monaco, Consolas, monospace" fill="#A8A5A1" font-size="26">o número que decide quem atende cada conexão</text>
+</svg>

@@ -10,7 +10,7 @@
 
   <url>
     <loc>https://henderlab.com.br/artigos.html</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </url>
 
   <url>
@@ -31,6 +31,16 @@
   <url>
     <loc>https://henderlab.com.br/projetos/caderno-vivo.html</loc>
     <lastmod>2026-05-03</lastmod>
+  </url>
+
+  <url>
+    <loc>https://henderlab.com.br/artigos/portas-de-rede.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/portas-de-rede/capa.svg</image:loc>
+      <image:title>Portas na Prática</image:title>
+      <image:caption>Artigo sobre portas de rede, TCP/UDP e convenções da IANA</image:caption>
+    </image:image>
   </url>
 
   <url>

@@ -1,0 +1,59 @@
+.portas-diagram {
+    background: var(--surface);
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 1.25rem 1rem 0.75rem;
+}
+
+.portas-diagram svg {
+    width: 100%;
+    height: auto;
+    max-width: 640px;
+}
+
+.portas-diagram-label {
+    fill: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 14px;
+}
+
+.portas-diagram-port {
+    fill: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+}
+
+.portas-diagram-step {
+    fill: var(--text-secondary);
+    font-size: 12px;
+}
+
+.portas-diagram-box {
+    fill: var(--surface-muted);
+    stroke: var(--border);
+    stroke-width: 1.5;
+}
+
+.portas-diagram-arrow {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+}
+
+.portas-diagram-arrow-dim {
+    stroke: var(--text-secondary);
+    stroke-dasharray: 5 4;
+    opacity: 0.75;
+}
+
+.portas-diagram-arrowhead {
+    fill: var(--accent);
+}
+
+.portas-diagram figcaption {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin: 0.5rem 0 0.75rem;
+}

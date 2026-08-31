@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro CRUD? | HenderLab</title>
+    <meta name="description" content="Relato sobre meu primeiro CRUD em Java, passando por Maven, MySQL, JPA, Hibernate, validações e vários erros no caminho.">
+    <meta name="keywords" content="CRUD em Java, JPA, Hibernate, Maven, MySQL, Bean Validation, HenderLab">
+    <meta name="author" content="Henderson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.henderlab.com.br/artigos/primeiro-crud">
+    <link rel="icon" type="image/svg+xml" href="/assets/branding/henderlabwi.svg">
+    <link rel="apple-touch-icon" href="/assets/branding/henderlabwi.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="brand" aria-label="HenderLab">
+                <span class="brand-text">HenderLab</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../artigos.html" class="is-active">Artigos</a></li>
+                <li><a href="../projetos.html">Projetos</a></li>
+                <li>
+                    <a href="https://github.com/hendersobrinho" class="nav-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Henderson">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                            <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.38-3.87-1.38-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.18 1.18A11.1 11.1 0 0 1 12 6.09c.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-main article-main">
+        <div class="article-layout">
+            <article class="article-page">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../artigos.html">Artigos</a></li>
+                        <li>Primeiro CRUD?</li>
+                    </ol>
+                </nav>
+
+                <a href="../artigos.html" class="back-link">Voltar para artigos</a>
+
+                <header class="article-header">
+                    <h1>Primeiro CRUD?</h1>
+                    <div class="article-meta">
+                        <time datetime="2026-03-19">19 de março de 2026</time>
+                    </div>
+                </header>
+
+                <div class="article-body">
+<p>Após um tempo, algumas matérias e um curso depois, entrei de vez no mundo da tecnologia. Confesso que programar, no começo, me parecia muito abstrato, mas, à medida que consolido minha lógica de programação, aprender uma linguagem nova se torna algo natural. Afinal de contas, sabemos como precisamos escrever; em qual língua escrevemos se torna apenas um detalhe pesquisável.</p>
+
+<p>Para minha primeira experiência construindo de fato um sistema e aprendendo na marra com as dificuldades que um projeto real pode trazer, escolhi Java. Eu tinha acabado de fazer um curso muito bom de POO do Curso em Vídeo, que, pela didática e pela base que me deu, já foi suficiente para me fazer sentir vontade de começar a escrever linha por linha para valer dessa vez. E foi isso que eu fiz: com confiança ou sem, eu simplesmente comecei, porque nessa fase o mais importante é aprender.</p>
+
+<h2>Do Excel ao primeiro sistema</h2>
+
+<p>A ideia da aplicação, na verdade, era bem simples. Dias antes, eu tinha feito uma tabela em Excel para monitorar meus horários de estudo e acompanhar minha evolução. Como eu estava mexendo nisso por conta própria, comecei a adicionar algumas coisas, como gráficos para visualizar melhor os dados e até uma barra de EXP, em que eu subiria de nível conforme acumulasse experiência. Então pensei: por que não transformar isso em uma aplicação web? Além de ser algo útil para mim, eu ainda treinaria várias coisas que precisava aprender.</p>
+
+<p>Então segui com a ideia, comecei a organizar o projeto e as classes e, pesquisando, vi que eu teria que lidar com coisas como services. Num primeiro momento, pensei: “Vi interfaces, aparentemente deve ser parecido”. Mas não era bem assim. A interface define um contrato de métodos que uma classe ou service terá que cumprir. Já o service entra mais como o lugar onde ficam as regras de negócio.</p>
+
+<p>E sim, eu me perguntei qual seria a diferença entre implementar certos métodos em um service ou dentro da própria classe. A resposta foi ficando prática com o tempo. A classe está mais ligada ao estado e ao comportamento direto do objeto. Se o objeto fosse uma TV, por exemplo, ligar e desligar fariam sentido ficar na própria classe. Já regras como criar usuário, validar certas operações do sistema ou salvar senha em hash fazem mais sentido em uma camada de service, porque não dizem respeito só ao estado de um objeto, mas ao funcionamento do sistema como um todo.</p>
+
+<p>Voltando ao assunto, mesmo sem necessidade real, resolvi criar uma interface para cada service, mais por prática mesmo, para fixar o conteúdo. Então desenhei os gráficos UML logo no primeiro dia, pensando em interfaces, services e classes. Inicialmente, eram cinco classes, porque eu queria dividir bastante as responsabilidades. Só que acabei dando um passo maior que a perna e percebi que estava criando redundância demais. No fim, entendi uma coisa importante: o foco não era enfiar complexidade no projeto, mas conseguir fazer um CRUD básico direito para destravar, subir os primeiros degraus e evoluir de forma sólida. Então removi duas classes do projeto.</p>
+
+<p>Nos dias seguintes, fui montando o esqueleto do programa, mas, antes de sair digitando qualquer linha de código, fui pesquisar como isso costuma funcionar em projetos reais. Foi aí que vi padrões de pastas, percebi que precisaria de um gerenciador de dependências e escolhi o Maven, justamente por ser o mais utilizado e o mais indicado para começar.</p>
+
+<h2>Servidor, banco e variáveis de ambiente</h2>
+
+<p>Depois de instalar tudo, chegou a hora de mandar o famoso Hello World para o servidor local. Em teoria, era simples: bastava fazer um controller, que não vou aprofundar agora porque ainda vou falar melhor sobre ele depois. Só que já comecei apanhando aí, porque o servidor não conectou de primeira. Então tive que parar, pesquisar mais uma hora e resolver alguns problemas de compatibilidade antes de seguir.</p>
+
+<p>Com isso resolvido, fui configurar o <code>application.properties</code>, que é um dos arquivos principais, já que nele ficam várias configurações que a aplicação usa, inclusive as do banco de dados. Depois de mais uma boa confusão, bagunçar as credenciais do MySQL e passar quase duas horas tentando redefinir uma senha que eu mesmo tinha trocado sem querer, finalmente consegui colocar de pé o acesso ao banco. Aproveitei esse momento e já criei um usuário dedicado só para o projeto, o que acabou sendo bem melhor do que usar o usuário principal do banco para tudo.</p>
+
+<p>Nesse processo, também resolvi outra questão importante: as credenciais de acesso estavam direto no código. Como minha intenção já era subir esse projeto para o GitHub, deixar credenciais no código claramente é uma péssima ideia. Então decidi fazer da forma certa e utilizar variáveis de ambiente; assim, a aplicação passa a ler esses dados do ambiente em que está rodando. Isso deixa o projeto mais seguro, mais organizado e muito mais preparado para crescer.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/1_application.properties.png" alt="Trecho do arquivo application.properties com configurações da aplicação e do banco de dados" loading="lazy">
+    <figcaption>Configurações centrais da aplicação, incluindo conexão com banco e ajustes do Hibernate.</figcaption>
+</figure>
+
+<p>Outra configuração importante foi o <code>validate</code>. Escolhi esse modo porque, naquele momento, ele me pareceu a opção mais segura. Como ele apenas valida o schema e verifica se as entidades estão batendo com a estrutura do banco, sem tentar alterar nada automaticamente, preferi seguir por esse caminho. Isso foi ainda mais importante porque, em tentativas anteriores de rodar o código, eu já tinha conseguido duplicar coisas no banco. Então, enquanto eu ainda estava tentando estabilizar o projeto, fazia muito mais sentido deixar o Hibernate apenas verificar a compatibilidade, sem sair criando, alterando ou removendo estruturas automaticamente.</p>
+
+<h2>JPA, Hibernate e o papel do ORM</h2>
+
+<p>Agora sim entra outra parte importante da história. E aqui tem um detalhe curioso: eu não configurei o acesso ao banco antes de tudo. Na verdade, isso veio depois de eu já ter escrito boa parte do código. Mesmo assim, algumas explicações precisam aparecer fora da ordem, até porque, olhando agora, talvez essa devesse ter sido a ordem correta desde o começo.</p>
+
+<p>É justamente aqui que entram dois nomes que aparecem o tempo todo quando se fala em persistência no Java: JPA e Hibernate.</p>
+
+<p>Quando comecei a estudar essa parte, uma das coisas que mais precisei entender foi que a aplicação não conversa com o banco “na unha” o tempo todo. Ou seja, eu não preciso tratar manualmente cada operação como se estivesse lidando direto com linhas, colunas e comandos SQL o tempo inteiro. Em vez disso, eu trabalho com objetos Java, e existe uma camada que faz a ponte entre esses objetos e os dados relacionais do banco.</p>
+
+<p>Foi aí que o conceito começou a fazer sentido para mim: de um lado está a aplicação, que pensa em classes, atributos e objetos; do outro está o banco, que pensa em tabelas, colunas e registros. São dois mundos diferentes, e alguém precisa traduzir um para o outro. Esse é justamente o papel do ORM, o mapeamento objeto-relacional.</p>
+
+<p>Na prática, o ORM permite que uma classe Java represente uma tabela, que os atributos dessa classe representem colunas e que cada objeto represente um registro dentro do banco. Então, em vez de eu pensar primeiro na tabela, posso pensar primeiro no objeto, o que fica muito mais natural de enxergar mentalmente.</p>
+
+<p>Dentro disso, o JPA entra como a especificação, ou seja, como o conjunto de regras e padrões que definem como esse mapeamento deve ser feito. Já o Hibernate entra como a ferramenta que pega essas regras e faz o trabalho acontecer de verdade. Em outras palavras, o JPA diz como a ponte deve ser construída, e o Hibernate é quem efetivamente ajuda a aplicação a atravessar essa ponte.</p>
+
+<h2>Anotações na prática</h2>
+
+<p>Para explicar isso, vou usar uma classe do projeto, a <code>SessionStudy</code>, e colocar prints ao longo do texto para deixar essa parte mais visual.</p>
+
+<p>Foi nessa etapa que comecei a enxergar melhor como uma classe Java deixa de ser apenas uma classe comum e passa a representar algo que realmente será salvo no banco de dados. No caso da <code>SessionStudy</code>, isso começou com o uso de <code>@Entity</code>, que é a anotação que informa que aquela classe deve ser tratada como uma entidade persistente. Em outras palavras, ela passa a representar um tipo de dado que o sistema poderá armazenar.</p>
+
+<p>Junto com isso, usei também <code>@Table(name = "study_sessions")</code>. Essa anotação serviu para definir explicitamente o nome da tabela no banco. Isso foi importante porque, antes de entender melhor esse ponto, eu já tinha rodado o código e duplicado tabela por conta da diferença entre convenções de nomenclatura: no Java, o padrão costuma ser camelCase; no banco, normalmente se usa snake_case. Então, em vez de deixar isso implícito, preferi deixar o mapeamento controlado desde o começo.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/2_entity_tables.png" alt="Trecho de código com as anotações Entity e Table na classe SessionStudy" loading="lazy">
+    <figcaption>A classe passa a representar uma entidade persistente e aponta explicitamente para a tabela correta.</figcaption>
+</figure>
+
+<p>Outro aprendizado importante apareceu no campo <code>id</code>. Nele, usei <code>@Id</code> para marcar que aquele atributo seria o identificador principal da entidade, ou seja, a chave primária. Além disso, acrescentei <code>@GeneratedValue(strategy = GenerationType.IDENTITY)</code>, informando que esse valor seria gerado automaticamente pelo próprio banco. Na prática, isso significa que, ao criar uma nova sessão de estudo, eu não preciso informar manualmente o identificador, porque o banco se encarrega disso.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/3_id_generated.png" alt="Trecho de código com as anotações Id e GeneratedValue no identificador da entidade" loading="lazy">
+    <figcaption>O identificador fica sob responsabilidade do banco, reduzindo erro manual no momento da criação.</figcaption>
+</figure>
+
+<p>Nos demais campos, a anotação que mais apareceu foi <code>@Column</code>, justamente porque ela lembra bastante a lógica de definir formato, condição e restrição na própria construção do banco. No campo <code>sessionDate</code>, por exemplo, usei <code>@Column(name = "session_date", nullable = false)</code>. Com isso, deixei definido o nome da coluna no banco e também que aquele valor não poderia ser nulo. Além do mapeamento, isso já comunica uma regra importante: uma sessão de estudo precisa ter uma data.</p>
+
+<p>No campo <code>durationMin</code>, usei <code>@Column(nullable = false)</code>, reforçando que a duração da sessão também é obrigatória. Já em <code>observation</code>, a configuração foi diferente: <code>@Column(nullable = true, length = 250)</code>. Nesse caso, a ideia foi deixar a observação como um campo opcional, mas com limite de até 250 caracteres. Em <code>studiedContent</code>, usei <code>@Column(name = "studied_content", nullable = false, length = 150)</code>, definindo o nome da coluna, a obrigatoriedade e o limite máximo de caracteres. Esse tipo de configuração ajuda a deixar a entidade muito mais alinhada com o que o sistema realmente espera receber e armazenar.</p>
+
+<p>Além dos campos simples, também houve a necessidade de representar o vínculo entre uma sessão de estudo e um usuário. Para isso, usei <code>@ManyToOne</code>, indicando que várias sessões podem pertencer ao mesmo usuário. Junto com essa anotação, usei <code>@JoinColumn(name = "user_id", nullable = false)</code>, definindo a coluna responsável por fazer essa ligação no banco. Na prática, isso significa que cada sessão precisa estar associada a um usuário, e essa relação será registrada por meio da chave estrangeira <code>user_id</code>.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/4_column_many.png" alt="Trechos de código com Column, ManyToOne e JoinColumn na entidade SessionStudy" loading="lazy">
+    <figcaption>Mapeamento de campos e relacionamento entre sessão de estudo e usuário.</figcaption>
+</figure>
+
+<p>No meio disso tudo, descobri outra camada importante: as anotações de validação, que já apareciam nos prints comentados no código como Bean Validation. Enquanto as anotações de persistência dizem como os dados serão armazenados e mapeados no banco, as validações ajudam a garantir que esses dados já cheguem corretos antes mesmo de serem persistidos.</p>
+
+<p>As que utilizei foram <code>@NotNull</code>, <code>@Positive</code>, <code>@Size</code> e <code>@NotBlank</code>. No campo <code>sessionDate</code>, por exemplo, usei <code>@NotNull</code> para deixar claro que a data não pode estar ausente. Em <code>durationMin</code>, usei <code>@Positive</code>, garantindo que a duração seja maior que zero. Em <code>observation</code>, usei <code>@Size(max = 250)</code>, reforçando o limite de tamanho já pensado para esse campo. E em <code>studiedContent</code>, usei <code>@NotBlank</code> junto com <code>@Size(max = 150)</code>, exigindo que o conteúdo estudado seja preenchido de forma válida, sem ficar vazio nem ultrapassar o limite definido.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/5_mapping.png" alt="Ilustração sobre o mapeamento entre entidade Java e banco de dados" loading="lazy">
+    <figcaption>Um desenho mais visual da ponte entre classe, entidade, validações e persistência.</figcaption>
+</figure>
+
+<p>Ah, e antes que eu me esqueça de novo, como aconteceu antes de executar o código e dar errado porque não fiz, também é preciso deixar um construtor vazio na entidade, porque o Hibernate precisa disso para conseguir instanciá-la durante o processo de persistência. E sim, obviamente dá para ter dois construtores; isso entra na ideia de sobrecarga, o overloading.</p>
+
+<figure>
+    <img src="../assets/primeiro-crud/6_constructor.png" alt="Trecho de código com construtor vazio e outro construtor na entidade" loading="lazy">
+    <figcaption>O construtor vazio continua necessário para o Hibernate instanciar a entidade.</figcaption>
+</figure>
+
+<h2>Fechando</h2>
+
+<p>Esse projeto me ensinou muito mais do que simplesmente fazer um CRUD. Aprendi lições importantes, como a necessidade de planejar o banco antes de começar tudo, aproveitar configurações para deixar o código mais conciso, usar aquela colinha visual para alinhar melhor código e banco, entender melhor o papel das anotações de validação, do JPA e do Hibernate, configurar dependências com mais cuidado, usar variáveis de ambiente da forma certa e questionar o excesso de complexidade, mesmo quando ele aparece disfarçado de organização.</p>
+
+<p>É claro que nada disso ficou gravado de forma definitiva na minha cabeça ainda. São muitas coisas ao mesmo tempo. Mas escrever essa postagem me obriga a pesquisar melhor, interpretar melhor e organizar melhor aquilo que estou tentando aprender. E isso, por si só, já faz parte do processo.</p>
+
+<p>Também é preciso ter resiliência, porque às vezes só para iniciar um projeto, subir um servidor local e mandar um Hello World já aparece erro suficiente para travar uma tarde inteira. Só que isso também é aprendizado.</p>
+
+<p>E com tudo isso, posso concluir uma coisa com tranquilidade: a minha evolução na programação vai ser diretamente proporcional à quantidade de erros que eu conseguir acumular pelo caminho.</p>
+
+<h2>Fontes</h2>
+
+<ul>
+    <li><a href="https://jakarta.ee/specifications/persistence/3.2/" target="_blank" rel="noopener">Jakarta Persistence 3.2 — página oficial da especificação</a></li>
+    <li><a href="https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2.pdf" target="_blank" rel="noopener">Jakarta Persistence 3.2 — PDF oficial da especificação</a></li>
+    <li><a href="https://jakarta.ee/specifications/persistence/3.2/apidocs/" target="_blank" rel="noopener">Jakarta Persistence 3.2 — documentação da API</a></li>
+    <li><a href="https://jakarta.ee/learn/docs/jakartaee-tutorial/current/persist/persistence-intro/persistence-intro.html" target="_blank" rel="noopener">Introdução ao Jakarta Persistence — tutorial oficial</a></li>
+    <li><a href="https://docs.hibernate.org/stable/orm/userguide/html_single/" target="_blank" rel="noopener">Hibernate ORM — User Guide oficial</a></li>
+    <li><a href="https://hibernate.org/orm/documentation/getting-started/" target="_blank" rel="noopener">Hibernate ORM — Getting Started oficial</a></li>
+    <li><a href="https://docs.hibernate.org/stable/orm/quickstart/html_single/" target="_blank" rel="noopener">Hibernate ORM — Quickstart oficial</a></li>
+</ul>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="../index.html" class="brand brand-footer">
+                <img src="/assets/branding/henderlabwi.svg" alt="Logo do HenderLab" class="brand-mark">
+                <span class="brand-text">HenderLab</span>
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025-2026 Henderson Pereira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

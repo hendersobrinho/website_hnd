@@ -56,7 +56,7 @@ scripts:
 <p>Essa última faixa é um bom lugar pra parar e conferir a teoria contra a realidade. A recomendação da IANA é 49152 a 65535, mas cada sistema operacional pode configurar sua própria janela. Rodando <code>cat /proc/sys/net/ipv4/ip_local_port_range</code> nesta própria máquina, o intervalo real configurado é <code>32768 60999</code>, o padrão histórico do kernel Linux, bem diferente do que a RFC sugere. É exatamente essa a porta que aparece, escolhida sem aviso, do lado do cliente sempre que <code>ConnectAsync</code> é chamado no TcpDemo: uma porta efêmera, emprestada pelo sistema operacional só pra aquela conversa, e devolvida assim que a conexão fecha.</p>
 
 <h2>Vendo isso no seu próprio terminal</h2>
-<p>Teoria à parte, o jeito mais direto de sentir isso funcionando é reaproveitar o próprio <a href="https://github.com/hendersobrinho/TcpDemo" target="_blank" rel="noopener">TcpDemo</a> do artigo anterior. Rodando o servidor e checando a tabela de sockets logo em seguida:</p>
+<p>Teoria à parte, o jeito mais direto de sentir isso funcionando é reaproveitar o próprio TcpDemo do artigo anterior. Rodando o servidor e checando a tabela de sockets logo em seguida:</p>
 
 ```bash
 $ dotnet run --project Server

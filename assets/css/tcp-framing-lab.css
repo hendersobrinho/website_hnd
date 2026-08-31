@@ -1,0 +1,293 @@
+.framing-lab {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at bottom right, var(--accent-soft), transparent 40%),
+        linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+.framing-lab__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: var(--border-subtle);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+}
+
+.framing-lab__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.framing-lab__intro {
+    color: var(--text-secondary);
+    margin: 0 0 1.4rem;
+}
+
+.framing-lab__section {
+    margin-bottom: 1.6rem;
+}
+
+.framing-lab__section-title {
+    font-weight: var(--font-weight-bold);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin: 0 0 0.6rem;
+}
+
+.framing-lab__tape-wrap {
+    overflow-x: auto;
+    padding-bottom: 0.3rem;
+}
+
+.framing-lab__tape {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 1rem 0.9rem;
+    border-radius: var(--radius-md);
+    background: var(--surface-contrast);
+    font-family: var(--font-mono);
+}
+
+.framing-lab__byte {
+    min-width: 2.1rem;
+    height: 2.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-on-contrast);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    transition: background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.framing-lab__byte--header {
+    background: var(--accent);
+    color: var(--surface);
+    font-size: 0.68rem;
+    font-weight: var(--font-weight-bold);
+    min-width: 2.6rem;
+}
+
+.framing-lab__byte.is-highlighted {
+    background: var(--text-on-contrast);
+    color: var(--surface-contrast);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.framing-lab__byte--header.is-highlighted {
+    background: var(--text-on-contrast);
+    color: var(--surface-contrast);
+}
+
+.framing-lab__gap {
+    appearance: none;
+    border: none;
+    background: transparent;
+    width: 14px;
+    height: 2.1rem;
+    cursor: pointer;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.framing-lab__gap::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: var(--text-on-contrast-muted);
+    opacity: 0.35;
+    border-radius: 2px;
+    transition: opacity 150ms ease, background-color 150ms ease, width 150ms ease;
+}
+
+.framing-lab__gap:hover::before {
+    opacity: 0.75;
+}
+
+.framing-lab__gap.is-active::before {
+    opacity: 1;
+    width: 3px;
+    background: var(--accent);
+}
+
+.framing-lab__gap:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.framing-lab__result {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.9rem;
+}
+
+.framing-lab__result-chip {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.framing-lab__result-chip strong {
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-semibold);
+    margin-right: 0.35rem;
+}
+
+.framing-lab__verdict {
+    margin: 0.7rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    min-height: 1.4em;
+}
+
+.framing-lab__reveal {
+    margin-top: 0.9rem;
+}
+
+.framing-lab__note {
+    margin: 0.7rem 0 0;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+    border: var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.framing-lab__note.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.framing-lab__step-line {
+    margin: 0.9rem 0 0;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    min-height: 3em;
+}
+
+.framing-lab__delivered-label {
+    margin: 0.9rem 0 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.framing-lab__delivered {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    min-height: 2.1rem;
+}
+
+.framing-lab__delivered-chip {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--surface);
+}
+
+.framing-lab__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.framing-lab__button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--surface);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.framing-lab__button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+}
+
+.framing-lab__button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.framing-lab__button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.framing-lab__button--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+}
+
+.framing-lab__button--primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--surface);
+}
+
+.framing-lab__step-count {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    .framing-lab__byte {
+        min-width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.82rem;
+    }
+
+    .framing-lab__byte--header {
+        min-width: 2.2rem;
+        font-size: 0.6rem;
+    }
+}

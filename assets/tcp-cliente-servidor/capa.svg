@@ -1,0 +1,31 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1536" height="1024" fill="#1C1B1A"/>
+  <g opacity="0.5">
+    <circle cx="1180" cy="260" r="420" fill="#34322F"/>
+    <circle cx="1180" cy="260" r="420" fill="url(#fade)"/>
+  </g>
+  <defs>
+    <radialGradient id="fade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1C1B1A" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1C1B1A" stop-opacity="1"/>
+    </radialGradient>
+    <marker id="capaArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#EDEBE8"/>
+    </marker>
+  </defs>
+
+  <rect x="140" y="380" width="180" height="120" rx="10" fill="none" stroke="#A8A5A1" stroke-width="3"/>
+  <text x="230" y="450" font-family="Monaco, Consolas, monospace" fill="#EDEBE8" font-size="26" text-anchor="middle">Cliente</text>
+
+  <rect x="820" y="380" width="180" height="120" rx="10" fill="none" stroke="#A8A5A1" stroke-width="3"/>
+  <text x="910" y="450" font-family="Monaco, Consolas, monospace" fill="#EDEBE8" font-size="26" text-anchor="middle">Servidor</text>
+
+  <line x1="320" y1="415" x2="820" y2="415" stroke="#EDEBE8" stroke-width="3" marker-end="url(#capaArrow)"/>
+  <text x="570" y="400" font-family="Monaco, Consolas, monospace" fill="#A8A5A1" font-size="22" text-anchor="middle">SYN</text>
+
+  <line x1="820" y1="450" x2="320" y2="450" stroke="#5C5A58" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#capaArrow)"/>
+  <text x="570" y="480" font-family="Monaco, Consolas, monospace" fill="#5C5A58" font-size="22" text-anchor="middle">SYN-ACK</text>
+
+  <text x="120" y="700" font-family="'Source Sans 3', sans-serif" fill="#EDEBE8" font-size="76" font-weight="800">TCP</text>
+  <text x="120" y="750" font-family="Monaco, Consolas, monospace" fill="#A8A5A1" font-size="26">a conversa entre cliente e servidor</text>
+</svg>

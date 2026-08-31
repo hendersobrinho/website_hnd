@@ -1,0 +1,314 @@
+.tcp-udp-lab {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at top right, var(--accent-soft), transparent 40%),
+        linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+.tcp-udp-lab__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: var(--border-subtle);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+}
+
+.tcp-udp-lab__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.tcp-udp-lab__intro {
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem;
+}
+
+.tcp-udp-lab__mode-switch {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.tcp-udp-lab__mode-button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.tcp-udp-lab__mode-button:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+}
+
+.tcp-udp-lab__mode-button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.tcp-udp-lab__mode-button.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+}
+
+.tcp-udp-lab__stage {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+}
+
+.tcp-udp-lab__node {
+    flex: 0 0 auto;
+    width: 116px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 0.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    text-align: center;
+}
+
+.tcp-udp-lab__node-name {
+    font-weight: var(--font-weight-bold);
+    font-size: 0.92rem;
+    color: var(--text-primary);
+}
+
+.tcp-udp-lab__node-hint {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--text-secondary);
+}
+
+.tcp-udp-lab__track {
+    position: relative;
+    flex: 1 1 auto;
+    margin: 0 1rem;
+    min-height: 110px;
+}
+
+.tcp-udp-lab__track-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background-image: linear-gradient(to right, var(--border) 0, var(--border) 6px, transparent 6px, transparent 12px);
+    background-size: 12px 2px;
+    background-repeat: repeat-x;
+}
+
+.tcp-udp-lab__chip {
+    position: absolute;
+    top: 15%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+    padding: 0.28rem 0.6rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tcp-udp-lab__chip.is-visible {
+    opacity: 1;
+}
+
+.tcp-udp-lab__chip.is-lost {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px dashed var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.tcp-udp-lab__chip.no-transition {
+    transition: none;
+}
+
+.tcp-udp-lab__buffer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    min-height: 1.9rem;
+    flex-wrap: wrap;
+}
+
+.tcp-udp-lab__buffer-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.tcp-udp-lab__buffer-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-muted);
+    border: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.tcp-udp-lab__section-label {
+    margin: 1.2rem 0 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.tcp-udp-lab__ticker {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.1rem;
+    flex-wrap: wrap;
+}
+
+.tcp-udp-lab__ticker-chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--surface);
+}
+
+.tcp-udp-lab__ticker-chip.is-gap {
+    background: var(--surface);
+    border: 1px dashed var(--text-secondary);
+    color: var(--text-secondary);
+}
+
+.tcp-udp-lab__log {
+    margin-top: 0.5rem;
+    max-height: 9.5rem;
+    overflow-y: auto;
+    border: var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.tcp-udp-lab__log-line {
+    white-space: pre-wrap;
+}
+
+.tcp-udp-lab__log-line strong {
+    color: var(--text-primary);
+}
+
+.tcp-udp-lab__summary {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.tcp-udp-lab__summary.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tcp-udp-lab__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.tcp-udp-lab__button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, opacity 120ms ease;
+}
+
+.tcp-udp-lab__button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.tcp-udp-lab__button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.tcp-udp-lab__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .tcp-udp-lab__node {
+        width: 84px;
+        padding: 0.6rem 0.3rem;
+    }
+
+    .tcp-udp-lab__node-name {
+        font-size: 0.8rem;
+    }
+
+    .tcp-udp-lab__chip {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.45rem;
+    }
+}

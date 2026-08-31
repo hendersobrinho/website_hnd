@@ -34,6 +34,16 @@
   </url>
 
   <url>
+    <loc>https://henderlab.com.br/artigos/tcp-cliente-servidor.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <image:image>
+      <image:loc>https://henderlab.com.br/assets/tcp-cliente-servidor/capa.svg</image:loc>
+      <image:title>TCP na Prática</image:title>
+      <image:caption>Artigo sobre TCP, sockets e o fluxo de bytes entre cliente e servidor</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://henderlab.com.br/artigos/pipeline-do-codigo-ao-deploy.html</loc>
     <lastmod>2026-05-10</lastmod>
     <image:image>

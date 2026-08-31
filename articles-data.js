@@ -5,6 +5,14 @@
  */
 window.siteArticles = [
     {
+        "title": "TCP na Prática: a Conversa Entre Cliente e Servidor",
+        "date": "2026-08-31",
+        "excerpt": "Como cliente e servidor realmente conversam pela rede: um mergulho no TCP, em sockets e no fluxo de bytes usando o TcpDemo, um servidor de echo em C# construído do zero para entender o que existe por trás de toda API.",
+        "coverImage": "assets/tcp-cliente-servidor/capa.svg",
+        "category": "Artigo",
+        "url": "artigos/tcp-cliente-servidor.html"
+    },
+    {
         "title": "Pipeline: do código ao deploy",
         "date": "2026-05-10",
         "excerpt": "Como o conceito de pipeline aparece no desenvolvimento de software na prática. Usando o Museu de Bugs como fio condutor, o artigo atravessa as decisões de planejamento, o código, o build, os testes e o deploy, mostrando como cada etapa transforma uma ideia em uma aplicação rodando em produção.",

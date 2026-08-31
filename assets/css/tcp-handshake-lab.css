@@ -1,0 +1,253 @@
+.handshake-lab {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at top left, var(--accent-soft), transparent 40%),
+        linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+.handshake-lab__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: var(--border-subtle);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+}
+
+.handshake-lab__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.handshake-lab__intro {
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem;
+}
+
+.handshake-lab__stage {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+}
+
+.handshake-lab__node {
+    flex: 0 0 auto;
+    width: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.85rem 0.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    text-align: center;
+}
+
+.handshake-lab__node-name {
+    font-weight: var(--font-weight-bold);
+    font-size: 0.92rem;
+    color: var(--text-primary);
+}
+
+.handshake-lab__node-state {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+    transition: background-color 200ms ease, color 200ms ease;
+    white-space: nowrap;
+}
+
+.handshake-lab__node-state.is-established {
+    background: var(--accent);
+    color: var(--surface);
+}
+
+.handshake-lab__track {
+    position: relative;
+    flex: 1 1 auto;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.handshake-lab__track-line {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, var(--border) 0, var(--border) 6px, transparent 6px, transparent 12px);
+    background-size: 12px 2px;
+    background-repeat: repeat-x;
+}
+
+.handshake-lab__packet {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+    opacity: 0;
+    transition: left 750ms cubic-bezier(0.5, 0, 0.25, 1), opacity 200ms ease;
+    pointer-events: none;
+}
+
+.handshake-lab__packet.is-visible {
+    opacity: 1;
+}
+
+.handshake-lab__packet.no-transition {
+    transition: none;
+}
+
+.handshake-lab__detail {
+    margin: 1.25rem 0 0;
+    min-height: 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+.handshake-lab__explain {
+    margin: 0.6rem 0 0;
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    min-height: 5.5em;
+}
+
+.handshake-lab__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.handshake-lab__button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--surface);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.handshake-lab__button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+}
+
+.handshake-lab__button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.handshake-lab__button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.handshake-lab__button--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+}
+
+.handshake-lab__button--primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--surface);
+}
+
+.handshake-lab__dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.handshake-lab__dot {
+    appearance: none;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    border: var(--border-subtle);
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.handshake-lab__dot:hover {
+    border-color: var(--accent);
+}
+
+.handshake-lab__dot:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.handshake-lab__dot.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .handshake-lab__packet {
+        transition: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .handshake-lab__node {
+        width: 88px;
+        padding: 0.6rem 0.35rem;
+    }
+
+    .handshake-lab__node-name {
+        font-size: 0.8rem;
+    }
+
+    .handshake-lab__controls {
+        justify-content: center;
+    }
+
+    .handshake-lab__packet {
+        font-size: 0.62rem;
+        padding: 0.22rem 0.5rem;
+    }
+}

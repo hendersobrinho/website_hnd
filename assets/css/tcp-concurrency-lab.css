@@ -1,0 +1,248 @@
+.concurrency-lab {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at top left, var(--accent-soft), transparent 40%),
+        linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+.concurrency-lab__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: var(--border-subtle);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+}
+
+.concurrency-lab__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.concurrency-lab__intro {
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem;
+}
+
+.concurrency-lab__mode-switch {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.concurrency-lab__mode-button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.concurrency-lab__mode-button:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+}
+
+.concurrency-lab__mode-button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.concurrency-lab__mode-button.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+}
+
+.concurrency-lab__section-label {
+    margin: 0 0 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.concurrency-lab__loop {
+    margin-bottom: 1.3rem;
+}
+
+.concurrency-lab__loop-track,
+.concurrency-lab__lane-track {
+    position: relative;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: var(--border-subtle);
+    overflow: hidden;
+}
+
+.concurrency-lab__loop-segment {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    width: 0;
+    border-radius: 4px;
+    background: var(--text-primary);
+    color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0.92;
+}
+
+.concurrency-lab__lanes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.concurrency-lab__lane {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.concurrency-lab__lane-label {
+    flex: 0 0 auto;
+    width: 68px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+.concurrency-lab__lane-track {
+    flex: 1 1 auto;
+}
+
+.concurrency-lab__lane-wait,
+.concurrency-lab__lane-busy {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    width: 0;
+    border-radius: 4px;
+}
+
+.concurrency-lab__lane-wait {
+    background: transparent;
+    border: 1px dashed var(--text-secondary);
+}
+
+.concurrency-lab__lane-busy {
+    background: var(--accent);
+    transition: width linear;
+}
+
+.concurrency-lab__lane-busy.is-done {
+    background: var(--text-primary);
+}
+
+.concurrency-lab__log {
+    margin: 1.2rem 0 0;
+    max-height: 9.5rem;
+    overflow-y: auto;
+    border: var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.concurrency-lab__log-line {
+    white-space: pre-wrap;
+}
+
+.concurrency-lab__summary {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border: var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.concurrency-lab__summary.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.concurrency-lab__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.concurrency-lab__button {
+    appearance: none;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-pill);
+    border: var(--border-subtle);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, opacity 120ms ease;
+}
+
+.concurrency-lab__button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.concurrency-lab__button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.concurrency-lab__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .concurrency-lab__lane-label {
+        width: 48px;
+        font-size: 0.62rem;
+    }
+}
